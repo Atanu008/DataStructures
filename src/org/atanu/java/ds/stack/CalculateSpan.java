@@ -11,7 +11,7 @@ public class CalculateSpan {
 
 		// Create a stack and push index of first element 
 		// to it 
-		Stack<Integer> stack = new Stack();
+		Stack<Integer> stack = new Stack<>();
 		stack.push(0);
 
 
