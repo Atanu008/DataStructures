@@ -11,4 +11,32 @@ public class TreeNode {
 		data = key;
 		left = right = null;
 	}
+
+	public static void inOrder(TreeNode root) {
+
+		if(root == null) {
+			return;
+		}
+		inOrder(root.left);
+
+		System.out.print(root.data+ " ");
+
+		inOrder(root.right);
+	}
+
+	public static void preOrder(TreeNode root) {
+
+		// return if the current node is empty
+		if(root == null)
+			return;
+
+		// Display the data part of the root (or current node)
+		System.out.print(root.data +" ");
+
+		// Traverse the left subtree
+		preOrder(root.left);
+
+		// Traverse the right subtree
+		preOrder(root.right);
+	}
 }
