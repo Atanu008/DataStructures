@@ -39,4 +39,21 @@ public class TreeNode {
 		// Traverse the right subtree
 		preOrder(root.right);
 	}
+
+	public static void postOrder(TreeNode node) {
+
+		// return if the current node is empty
+		if(node == null)
+			return;
+
+		// Traverse the left subtree
+		postOrder(node.left);
+
+		// Traverse the right subtree
+		postOrder(node.right);
+
+		// Display the data part of the root (or current node)
+		System.out.print(node.data +" ");
+
+	}
 }
