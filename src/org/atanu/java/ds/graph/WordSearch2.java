@@ -9,7 +9,6 @@ public class WordSearch2 {
 
 	public List<String> findWords(char[][] board, String[] words) {
 
-		List<String> retVal ;
         Set<String> interMedRes = new HashSet<>();
 
 		int row = board.length;
@@ -30,10 +29,6 @@ public class WordSearch2 {
 		}
         
        return new ArrayList<>(interMedRes);
-
-        
-		//return retVal;
-
 	}
 
 	public boolean dfs(char[][] board, String word, int index, boolean[][] visited, int i , int j){
