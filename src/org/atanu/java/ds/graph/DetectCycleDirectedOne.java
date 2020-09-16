@@ -43,7 +43,7 @@ public class DetectCycleDirectedOne {
         for (int i = 0; i < N; i++) {
 
            if(!discovered[i] && hasCycle(graph, i, discovered, inResurssion)){
-                System.out.println("This Graph Has Cycle"); // Will Print True for each connected component. you can return here
+                System.out.println("This Graph Has Cycle"); // Will Print True for each connected component. you can return hergi
            }
             if (!discovered[i]) {
                 boolean result = hasCycle(graph, i, discovered, inResurssion);
