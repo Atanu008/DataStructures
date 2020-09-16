@@ -7,6 +7,7 @@ import java.util.*;
 import java.lang.*; 
 import java.io.*; 
 
+
 class MST { 
 	// Number of vertices in the graph 
 	private static final int V = 7; 
