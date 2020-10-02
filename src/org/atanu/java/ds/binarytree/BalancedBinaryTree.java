@@ -24,7 +24,7 @@ public class BalancedBinaryTree {
 	return	checkBalanced(root).isBalanced;
 		
 	}
-	
+	//This is a postorder traversal (left right node) with possible early termination if any left subtree turns out unbalanced and an early result bubbles back up.
 	private static BalanceStatusWithHeight checkBalanced(TreeNode root) {
 		
 		if(root == null) {
