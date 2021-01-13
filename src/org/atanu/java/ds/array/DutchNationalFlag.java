@@ -66,7 +66,7 @@ public class DutchNationalFlag {
 			// For Case Two . swap mid to end. But dont increment the mid.
 			// After swap arr[mid] can either be 0,1
 			// we will not move mid as the swapped value can be 0 or 1(less than Or Equal to Pivot)
-			else if(arr[mid] > pivot){
+			else if(arr[mid] > pivot){ // Can use else also
 				
 				swap(arr, mid, end);
 				end--;
