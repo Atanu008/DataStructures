@@ -2,7 +2,7 @@ package org.atanu.java.ds.array;
 
 import java.util.Arrays;
 
-public class DutchNationalFlag {
+public class DutchNationalFlagLeetCode75 {
 
 	public static void dutchNationalFlagSol1(int[] arr) {
 		
