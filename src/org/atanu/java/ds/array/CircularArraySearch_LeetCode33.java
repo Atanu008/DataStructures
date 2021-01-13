@@ -1,6 +1,6 @@
 package org.atanu.java.ds.array;
 
-public class CircularArraySearch {
+public class CircularArraySearch_LeetCode33 {
 
 	public static int circularArraySearch(int[] arr, int target) {
 
@@ -53,7 +53,7 @@ public class CircularArraySearch {
 	}	
 	public static void main(String[] args) {
 		int[] A = {9, 10, 2, 5, 6, 8};
-		int key = 10;
+		int key = 5;
 
 		int index = circularArraySearch(A, key);
 
