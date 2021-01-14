@@ -28,7 +28,7 @@ public class JumpGameTwo {
 	
 
      //[0] case	
-	 public int jumpTwo(int[] nums) {
+	 public static int jumpTwo(int[] nums) {
 	       
 	        int jump = 0;
 	        
@@ -40,7 +40,8 @@ public class JumpGameTwo {
 	            if(i > maxJump){
 	                
 	                ++jump;
-	                maxJump = Math.max(maxJump, canTillJump);
+					maxJump = Math.max(maxJump, canTillJump);
+					System.out.println(maxJump);
 	                if(maxJump >= nums.length -1){
 	                    return jump;
 	                }
@@ -54,8 +55,9 @@ public class JumpGameTwo {
 	public static void main(String[] args) {
 		
 		int[] nums = new int[] {2,3,1,1,4};
+		int[] nums1 = new int[] {1, 4, 3, 7, 1, 2, 6, 7, 6, 10};
 		
-		int result = jump(nums);
+		int result = jumpTwo(nums1);
 		System.out.println("Minimum jump required is "+ result);
 	}
 
