@@ -32,7 +32,7 @@ public class JumpGameTwo {
 	       
 	        int jump = 0;
 	        
-	        int canTillJump = 0; // How Far we can reach for next step
+	        int canTillJump = 0; // How Far we can reach for next step.Farthest we can reach
 	        int maxJump = 0; // How Far we can already Reach
 	        
 	        for(int i = 0; i < nums.length; i++){
@@ -42,7 +42,7 @@ public class JumpGameTwo {
 	                ++jump;
 					maxJump = Math.max(maxJump, canTillJump);
 					System.out.println(maxJump);
-	                if(maxJump >= nums.length -1){
+	                if(maxJump >= nums.length -1){ // This means if we can reach this our last jump
 	                    return jump;
 	                }
 	            }
