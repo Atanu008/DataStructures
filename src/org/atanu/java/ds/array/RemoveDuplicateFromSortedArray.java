@@ -5,21 +5,21 @@ public class RemoveDuplicateFromSortedArray {
 	public static int removeDuplicateFromSortedArraySol1(int[] arr) {
 
 		//Initialize Starting Pointer as j . arr[0] will always have the first element
-		int i = 0;
+		int j = 0;
 
 		// Start from Index 1 and compare with previous . arr[0] already placed at the right position
-		for (int j = 1; j < arr.length; j++) {
+		for (int i = 1; i < arr.length; i++) {
 
-			if(arr[j] != arr[i]) {
+			if(arr[i] != arr[j]) {
 				// If the elementt is NOT equal to the previous element
 				// Increment the pointer and place the item
-				i++;
-				arr[i] = arr[j];
+				j++;
+				arr[j] = arr[i];
 			}
 
 		}
 
-		return i+1;
+		return j+1;
 	}
 
 	public static int removeDuplicateFromSortedArraySol2(int[] arr) {
@@ -53,6 +53,7 @@ public class RemoveDuplicateFromSortedArray {
 
 		//n = removeDuplicateFromSortedArraySol2(arr); 
 
+		System.out.println("Length after Deletion "+n);
 		// Print updated array 
 		for (int i=0; i<n; i++) 
 			System.out.print(arr[i]+" "); 
