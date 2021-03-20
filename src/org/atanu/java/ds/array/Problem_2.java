@@ -1,8 +1,4 @@
-package org.atanu.java.ds.array.rotation;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+package org.atanu.java.ds.array;
 
 /**
  * @author atanu

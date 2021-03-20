@@ -1,4 +1,4 @@
-package org.atanu.java.ds.array.rotation;
+package org.atanu.java.ds.array;
 
 /**
  * @author atanu

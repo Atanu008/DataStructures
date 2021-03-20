@@ -1,4 +1,4 @@
-package org.atanu.java.ds.array.rotation;
+package org.atanu.java.ds.array;
 
 /*
  * Write a function rotate(ar[], d, n) that rotates arr[] of size n by d elements.
