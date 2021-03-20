@@ -30,32 +30,33 @@ public class PowerSet {
 
 	 */
 
-	public static void findPowerSet(int[] arr) {
+    public static void findPowerSet(int[] arr) {
 
-		// N stores total number of subsets
-		int N = (int) Math.pow(2, arr.length);
+        // N stores total number of subsets
+        int N = (int) Math.pow(2, arr.length);
 
-		// generate each subset one by one
-		for(int i = 0; i < N; i++) {
+        // generate each subset one by one
+        for (int i = 0; i < N; i++) {
 
-			// check every bit of i
-			for(int j = 0; j < arr.length ; j++) {
+            // check every bit of i
+            for (int j = 0; j < arr.length; j++) {
 
-				// if j'th bit of i is set, print S[j]
-				if((i & (1 << j)) != 0) { // Left Shift will multiply the value by 2
-					System.out.print(arr[j]);
-				}
-			}
-			System.out.println();
-		}
+                // if j'th bit of i is set, print S[j]
+                if ((i & (1 << j)) != 0) { // Left Shift will multiply the value by 2
+                    System.out.print(arr[j]);
+                }
+            }
+            System.out.println();
+        }
 
 
-	}
-	public static void main(String[] args) {
+    }
 
-		int[] arr = { 1, 2, 3 };
-		findPowerSet(arr);
+    public static void main(String[] args) {
 
-	}
+        int[] arr = {1, 2, 3};
+        findPowerSet(arr);
+
+    }
 
 }

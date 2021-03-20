@@ -18,11 +18,11 @@ public class SmallestDivisorGivenThreshold {
         return left;
     }
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-        int[] nums = {1,2,5,9};
+        int[] nums = {1, 2, 5, 9};
         int threshold = 6;
-        int result = smallestDivisor(nums,threshold);
+        int result = smallestDivisor(nums, threshold);
         System.out.println(result);
     }
 }
