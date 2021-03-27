@@ -3,7 +3,7 @@ package org.atanu.java.ds.design;
 import java.util.HashMap;
 import java.util.Map;
 
-https://leetcode.com/problems/lfu-cache/
+//https://leetcode.com/problems/lfu-cache/
 public class LFUCache {
 
     int capacity;
