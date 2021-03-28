@@ -1,46 +1,57 @@
 package org.atanu.java.ds.design;
 
 import java.util.LinkedList;
-
 // LeetCode 706
 //https://leetcode.com/problems/design-hashmap/
-public class HashMapUsingChaining {
-    LinkedList<Entry>[] bucket;
-    public int SIZE = 769;
+public class HashMapUsingReHash {
 
+    LinkedList<Entry>[] bucket;
+    int bucketSize;
+    int size;
+    double loadFactor = 0.75;
     /** Initialize your data structure here. */
-    public HashMapUsingChaining() {
-        bucket = new LinkedList[SIZE];
+    public HashMapUsingReHash() {
+        bucketSize = 16;
+        size = 0;
+        bucket = new LinkedList[bucketSize];
     }
 
     /** value will always be non-negative. */
     public void put(int key, int value) {
-        int bucktIndex = key%SIZE;
-        LinkedList<Entry> entries = bucket[bucktIndex];
+        int bucketIndex = key%bucketSize;
+        LinkedList<Entry> entries = bucket[bucketIndex];
 
         if(entries == null) {
-            LinkedList<Entry> newList = new LinkedList<>();
             Entry newEntry = new Entry(key, value);
+            LinkedList<Entry> newList = new LinkedList<>();
             newList.add(newEntry);
-            bucket[bucktIndex] = newList;
-            return;
+            bucket[bucketIndex] = newList;
+            size++;
+            if(isOverload()) {
+                rehash();
+            }
         }
-        else{
-            for(Entry entry: entries){
-                if(entry.key == key){
+        else {
+            for(Entry entry: entries) {
+                if(entry.key == key) {
                     entry.value = value;
                     return;
                 }
             }
             Entry newEntry = new Entry(key, value);
             entries.add(newEntry);
+            size++;
+            if(isOverload()) {
+                rehash();
+            }
+
         }
+
     }
 
     /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
     public int get(int key) {
-
-        int bucktIndex = key%SIZE;
+        int bucktIndex = key%bucketSize;
         LinkedList<Entry> entries = bucket[bucktIndex];
 
         if(entries != null){
@@ -52,12 +63,11 @@ public class HashMapUsingChaining {
         }
 
         return -1;
-
     }
 
     /** Removes the mapping of the specified value key if this map contains a mapping for the key */
     public void remove(int key) {
-        int bucktIndex = key%SIZE;
+        int bucktIndex = key%bucketSize;
         LinkedList<Entry> entries = bucket[bucktIndex];
         Entry entryToRemove = null;
         if(entries == null) {
@@ -75,6 +85,27 @@ public class HashMapUsingChaining {
             return;
         }
         entries.remove(entryToRemove);
+    }
+
+    private boolean isOverload() {
+        double currentLoad = size / bucketSize;
+        return currentLoad > loadFactor;
+
+    }
+
+    private void rehash() {
+        size = 0;
+        LinkedList<Entry>[] oldBucket = bucket;
+        bucketSize *=2;
+        bucket = new LinkedList[bucketSize];
+        for(LinkedList<Entry> entries: oldBucket){
+            if(entries == null) {
+                continue;
+            }
+            for(Entry entry: entries){
+                put(entry.key, entry.value);
+            }
+        }
 
     }
 
@@ -88,7 +119,8 @@ public class HashMapUsingChaining {
     }
 
     public static void main(String[] args) {
-        HashMapUsingChaining myHashMap = new HashMapUsingChaining();
+
+        HashMapUsingReHash myHashMap = new HashMapUsingReHash();
         myHashMap.put(1, 1); // The map is now [[1,1]]
         myHashMap.put(2, 2); // The map is now [[1,1], [2,2]]
         System.out.println(myHashMap.get(1));    // return 1, The map is now [[1,1], [2,2]]
