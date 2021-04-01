@@ -9,10 +9,14 @@ public class HitCounter {
 
     public void hit(int timeStamp) {
         int timeStampIndex = timeStamp%300;
+        // If the its a new TimeStamp in same index;
+        // suppose for Timestamp 5 we have entry. Now 305 has came. So we need to erase 5 and put 305
+        // As it is exceeding 5 minutes
         if(timeStamps[timeStampIndex] != timeStamp){
             timeStamps[timeStampIndex] = timeStamp;
             hits[timeStampIndex] = 1;
         }
+        //Increment the Count for same timestamp
         else {
             ++hits[timeStampIndex];
         }
