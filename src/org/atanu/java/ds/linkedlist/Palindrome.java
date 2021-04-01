@@ -4,6 +4,8 @@ import java.util.Stack;
 
 import org.atanu.java.ds.linkedlist.LinkedList.Node;
 
+//LeetCode 234
+//https://leetcode.com/problems/palindrome-linked-list/
 public class Palindrome {
 
     static Node leftNode;
