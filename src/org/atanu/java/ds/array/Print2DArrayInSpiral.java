@@ -10,7 +10,7 @@ public class Print2DArrayInSpiral {
         int right = arr[0].length - 1; // No of Column . N
 
         int dir = 0;
-        while (top <= bottom) {
+        while (top <= bottom && left <= right) {
 
             // Left To Right Print Top Row
             if (dir == 0) {
