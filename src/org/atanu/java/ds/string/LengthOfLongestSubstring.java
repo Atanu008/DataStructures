@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class StringProblem1 {
+public class LengthOfLongestSubstring {
 
     public int lengthOfLongestSubstring(String s) {
 

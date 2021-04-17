@@ -1,8 +1,8 @@
 package org.atanu.java.ds.string;
 
-public class StringProblem4 {
+public class AllSubString {
 
-    public static void printAllSuString(String str) {
+    public static void printAllSubString(String str) {
 
         for (int i = 0; i < str.length(); i++) {
 
@@ -15,7 +15,7 @@ public class StringProblem4 {
 
     public static void main(String[] args) {
 
-        printAllSuString("abcdef");
+        printAllSubString("abcdef");
 
     }
 

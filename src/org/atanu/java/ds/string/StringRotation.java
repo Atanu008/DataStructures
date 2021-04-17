@@ -1,6 +1,6 @@
 package org.atanu.java.ds.string;
 
-public class StringProblem3 {
+public class StringRotation {
 
     public static boolean checkRotatedSol1(String X, String Y) {
 

@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class StringProblem2 {
+public class LongestSubstrWithKDistinct {
 
     // Function to find longest substring of given string containing
     // k distinct characters using sliding window
