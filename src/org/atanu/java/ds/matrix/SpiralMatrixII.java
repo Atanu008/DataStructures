@@ -1,4 +1,4 @@
-package org.atanu.java.ds.array;
+package org.atanu.java.ds.matrix;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.atanu.java.ds.array;
+package org.atanu.java.ds.matrix;
 
 public class SearchIn2DArray {
 
