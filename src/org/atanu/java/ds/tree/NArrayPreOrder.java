@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+//LeetCode 589
+//https://leetcode.com/problems/n-ary-tree-preorder-traversal/
 public class NArrayPreOrder {
 
     static class Node {
