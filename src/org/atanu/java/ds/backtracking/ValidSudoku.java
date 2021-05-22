@@ -3,6 +3,7 @@ package org.atanu.java.ds.backtracking;
 import java.util.HashSet;
 import java.util.Set;
 
+//This is not a Backtracking problem
 //LeetCode 36
 //https://leetcode.com/problems/valid-sudoku/
 public class ValidSudoku {
@@ -12,6 +13,8 @@ public class ValidSudoku {
             for (int j = 0; j < 9; j++) {
                 char number = board[i][j];
                 if (number != '.') {
+                    //HashSet add() -- True if the element is not present in the HashSet
+                    //HashSet add() -- False if the element is already present in the HashSet
                     if (!set.add(number + " In Row " + i)
                             || !set.add(number + " In Column " + j)
                             || !set.add(number + " In box " + i / 3 + " " + j / 3)) {
