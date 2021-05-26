@@ -27,7 +27,7 @@ public class NQueenSingle {
 
         }
         /* If the queen can not be placed in any row in
-           this colum col, then return false */
+           this column col, then return false */
         return false;
     }
 

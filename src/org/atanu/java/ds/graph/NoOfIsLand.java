@@ -32,6 +32,7 @@ public class NoOfIsLand {
         }
 
         grid[i][j] = '0';
+        grid[i][j] = '0';
 
         dfs(grid, i + 1, j);
         dfs(grid, i - 1, j);
