@@ -2,12 +2,14 @@ package org.atanu.java.ds.backtracking;
 
 //https://www.techiedelight.com/find-shortest-path-in-maze/
 //https://www.geeksforgeeks.org/shortest-path-in-a-binary-maze/
+//https://leetcode.com/problems/shortest-path-in-binary-matrix/   -- This problem has 8 direction
 //Ideal solution is BFS
 public class ShortestPathInBinaryMatrix {
 
     int minPath = Integer.MAX_VALUE;
 
     private void shortestPathBinaryMatrix(int[][] grid, int[][] visited, int row, int column, int x, int y, int dist, int move){
+        System.out.println(move + " "+ dist);
         if(row == x && column == y){
             minPath = Math.min(minPath, dist);
             // For this input 12 is the minumum Path. printing the path

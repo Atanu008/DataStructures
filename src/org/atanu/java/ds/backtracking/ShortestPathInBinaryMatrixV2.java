@@ -10,6 +10,7 @@ public class ShortestPathInBinaryMatrixV2 {
             return Integer.MAX_VALUE; // Returning Max_Value other teh than the Target cell.
         }
         if(row == x && column == y){
+            printPath(visited);
             return 0;
         }
 
