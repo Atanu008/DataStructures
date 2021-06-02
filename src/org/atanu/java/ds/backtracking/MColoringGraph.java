@@ -11,6 +11,7 @@ public class MColoringGraph {
         for(int c = 1; c <= m; c++){
             if(isSafeToColor(graph, colors, node, c)){
                 colors[node] = c;
+                //Visit each node . node +1 . 0, 1, 2, 3.. If we can color return true
                 if(graphColoring(graph, colors, node+1, m , V))
                     return true;
                 colors[node] = 0;
