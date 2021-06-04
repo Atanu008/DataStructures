@@ -26,7 +26,7 @@ public class SumOfSubsets {
         LinkedList<Integer> current = new LinkedList<>();
         List<Integer> result = new ArrayList<>();
         result = sumOfSubsets.sumOfSubSets(nums, current, sum, result, 0);
-        Collections.sort(result);
+       // Collections.sort(result);
         result.forEach(System.out::print);
     }
 }
