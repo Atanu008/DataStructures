@@ -1,55 +1,40 @@
 package org.atanu.java.ds.backtracking;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //https://leetcode.com/problems/permutations-ii/
 //LeetCode 47
 public class PermutationsII {
     public List<List<Integer>> permuteUnique(int[] nums) {
+        Arrays.sort(nums);//Sort the array First
         List<List<Integer>> result = new ArrayList<>();
-        dfs(result, nums, 0);
+        List<Integer> permutation = new ArrayList<>();
+        boolean[] visited = new boolean[nums.length];
+        dfs(nums, permutation, visited, result);
         return result;
     }
-
-    private void dfs(List<List<Integer>> result, int[] nums, int index){
-        if(index == nums.length){
-            result.add(prepareList(nums));
-            return;
+    private void dfs(int[] nums, List<Integer> permutation, boolean[] visited, List<List<Integer>> result){
+        if(permutation.size() == nums.length){
+            result.add(new ArrayList<>(permutation));
         }
 
-        for(int i = index; i < nums.length; i++){
-            boolean isContinueForDuplicate = false;
-            //If the same element is swapped with same it would produce duplicate permutation
-            //Check if the same elemnt present earlier.
-            //If yes then skip it
-            for(int j = index; j < i; j++){
-                if(nums[j] == nums[i]){
-                    isContinueForDuplicate = true;
-                    break;
-                }
-            }
-            if(isContinueForDuplicate){
+        //when a number has the same value with its previous, we can use this number only if his previous is used
+        //i > 0 && nums[i] == nums[i-1] && !visited[i-1]
+        //i > 0 && nums[i] == nums[i-1] && visited[i-1]
+        //Both will work
+        for(int i = 0; i < nums.length; i++) {
+            if(visited[i])
                 continue;
-            }
-            swap(nums, i, index);
-            dfs(result, nums, index+1);
-            swap(nums, i, index);
+            if(i > 0 && nums[i] == nums[i-1] && !visited[i-1])
+                continue;
+            visited[i] = true;
+            permutation.add(nums[i]);
+            dfs(nums, permutation, visited, result);
+            visited[i] = false;
+            permutation.remove(permutation.size() - 1);
         }
-    }
-
-    private void swap(int[] nums, int left, int right) {
-        int temp = nums[left];
-        nums[left] = nums[right];
-        nums[right] = temp;
-    }
-
-    private List<Integer> prepareList(int[] nums){
-        List<Integer> list = new ArrayList<>();
-        for(int a : nums){
-            list.add(a);
-        }
-        return list;
     }
 
     public static void main(String[] args) {
