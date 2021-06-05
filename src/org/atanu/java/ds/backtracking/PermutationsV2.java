@@ -1,12 +1,11 @@
 package org.atanu.java.ds.backtracking;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 //https://leetcode.com/problems/permutations/
 //LeetCode 46
-public class PermutationsI {
+public class PermutationsV2 {
     List<List<Integer>> result = new ArrayList<>();
     public List<List<Integer>> permute(int[] nums) {
         dfs(nums,0);
@@ -42,7 +41,7 @@ public class PermutationsI {
 
         public static void main(String[] args) {
             int[] nums = {1,2,3};
-            PermutationsI permutations = new PermutationsI();
+            PermutationsV2 permutations = new PermutationsV2();
             List<List<Integer>> result = permutations.permute(nums);
             result.forEach(System.out::println);
         }
