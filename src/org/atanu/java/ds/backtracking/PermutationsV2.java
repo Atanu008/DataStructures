@@ -1,30 +1,34 @@
 package org.atanu.java.ds.backtracking;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+//https://leetcode.com/problems/permutations/
+//LeetCode 46
 public class PermutationsV2 {
     List<List<Integer>> result = new ArrayList<>();
     public List<List<Integer>> permute(int[] nums) {
         List<Integer> permutation = new ArrayList<>();
-        boolean[] visited = new boolean[nums.length];
-        dfs(permutation, visited, nums);
+        Set<Integer> currentSet = new HashSet<>();
+        dfs(permutation, currentSet, nums);
         return result;
     }
 
-    private void dfs(List<Integer> permutation, boolean[] visited, int[] nums) {
+    private void dfs(List<Integer> permutation, Set<Integer> currentSet, int[] nums) {
         if(permutation.size() == nums.length) {
             result.add(new ArrayList<>(permutation));
         }
         for(int i = 0; i < nums.length; i++){
-            if(visited[i]){
+            if(currentSet.contains(nums[i])){
                 continue;
             }
-            visited[i] = true;
             permutation.add(nums[i]);
-            dfs(permutation, visited, nums);
-            visited[i] = false;
+            currentSet.add(nums[i]);
+            dfs(permutation, currentSet, nums);
             permutation.remove(permutation.size() - 1);
+            currentSet.remove(nums[i]);
         }
     }
 

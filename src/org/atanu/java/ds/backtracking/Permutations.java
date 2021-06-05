@@ -1,34 +1,35 @@
 package org.atanu.java.ds.backtracking;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 //https://leetcode.com/problems/permutations/
 //LeetCode 46
+//This Solution works only for unique string/array. duplicates not handled
 public class Permutations {
     List<List<Integer>> result = new ArrayList<>();
     public List<List<Integer>> permute(int[] nums) {
         List<Integer> permutation = new ArrayList<>();
-        Set<Integer> currentSet = new HashSet<>();
-        dfs(permutation, currentSet, nums);
+        boolean[] visited = new boolean[nums.length];
+        dfs(permutation, visited, nums);
         return result;
     }
 
-    private void dfs(List<Integer> permutation, Set<Integer> currentSet, int[] nums) {
+    private void dfs(List<Integer> permutation, boolean[] visited, int[] nums) {
         if(permutation.size() == nums.length) {
             result.add(new ArrayList<>(permutation));
         }
+        //Check every element of Array in every Recursion
+        //Skip if it is visited
         for(int i = 0; i < nums.length; i++){
-            if(currentSet.contains(nums[i])){
+            if(visited[i]){
                 continue;
             }
+            visited[i] = true;
             permutation.add(nums[i]);
-            currentSet.add(nums[i]);
-            dfs(permutation, currentSet, nums);
+            dfs(permutation, visited, nums);
+            visited[i] = false;
             permutation.remove(permutation.size() - 1);
-            currentSet.remove(nums[i]);
         }
     }
 
