@@ -3,9 +3,9 @@ package org.atanu.java.ds.backtracking;
 import java.util.ArrayList;
 import java.util.List;
 
-//LeetCode 17
 //https://leetcode.com/problems/letter-combinations-of-a-phone-number/
-public class LetterCombinationsPhoneNumber {
+//Leetcode 17
+public class LetterCombinationsPhoneNumberV2 {
     public List<String> letterCombinations(String digits) {
 
         String[] map = { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
@@ -15,31 +15,32 @@ public class LetterCombinationsPhoneNumber {
             return result;
         }
 
-        backtrack(digits,0, new StringBuilder(), map,result);
+        dfs(digits,0,"",map,result);
 
         return result;
 
     }
 
-    private void backtrack(String digits, int index, StringBuilder sb, String[] map, List<String> result) {
-        // index == digits.length()
-        if(sb.length() == digits.length()){
-            result.add(new String(sb));
+    public void dfs(String digits, int index, String prefix, String[] map, List<String> result){
+
+        if(index >= digits.length()){
+            result.add(prefix);
             return;
         }
 
         String letters = map[digits.charAt(index) - '0'];
-        for(int i = 0; i< letters.length(); i++){
-            sb.append(letters.charAt(i));
-            backtrack(digits,index+1, sb, map,result);
-            sb.deleteCharAt(sb.length() -1);
+
+        for(int i = 0; i < letters.length(); i++){
+            //as prefix is string . it is working as backtrack
+            dfs(digits,index+1,prefix + letters.charAt(i),map,result);
         }
     }
 
     public static void main(String[] args) {
-        LetterCombinationsPhoneNumber combinationsPhoneNumber = new LetterCombinationsPhoneNumber();
+        LetterCombinationsPhoneNumberV2 combinationsPhoneNumber = new LetterCombinationsPhoneNumberV2();
         String number = "23";
         List<String> result = combinationsPhoneNumber.letterCombinations(number);
         System.out.println(result);
+
     }
 }
