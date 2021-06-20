@@ -60,4 +60,18 @@ public class WordSearchII {
         return exist;
 
     }
+
+    public static void main(String[] args) {
+        char[][] board = {
+                {'o', 'a', 'a', 'n'},
+                {'e', 't', 'a', 'e'},
+                {'i', 'h', 'k', 'r'},
+                {'i', 'f', 'l', 'v'}
+        };
+
+        WordSearchII wordSearchII = new WordSearchII();
+        String[] words = {"oath","pea","eat","rain"};
+        List<String> result = wordSearchII.findWords(board, words);
+        result.forEach(System.out::println);
+    }
 }
