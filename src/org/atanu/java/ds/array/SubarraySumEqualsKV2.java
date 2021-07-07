@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class SubArraySum {
+public class SubarraySumEqualsKV2 {
 
     public static void findSubArraysSol1(int[] a, int sum) {
 
@@ -84,7 +84,7 @@ public class SubArraySum {
         int[] arr = {3, 4, -7, 1, 3, 3, 1, -4};
         int sum = 7;
 
-        findSubArraysSol1(arr, sum);
+        //findSubArraysSol1(arr, sum);
 
         System.out.println();
 
