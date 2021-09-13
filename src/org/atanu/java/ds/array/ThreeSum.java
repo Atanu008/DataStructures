@@ -1,100 +1,54 @@
 package org.atanu.java.ds.array;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
+//https://leetcode.com/problems/3sum/
+//LeetCode 15
 public class ThreeSum {
-
-    public static void threeSumSol1(int[] arr, int sum) {
-
-        // Fix the first element as A[i]
-        for (int i = 0; i < arr.length - 2; i++) {
-
-            // Fix the second element as A[j]
-            for (int j = i + 1; j < arr.length - 1; j++) {
-
-                // Now look for the third number
-                for (int k = j + 1; k < arr.length; k++) {
-
-                    if (arr[i] + arr[j] + arr[k] == sum) {
-
-                        System.out.println(arr[i] + " " + arr[j] + " " + arr[k]);
-                    }
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> retVal = new ArrayList<>();
+        Arrays.sort(nums);
+        for(int i = 0; i < nums.length-2; i++ ) {
+            //Remove Duplicate
+            if(i > 0 && nums[i] == nums[i-1])
+                continue;
+            int target = 0 - nums[i];
+            int left = i+1;
+            int right = nums.length -1;
+            while(left<right){
+                List<Integer> current = new ArrayList<>();
+                int twoSum = nums[left] + nums[right];
+                if(twoSum == target){
+                    current.add(nums[i]);
+                    current.add(nums[left]);
+                    current.add(nums[right]);
+                    retVal.add(current);
+                    left++;
+                    right--;
+                    //Remove Duplicate
+                    while(left<right && nums[left] == nums[left-1])
+                        left++;
+                    //Remove Duplicate
+                    while(left<right && nums[right] == nums[right+1])
+                        right--;
+                }else if(twoSum < target){
+                    left++;
+                }
+                else{
+                    right--;
                 }
             }
         }
-    }
 
-    public static void threeSumSol2(int[] arr, int sum) {
-
-        Map<Integer, Integer> map = new HashMap<>();
-
-        // insert (element, index) pair in map for each element in the array
-        for (int i = 0; i < arr.length; i++) {
-
-            map.put(arr[i], i);
-        }
-
-        for (int j = 0; j < arr.length - 1; j++) {
-
-            for (int k = j + 1; k < arr.length; k++) {
-
-                int remaining = sum - (arr[j] + arr[k]);
-
-                // if remaining sum is found, we have found a triplet
-                if (map.containsKey(remaining)) {
-                    // if triplet don't overlap, return true
-                    if (map.get(arr[remaining]) != j && map.get(arr[remaining]) != k) {
-
-                        System.out.println(arr[j] + " " + arr[k] + " " + remaining);
-                    }
-                }
-
-            }
-        }
-
-    }
-
-    public static void threeSumSol3(int[] arr, int sum) {
-
-        Arrays.sort(arr);
-
-        for (int i = 0; i < arr.length; i++) {
-
-            int remaining = sum - arr[i];
-
-            int low = i + 1;
-            int high = arr.length - 1;
-
-            while (low < high) {
-
-                if (remaining == arr[low] + arr[high]) {
-
-                    System.out.println(arr[i] + " " + arr[low] + " " + arr[high]);
-                    low++;
-                    high--;
-                } else if (arr[low] + arr[high] < remaining) {
-                    low++;
-                } else {
-                    high--;
-                }
-            }
-
-
-        }
-
+        return retVal;
     }
 
     public static void main(String[] args) {
-        int[] arr = {2, 7, 4, 0, 9, 5, 1, 3};
-        int sum = 6;
-
-        threeSumSol1(arr, sum);
-        System.out.println("Printing Solution 2");
-        threeSumSol2(arr, sum);
-        System.out.println("Printing Solution 3");
-        threeSumSol3(arr, sum);
+        int[] nums = {1,0,-1,0,-2,2};
+        int target = 0;
+        List<List<Integer>> retVal = new ThreeSum().threeSum(nums);
+        retVal.forEach(System.out::println);
     }
-
 }
