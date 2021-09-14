@@ -34,19 +34,14 @@ public class MaxContiguousSubArray {
 
         // stores maximum sum sub-array found so far
         int maxSoFar = A[0];
-
         // stores maximum sum of sub-array ending at current position
         int maxEndingHere = A[0];
-
         for (int i = 1; i < A.length; i++) {
-
             // update maximum sum of sub-array "ending" at index i (by adding
             // current element to maximum sum ending at previous index i-1)
             maxEndingHere = maxEndingHere + A[i];
-
             // Update maxEndingHere as current element can be greater if the previous elements are negative
             maxEndingHere = Math.max(maxEndingHere, A[i]);
-
             // update result if current sub-array sum is found to be greater
             maxSoFar = Math.max(maxSoFar, maxEndingHere);
         }
@@ -58,7 +53,7 @@ public class MaxContiguousSubArray {
 
         int[] A = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
 
-        maxContiguousSubArray(A);
+        maxContiguousSubArrayKadane(A);
 
         System.out.println("Maximum sum is " + maxContiguousSubArrayKadane(A));
     }
