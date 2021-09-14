@@ -46,6 +46,7 @@ public class ThreeSum {
     }
 
     public static void main(String[] args) {
+
         int[] nums = {1,0,-1,0,-2,2};
         int target = 0;
         List<List<Integer>> retVal = new ThreeSum().threeSum(nums);
