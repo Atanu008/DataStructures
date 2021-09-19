@@ -3,7 +3,7 @@ package org.atanu.java.ds.array;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
-public class MeetingRoomTwo {
+public class MeetingRoomII {
 
     public static int minMeetingRooms(Interval[] intervals) {
 
