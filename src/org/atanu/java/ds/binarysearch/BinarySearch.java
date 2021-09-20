@@ -52,7 +52,8 @@ public class BinarySearch {
             }
         }
 
-        return nums[low] == target ? low : -1;
+        //high is doing the equal check. we can return low as well as both after loop both will point to same
+        return nums[high] == target ? high : -1;
     }
 
     //Search Condition needs to access element's immediate right neighbor
