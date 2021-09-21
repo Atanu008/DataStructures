@@ -116,6 +116,8 @@ public class FirstLastPositionInSortedArray {
             return -1;
         }
 
+        //have to return low as high is leading the search space
+        // like for [2,2] index 0 hast to return
         return nums[low] == target ? low : high;
     }
 
@@ -135,6 +137,8 @@ public class FirstLastPositionInSortedArray {
             return -1;
         }
 
+        //have to return high as high is leading the search space
+        // like for [2,2] index 1 hast to return
         return nums[high] == target ? high : low;
     }
 
