@@ -1,8 +1,9 @@
 package org.atanu.java.ds.binarysearch;
 
-public class CircularArraySearch_LeetCode33 {
-
-    public static int circularArraySearch(int[] arr, int target) {
+//https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
+//LeetCode 81
+public class SearchInRotatedSortedArrayII {
+    public boolean search(int[] arr, int target) {
 
         int low = 0;
         int high = arr.length - 1;
@@ -11,14 +12,17 @@ public class CircularArraySearch_LeetCode33 {
 
             int mid = low + (high - low) / 2;
 
-            // if key is found, return its index
+            // Best Case : if key is found, return its index.
             if (arr[mid] == target) {
-                return mid;
+                return true;
             }
 
+            //If low , Mid and High is same then we can not decide what to pick. move the duplicate pointers.
+            //we will not lost the value as mis will still have the value
+            if( (arr[low] == arr[mid]) && (arr[high] == arr[mid]) ) {++low; --high;}
             // if right half (A[mid..right]) is sorted and mid is not
             // the key element
-            if (arr[mid] <= arr[high]) {
+            else if (arr[mid] <= arr[high]) {
 
                 // compare key with A[mid] and A[right] to know
                 // if it lies in A[mid..right] or not
@@ -46,22 +50,16 @@ public class CircularArraySearch_LeetCode33 {
         }
 
         // key not found or invalid input
-        return -1;
-
+        return false;
     }
 
     public static void main(String[] args) {
-        int[] A = {9, 10, 2, 5, 6, 8};
-        int key = 5;
+        int[] nums = {2,5,6,0,0,1,2};
 
-        int index = circularArraySearch(A, key);
+        int key = 0;
 
-        if (index != -1) {
-            System.out.println("Element found at index " + index);
-        } else {
-            System.out.println("Element not found in the array");
-        }
+        boolean index = new SearchInRotatedSortedArrayII().search(nums, key);
 
+        System.out.println("Element found  " + index);
     }
-
 }
