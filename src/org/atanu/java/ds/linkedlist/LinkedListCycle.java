@@ -7,7 +7,7 @@ import org.atanu.java.ds.linkedlist.LinkedList.Node;
 
 //https://leetcode.com/problems/linked-list-cycle/
 //LeetCode 141
-public class DetectCycle {
+public class LinkedListCycle {
 
     public static boolean hasCycle(Node head) {
 
