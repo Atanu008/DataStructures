@@ -56,12 +56,12 @@ public class MaximumSubarray {
             // current element to maximum sum ending at previous index i-1)
             maxEndingHere = maxEndingHere + nums[i];
             // Update maxEndingHere as current element can be greater if the previous elements are negative
-            if(nums[i] > maxEndingHere ){
+            if (nums[i] > maxEndingHere) {
                 maxEndingHere = nums[i];
                 begin = i;
             }
             // update result if current sub-array sum is found to be greater
-            if(maxEndingHere > maxSoFar ){
+            if (maxEndingHere > maxSoFar) {
                 maxSoFar = maxEndingHere;
                 start = begin;
                 end = i;
@@ -71,11 +71,47 @@ public class MaximumSubarray {
         return Arrays.copyOfRange(nums, start, end + 1);
     }
 
+    // Function to find the maximum sum of a contiguous subarray
+    // in a given integer array
+    public  int kadane(int[] A) {
+        // find the maximum element present in a given array
+        int max = Arrays.stream(A).max().getAsInt();
+
+        // if the array contains all negative values, return the maximum element
+        if (max < 0) {
+            return max;
+        }
+
+        // stores the maximum sum subarray found so far
+        int maxSoFar = 0;
+
+        // stores the maximum sum of subarray ending at the current position
+        int maxEndingHere = 0;
+
+        // do for each element of the given array
+        for (int i : A) {
+            // update the maximum sum of subarray "ending" at index `i` (by adding the
+            // current element to maximum sum ending at previous index `i-1`)
+            maxEndingHere = maxEndingHere + i;
+
+            // if the maximum sum is negative, set it to 0 (which represents
+            // an empty subarray)
+            maxEndingHere = Integer.max(maxEndingHere, 0);
+
+            // update the result if the current subarray sum is found to be greater
+            maxSoFar = Integer.max(maxSoFar, maxEndingHere);
+        }
+
+        return maxSoFar;
+    }
+
     public static void main(String[] args) {
-        int[] nums = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+        int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
         int maxSum = new MaximumSubarray().maxSubArray(nums);
         int slice[] = new MaximumSubarray().printMaxSubArray(nums);
-        System.out.print("The contiguous subarray with the largest sum "+ maxSum+" is " +
+        int maxSumKadane = new MaximumSubarray().kadane(nums);
+        System.out.println("Kadane Max Sum "+ maxSumKadane);
+        System.out.print("The contiguous subarray with the largest sum " + maxSum + " is " +
                 Arrays.toString(slice));
     }
 }
