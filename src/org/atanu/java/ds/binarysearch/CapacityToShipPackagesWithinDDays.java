@@ -1,6 +1,6 @@
 package org.atanu.java.ds.binarysearch;
 
-
+//Same as Book Allocation
 //https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
 //LeetCode 1011
 public class CapacityToShipPackagesWithinDDays {
