@@ -1,4 +1,4 @@
-package org.atanu.java.ds.array;
+package org.atanu.java.ds.binarysearch;
 
 //https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/submissions/
 //https://www.wikiwand.com/en/Binary_search_algorithm
