@@ -1,5 +1,8 @@
 package org.atanu.java.ds.dp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //https://leetcode.com/problems/longest-increasing-subsequence/
 //LeetCode 300
 //Coding Minute
@@ -28,10 +31,49 @@ public class LongestIncreasingSubsequence {
         return maxLength;
     }
 
+    //Perfect Explanation : Intution
+    //https://leetcode.com/problems/longest-increasing-subsequence/discuss/1326308
+    // O(NlogN)
+    //Using Binary Search
+    public int lengthOfLISV2(int[] nums) {
+
+        List<Integer> lisSub = new ArrayList<>();
+
+        for(int i = 0; i < nums.length; i++){
+            int curr = nums[i];
+            if(lisSub.isEmpty() || curr > lisSub.get(lisSub.size() -1)){
+                lisSub.add(curr);
+            }
+            else{
+                int insertIndex = lowerBoundBinarySearch(lisSub, curr);
+                lisSub.set(insertIndex, curr);
+            }
+        }
+
+        return lisSub.size();
+    }
+
+    private int lowerBoundBinarySearch(List<Integer> lisSub, int target){
+
+        int low = 0;
+        int high = lisSub.size() -1;
+
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            if (lisSub.get(mid) < target) {
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+        return high;
+    }
+
     public static void main(String[] args) {
         LongestIncreasingSubsequence increasingSubsequence = new LongestIncreasingSubsequence();
         int[] nums = {10, 9, 2, 5, 3, 7, 101, 18};
         System.out.println("Longest Increasing Subsequence is " + increasingSubsequence.lengthOfLIS(nums));
+        System.out.println("Longest Increasing Subsequence is " + increasingSubsequence.lengthOfLISV2(nums));
 
     }
 }
