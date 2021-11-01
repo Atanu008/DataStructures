@@ -7,16 +7,6 @@ public class DetectCycleDirectedTwo {
     }
 
     public static boolean hasCycle(Graph graph, int v, Status[] discovered) {
-
-        // May be redundant
-        if (discovered[v] == Status.INRECURSSION) {
-            return true;
-        }
-
-        if (discovered[v] == Status.VISITED) {
-            return false;
-        }
-
         //Mark the node in Recursion
         discovered[v] = Status.INRECURSSION;
 

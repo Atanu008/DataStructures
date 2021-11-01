@@ -52,7 +52,7 @@ public class LongestValidObstacleCourseAtEachPosition {
         int n = obstacles.length;
         int[] dp = new int[n];
         //Base Case. For one element Subsequence is always one
-        dp[0] = 1;
+        
         int maxLength = 1;
         for(int i = 1; i < n; i++){
             //Base Case. For one element Subsequence is always one
