@@ -9,6 +9,7 @@ public class Graph {
     //Number of Vertices
     int V;
     // A List of Lists to represent an adjacency list
+    // Can be represented as Map<Integer, LinkedList<Integer>>
     List<LinkedList<Integer>> adjList = null;
 
     public Graph(int N){
