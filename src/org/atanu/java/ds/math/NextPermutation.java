@@ -5,6 +5,13 @@ import java.util.Arrays;
 //LeetCode 31
 //https://leetcode.com/problems/next-permutation/
 public class NextPermutation {
+
+    //72531 Next Greater is 73125
+    // we need to swap 2 with 3
+    // justIncreasingPoint is index of 2
+    // justGreaterthanPoint is index of 3;
+    // after swap 73521
+    // Reverse after current Index of 3 - 73125
     public void nextPermutation(int[] nums) {
         int justIncreasingPoint = -1;
         int i = nums.length - 2;
@@ -19,6 +26,8 @@ public class NextPermutation {
             }
             swap(nums, justIncreasingPoint, justGreaterthanPoint);
         }
+
+        // Arrange these elements in Ascending Element
         reverse(nums, justIncreasingPoint + 1, nums.length - 1);
 
     }

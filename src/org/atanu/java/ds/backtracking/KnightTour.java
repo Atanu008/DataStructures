@@ -4,7 +4,7 @@ package org.atanu.java.ds.backtracking;
 //https://www.techiedelight.com/print-possible-knights-tours-chessboard/
 public class KnightTour {
     final static int N = 8;
-    //int[][] dirs = {{2,1},{1,2},{-1,2},{-2,1},{-2,-1},{-1,2},{1,-2},{2,-1}}; ?? Not sure why taking Time
+    //int[][] dirs = {{2,1},{1,2},{-1,2},{-2,1},{-2,-1},{-1,-2},{1,-2},{2,-1}}; ?? Not sure why taking Time
     int xMove[] = { 2, 1, -1, -2, -2, -1, 1, 2 };
     int yMove[] = { 1, 2, 2, 1, -1, -2, -2, -1 };
     public boolean move(int[][] chess, int row, int column, int move){
