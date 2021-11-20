@@ -1,4 +1,4 @@
-package org.atanu.java.ds.matrix;
+package org.atanu.java.ds.graph;
 
 //LeetCode 329
 //https://leetcode.com/problems/longest-increasing-path-in-a-matrix/
