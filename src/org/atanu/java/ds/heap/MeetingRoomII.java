@@ -1,11 +1,11 @@
-package org.atanu.java.ds.array;
+package org.atanu.java.ds.heap;
 
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
 public class MeetingRoomII {
 
-    public static int minMeetingRooms(Interval[] intervals) {
+    public int minMeetingRooms(Interval[] intervals) {
 
         if (intervals == null || intervals.length == 0) {
             return 0;
@@ -41,7 +41,7 @@ public class MeetingRoomII {
     }
 
     public static void main(String[] args) {
-
+        MeetingRoomII meetingRoomII = new MeetingRoomII();
         Interval[] intervals = new Interval[3];
         intervals[0] = new Interval(0, 30);
         intervals[1] = new Interval(5, 10);
@@ -51,9 +51,9 @@ public class MeetingRoomII {
         intervals1[0] = new Interval(7, 10);
         intervals1[1] = new Interval(2, 4);
 
-        System.out.println("Minimum No of Meeting Room needed " + minMeetingRooms(intervals));
+        System.out.println("Minimum No of Meeting Room needed " + meetingRoomII.minMeetingRooms(intervals));
 
-        System.out.println("Minimum No of Meeting Room needed " + minMeetingRooms(intervals1));
+        System.out.println("Minimum No of Meeting Room needed " + meetingRoomII.minMeetingRooms(intervals1));
 
     }
 

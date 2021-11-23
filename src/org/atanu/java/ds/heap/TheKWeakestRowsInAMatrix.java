@@ -48,6 +48,7 @@ public class TheKWeakestRowsInAMatrix {
             else return b.row - a.row;
         });
 
+        // Add strength/index pairs to the pq. Whenever length > k, remove the largest.
         for (int i = 0; i < row; i++) {
             int j = 0;
             for (; j < column; j++) {
@@ -62,6 +63,7 @@ public class TheKWeakestRowsInAMatrix {
             }
         }
 
+        // Pull the indexes out of the priority queue.
         int[] weakest = new int[k];
         for (int i = k-1; i >=0; i--) {
             Node weakestRow = pq.poll();
