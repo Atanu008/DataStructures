@@ -15,7 +15,7 @@ public class PrintSpiral {
             while (!firstStack.isEmpty()) {
                 TreeNode curr = firstStack.pop();
 
-                System.out.print(curr.data + " ");
+                System.out.print(curr.val + " ");
 
                 // Just Change the left right node to change the sequence
                 if (curr.right != null) {
@@ -30,7 +30,7 @@ public class PrintSpiral {
             while (!secondStack.isEmpty()) {
                 TreeNode curr = secondStack.pop();
 
-                System.out.print(curr.data + " ");
+                System.out.print(curr.val + " ");
 
                 if (curr.left != null) {
                     firstStack.push(curr.left);
@@ -51,7 +51,7 @@ public class PrintSpiral {
         }
 
         if (level == 1) {
-            System.out.print(root.data + " ");
+            System.out.print(root.val + " ");
             return true;
         }
 
@@ -69,7 +69,7 @@ public class PrintSpiral {
         }
 
         if (level == 1) {
-            System.out.print(root.data + " ");
+            System.out.print(root.val + " ");
             return true;
         }
 

@@ -10,7 +10,7 @@ public class IsoMorphic {
             return false;
         }
 
-        return (a.data == b.data)
+        return (a.val == b.val)
                 && ((flipEquiv(a.left, b.left) && flipEquiv(a.right, b.right))
                 || (flipEquiv(a.left, b.right) && flipEquiv(a.right, b.left))
         );

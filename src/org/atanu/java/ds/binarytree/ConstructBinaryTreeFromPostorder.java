@@ -27,7 +27,7 @@ public class ConstructBinaryTreeFromPostorder {
         }
         System.out.println("Start " + start + " End  " + end + " Index " + index);
         TreeNode root = new TreeNode(postorder[index--]);
-        int rootIndex = map.get(root.data);
+        int rootIndex = map.get(root.val);
         root.right = buildTreeHelper(postorder, rootIndex + 1, end, map);
         root.left = buildTreeHelper(postorder, start, rootIndex - 1, map);
 

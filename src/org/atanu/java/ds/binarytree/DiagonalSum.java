@@ -14,9 +14,9 @@ public class DiagonalSum {
 
         if (!map.containsKey(diagonal)) {
 
-            map.put(diagonal, root.data);
+            map.put(diagonal, root.val);
         } else {
-            map.put(diagonal, map.get(diagonal) + root.data);
+            map.put(diagonal, map.get(diagonal) + root.val);
         }
 
         diagonalSum(root.left, diagonal - 1, map);

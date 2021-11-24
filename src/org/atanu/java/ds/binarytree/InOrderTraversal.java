@@ -15,7 +15,7 @@ public class InOrderTraversal {
         inOrderRecursive(node.left);
 
         // Display the data part of the root (or current node)
-        System.out.print(node.data + " ");
+        System.out.print(node.val + " ");
 
         // Traverse the right subtree
         inOrderRecursive(node.right);
@@ -37,7 +37,7 @@ public class InOrderTraversal {
                 curr = curr.left;
             } else {
                 TreeNode popped = stack.pop();
-                System.out.print(popped.data + " ");
+                System.out.print(popped.val + " ");
                 curr = popped.right;
             }
         }

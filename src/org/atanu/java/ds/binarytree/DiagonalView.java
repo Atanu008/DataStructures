@@ -23,7 +23,7 @@ public class DiagonalView {
         }
 
         // insert current node in current diagonal
-        map.get(diagonal).add(node.data);
+        map.get(diagonal).add(node.val);
 
         // recur for left subtree by increasing diagonal by 1
         printDiagonal(node.left, diagonal - 1, map);
@@ -79,7 +79,7 @@ public class DiagonalView {
             } else {
 
                 while (curr != null) {
-                    System.out.print(curr.data);
+                    System.out.print(curr.val);
 
                     if (curr.left != null) {
                         queue.add(curr.left);

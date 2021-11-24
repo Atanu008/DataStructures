@@ -10,7 +10,7 @@ public class PrintLeafeNodes {
 
         //print leafe. both left and right nodes are null
         if (root.left == null && root.right == null) {
-            System.out.print(root.data + " ");
+            System.out.print(root.val + " ");
             return; // No need to recurr
         }
 

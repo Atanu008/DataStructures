@@ -12,11 +12,11 @@ public class RootToLeafMaxSum {
             return false;
         }
 
-        boolean left = printPath(root.left, sum - root.data);
-        boolean right = printPath(root.right, sum - root.data);
+        boolean left = printPath(root.left, sum - root.val);
+        boolean right = printPath(root.right, sum - root.val);
 
         if (left || right)
-            System.out.print(root.data + " ");
+            System.out.print(root.val + " ");
 
         return left || right;
     }
@@ -32,7 +32,7 @@ public class RootToLeafMaxSum {
 
         int right = rootToLeafMaxSum(root.right);
 
-        return (left > right ? left : right) + root.data;
+        return (left > right ? left : right) + root.val;
     }
 
     public static void main(String[] args) {

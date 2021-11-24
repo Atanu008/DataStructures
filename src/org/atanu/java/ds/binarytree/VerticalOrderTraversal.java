@@ -19,7 +19,7 @@ public class VerticalOrderTraversal {
             map.put(dist, new LinkedList<>());
         }
 
-        map.get(dist).add(root.data);
+        map.get(dist).add(root.val);
 
         // recur for left subtree by decreasing horizontal distance by 1
         printVerticalView(root.left, dist - 1, map);

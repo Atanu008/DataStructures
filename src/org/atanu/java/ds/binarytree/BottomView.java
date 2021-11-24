@@ -2,7 +2,6 @@ package org.atanu.java.ds.binarytree;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.LinkedList;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -37,7 +36,7 @@ public class BottomView {
             // having same horizontal distance we need to replace 
             // the data in the map. 
 
-            map.put(dist, curr.data);
+            map.put(dist, curr.val);
 
 
             // enqueue non-empty left and right child of front node

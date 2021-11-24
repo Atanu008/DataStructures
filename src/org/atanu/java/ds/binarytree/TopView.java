@@ -40,7 +40,7 @@ public class TopView {
                 map.put(dist, new LinkedList<>());
             }
 
-            map.get(dist).add(curr.data);
+            map.get(dist).add(curr.val);
 
             // enqueue non-empty left and right child of front node
             // with their corresponding horizontal distance

@@ -68,7 +68,7 @@ public class FindAllKDistanceNode {
 
     private static void printNodes(Deque<TreeNode> queue) {
 
-        queue.forEach(a -> System.out.println(a.data));
+        queue.forEach(a -> System.out.println(a.val));
 
     }
 

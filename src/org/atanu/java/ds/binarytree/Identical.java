@@ -15,7 +15,7 @@ public class Identical {
 
         /* Both non-empty, compare them recursively 
         Note that in recursive calls */
-        return (a.data == b.data)
+        return (a.val == b.val)
                 && isIdentical(a.left, b.left) && isIdentical(a.right, b.right);
 
     }

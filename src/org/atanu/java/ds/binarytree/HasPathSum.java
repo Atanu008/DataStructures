@@ -9,7 +9,7 @@ public class HasPathSum {
             return false;
         }
 
-        sum = sum - root.data;
+        sum = sum - root.val;
 
         // Base Case . For leaf Node
         if (root.left == null && root.right == null && sum == 0) {

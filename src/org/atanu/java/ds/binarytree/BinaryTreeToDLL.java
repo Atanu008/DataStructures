@@ -32,7 +32,7 @@ public class BinaryTreeToDLL {
 
     void printList(TreeNode node) {
         while (node != null) {
-            System.out.print(node.data + " ");
+            System.out.print(node.val + " ");
             node = node.right;
         }
     }

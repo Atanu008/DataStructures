@@ -28,7 +28,7 @@ public class RightView {
 
                 // if this is first node of current level, print it
                 if (i == size) {
-                    System.out.print(curr.data + " ");
+                    System.out.print(curr.val + " ");
                 }
 
                 if (curr.left != null) {
@@ -53,7 +53,7 @@ public class RightView {
         }
 
         // insert the current node and level information into the map
-        map.put(level, root.data);
+        map.put(level, root.val);
 
         // recur for right subtree before right subtree
         rightView(root.left, level + 1, map);

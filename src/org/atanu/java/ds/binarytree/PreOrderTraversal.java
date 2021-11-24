@@ -11,7 +11,7 @@ public class PreOrderTraversal {
             return;
 
         // Display the data part of the root (or current node)
-        System.out.print(root.data + " ");
+        System.out.print(root.val + " ");
 
         // Traverse the left subtree
         preOrderRecursive(root.left);
@@ -32,7 +32,7 @@ public class PreOrderTraversal {
         while (!stack.isEmpty()) {
             TreeNode poppedSubRoot = stack.pop();
 
-            System.out.print(poppedSubRoot.data + " ");
+            System.out.print(poppedSubRoot.val + " ");
 
             if (poppedSubRoot.right != null) {
                 stack.push(poppedSubRoot.right);

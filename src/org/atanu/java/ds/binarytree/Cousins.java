@@ -37,11 +37,11 @@ public class Cousins {
                 return;
             }
             if (root.left != null) {
-                System.out.print(root.left.data + " ");
+                System.out.print(root.left.val + " ");
             }
 
             if (root.right != null) {
-                System.out.print(root.right.data + " ");
+                System.out.print(root.right.val + " ");
             }
         }
 

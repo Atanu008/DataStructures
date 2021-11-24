@@ -10,7 +10,7 @@ public class CheckMirror {
         if (a == null || b == null)
             return false;
 
-        return (a.data == b.data) && isMirror(a.left, b.right) && isMirror(a.right, b.left);
+        return (a.val == b.val) && isMirror(a.left, b.right) && isMirror(a.right, b.left);
 
     }
 

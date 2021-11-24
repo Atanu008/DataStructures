@@ -9,7 +9,7 @@ public class PrintAncestors {
             return false;
         }
 
-        if (root.data == key) {
+        if (root.val == key) {
             return true;
         }
 		
@@ -17,7 +17,7 @@ public class PrintAncestors {
         of this node, then print this node */
         if (printAncestors(root.left, key) || printAncestors(root.right, key)) {
 
-            System.out.print(root.data + " ");
+            System.out.print(root.val + " ");
             return true;
         }
 

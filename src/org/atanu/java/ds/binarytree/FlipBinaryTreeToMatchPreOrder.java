@@ -22,11 +22,11 @@ public class FlipBinaryTreeToMatchPreOrder {
         if (node == null) {
             return true;
         }
-        if (node.data != prOrder[index++]) {
+        if (node.val != prOrder[index++]) {
             return false;
         }
-        if (node.left != null && node.left.data != prOrder[index]) {
-            result.add(node.data);
+        if (node.left != null && node.left.val != prOrder[index]) {
+            result.add(node.val);
             return dfs(node.right) && dfs(node.left);//Flip in case of mismatch
         } else {
             return dfs(node.left) && dfs(node.right);

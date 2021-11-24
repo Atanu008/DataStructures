@@ -10,7 +10,7 @@ public class BoundaryTraversalv2 {
     void addLeftBoundary(TreeNode root, ArrayList<Integer> res) {
         TreeNode cur = root.left;
         while (cur != null) {
-            if (isLeaf(cur) == false) res.add(cur.data);
+            if (isLeaf(cur) == false) res.add(cur.val);
             if (cur.left != null) cur = cur.left;
             else cur = cur.right;
         }
@@ -19,7 +19,7 @@ public class BoundaryTraversalv2 {
         TreeNode cur = root.right;
         ArrayList<Integer> tmp = new ArrayList<Integer>();
         while (cur != null) {
-            if (isLeaf(cur) == false) tmp.add(cur.data);
+            if (isLeaf(cur) == false) tmp.add(cur.val);
             if (cur.right != null) cur = cur.right;
             else cur = cur.left;
         }
@@ -31,7 +31,7 @@ public class BoundaryTraversalv2 {
 
     void addLeaves(TreeNode root, ArrayList<Integer> res) {
         if (isLeaf(root)) {
-            res.add(root.data);
+            res.add(root.val);
             return;
         }
         if (root.left != null) addLeaves(root.left, res);
@@ -40,7 +40,7 @@ public class BoundaryTraversalv2 {
     ArrayList <Integer> printBoundary(TreeNode node)
     {
         ArrayList<Integer> ans = new ArrayList<Integer>();
-        if(isLeaf(node) == false) ans.add(node.data);
+        if(isLeaf(node) == false) ans.add(node.val);
         addLeftBoundary(node, ans);
         addLeaves(node, ans);
         addRightBoundary(node, ans);

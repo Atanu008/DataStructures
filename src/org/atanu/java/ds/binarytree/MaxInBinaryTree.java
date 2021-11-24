@@ -12,7 +12,7 @@ public class MaxInBinaryTree {
 
             int right = maxInBinaryTree(root.right);
 
-            return Math.max(root.data, Math.max(left, right));
+            return Math.max(root.val, Math.max(left, right));
 
         }
 

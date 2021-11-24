@@ -40,7 +40,7 @@ public class VerticalOrderUsingLevelOrder {
                 map.put(dist, new ArrayList<>());
             }
 
-            map.get(dist).add(curr.data);
+            map.get(dist).add(curr.val);
 
             // enqueue non-empty left and right child of front node
             // with their corresponding horizontal distance

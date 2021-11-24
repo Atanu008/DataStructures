@@ -13,7 +13,7 @@ public class LongestConsecutiveSequenceInBinaryTree {
         }
 
         int[] result = new int[1]; // AtomicInteger or any object can be used to pass in the recursion tree
-        longestConsecutive(root, root.data, 1, result);
+        longestConsecutive(root, root.val, 1, result);
         return result[0];
     }
 
@@ -23,7 +23,7 @@ public class LongestConsecutiveSequenceInBinaryTree {
             return;
         }
 
-        if(root.data == expectedVal){
+        if(root.val == expectedVal){
             currentLength++;
         }
         else{
@@ -31,8 +31,8 @@ public class LongestConsecutiveSequenceInBinaryTree {
         }
 
         result[0] = Math.max(result[0], currentLength);
-        longestConsecutive(root.left, root.data+1, currentLength, result);
-        longestConsecutive(root.right, root.data+1, currentLength, result);
+        longestConsecutive(root.left, root.val +1, currentLength, result);
+        longestConsecutive(root.right, root.val +1, currentLength, result);
 
     }
 

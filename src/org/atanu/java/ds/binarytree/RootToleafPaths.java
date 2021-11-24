@@ -13,7 +13,7 @@ public class RootToleafPaths {
 
 
         // include current node to the path
-        path.addLast(root.data);
+        path.addLast(root.val);
 
         // if leaf node is found, print the path
         if (root.left == null && root.right == null) {

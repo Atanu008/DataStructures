@@ -12,7 +12,7 @@ public class BoundaryTraversalLevelOrder {
 
     public void addLeaves(List<Integer> res, TreeNode root) {
         if (isLeaf(root)) {
-            res.add(root.data);
+            res.add(root.val);
         } else {
             if (root.left != null) {
                 addLeaves(res, root.left);
@@ -29,12 +29,12 @@ public class BoundaryTraversalLevelOrder {
             return res;
         }
         if (!isLeaf(root)) {
-            res.add(root.data);
+            res.add(root.val);
         }
         TreeNode t = root.left;
         while (t != null) {
             if (!isLeaf(t)) {
-                res.add(t.data);
+                res.add(t.val);
             }
             if (t.left != null) {
                 t = t.left;
@@ -48,7 +48,7 @@ public class BoundaryTraversalLevelOrder {
         t = root.right;
         while (t != null) {
             if (!isLeaf(t)) {
-                s.push(t.data);
+                s.push(t.val);
             }
             if (t.right != null) {
                 t = t.right;

@@ -17,7 +17,7 @@ public class PostOrderTraversal {
         postOrderRecursive(node.right);
 
         // Display the data part of the root (or current node)
-        System.out.print(node.data + " ");
+        System.out.print(node.val + " ");
 
     }
 
@@ -43,7 +43,7 @@ public class PostOrderTraversal {
 
         while (!outStack.isEmpty()) {
             TreeNode outPopped = outStack.pop();
-            System.out.print(outPopped.data + " ");
+            System.out.print(outPopped.val + " ");
         }
     }
 

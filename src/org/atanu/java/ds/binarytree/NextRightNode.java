@@ -25,7 +25,7 @@ public class NextRightNode {
 
                 TreeNode curr = queue.poll();
 
-                if (curr.data == key) {
+                if (curr.val == key) {
 
                     if (queue.isEmpty()) {
                         return null;
@@ -70,7 +70,7 @@ public class NextRightNode {
         TreeNode result = findNextRightNode(root, key);
 
         if (result != null)
-            System.out.println("Next element " + key + " is  " + result.data);
+            System.out.println("Next element " + key + " is  " + result.val);
 
     }
 

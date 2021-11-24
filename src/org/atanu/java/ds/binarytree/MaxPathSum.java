@@ -1,7 +1,5 @@
 package org.atanu.java.ds.binarytree;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class MaxPathSum {
 
     int maxSum;
@@ -18,12 +16,12 @@ public class MaxPathSum {
 
         // Max path for parent call of root. This path must
         // include at-most one child of root
-        int currMaxSingle = Math.max(Math.max(leftSum, rightSum) + root.data, root.data);
+        int currMaxSingle = Math.max(Math.max(leftSum, rightSum) + root.val, root.val);
 
         // Max Top represents the sum when the Node under
         // consideration is the root of the maxsum path and no 
         // ancestors of root are there in max sum path 
-        int maxTop = Math.max(currMaxSingle, leftSum + rightSum + root.data);
+        int maxTop = Math.max(currMaxSingle, leftSum + rightSum + root.val);
 
         maxSum = Math.max(maxSum, maxTop);
 

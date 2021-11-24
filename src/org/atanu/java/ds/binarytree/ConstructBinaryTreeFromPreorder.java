@@ -36,7 +36,7 @@ public class ConstructBinaryTreeFromPreorder {
 
         // get the index of root node in inorder[] to determine the
         // boundary of left and right subtree
-        int index = map.get(root.data);
+        int index = map.get(root.val);
 
         // recursively construct the left and right subtree
         root.left = buildTreeHelper(preorder, start, index - 1, pIndex, map);

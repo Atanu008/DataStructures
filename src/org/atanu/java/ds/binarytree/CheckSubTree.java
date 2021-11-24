@@ -33,7 +33,7 @@ public class CheckSubTree {
             return false;
         }
 
-        return (a.data == b.data) && isIdentical(a.left, b.left) && isIdentical(a.right, b.right);
+        return (a.val == b.val) && isIdentical(a.left, b.left) && isIdentical(a.right, b.right);
 
     }
 

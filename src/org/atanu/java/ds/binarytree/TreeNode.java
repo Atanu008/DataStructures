@@ -2,12 +2,12 @@ package org.atanu.java.ds.binarytree;
 
 public class TreeNode {
 
-    int data;
+    int val;
     TreeNode left, right;
 
     // Function to create a new binary tree node having given key
     public TreeNode(int key) {
-        data = key;
+        val = key;
         left = right = null;
     }
 
@@ -18,7 +18,7 @@ public class TreeNode {
         }
         inOrder(root.left);
 
-        System.out.print(root.data + " ");
+        System.out.print(root.val + " ");
 
         inOrder(root.right);
     }
@@ -30,7 +30,7 @@ public class TreeNode {
             return;
 
         // Display the data part of the root (or current node)
-        System.out.print(root.data + " ");
+        System.out.print(root.val + " ");
 
         // Traverse the left subtree
         preOrder(root.left);
@@ -52,7 +52,7 @@ public class TreeNode {
         postOrder(node.right);
 
         // Display the data part of the root (or current node)
-        System.out.print(node.data + " ");
+        System.out.print(node.val + " ");
 
     }
 }

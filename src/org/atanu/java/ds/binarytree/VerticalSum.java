@@ -1,6 +1,5 @@
 package org.atanu.java.ds.binarytree;
 
-import java.util.LinkedList;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -15,9 +14,9 @@ public class VerticalSum {
 
         if (!map.containsKey(dist)) {
 
-            map.put(dist, root.data);
+            map.put(dist, root.val);
         } else {
-            map.put(dist, map.get(dist) + root.data);
+            map.put(dist, map.get(dist) + root.val);
         }
 
 

@@ -19,7 +19,7 @@ public class LowestCommonAncestor {
         }
 
         //If either x or y matches with root's key,
-        if (root.data == x || root.data == y) {
+        if (root.val == x || root.val == y) {
             return root;
         }
 
@@ -63,13 +63,13 @@ public class LowestCommonAncestor {
 
         TreeNode temp = null;
         //If either x or y matches with root's key,
-        if (root.data == x) {
+        if (root.val == x) {
 
             temp = root;
             v1 = true;
         }
 
-        if (root.data == y) {
+        if (root.val == y) {
 
             temp = root;
             v2 = true;
@@ -120,24 +120,24 @@ public class LowestCommonAncestor {
         root.right.left.left = new TreeNode(8);
         root.right.left.right = new TreeNode(9);
 
-        System.out.println("LCA of 3 and 7 is " + findLCA(root, 3, 7).data);
+        System.out.println("LCA of 3 and 7 is " + findLCA(root, 3, 7).val);
 
-        System.out.println("LCA of 5 and 9 is " + findLCA(root, 5, 9).data);
+        System.out.println("LCA of 5 and 9 is " + findLCA(root, 5, 9).val);
 
-        System.out.println("LCA of 5 and 4 is " + findLCA(root, 5, 4).data);
+        System.out.println("LCA of 5 and 4 is " + findLCA(root, 5, 4).val);
 
-        System.out.println("LCA of 8 and 7 is " + findLCA(root, 7, 8).data);
+        System.out.println("LCA of 8 and 7 is " + findLCA(root, 7, 8).val);
 
         System.out.println("\n");
 
         // This line will get null .
         //System.out.println("LCA of 3 and 7 is "+ findLCASol2(root,3,7).data);
 
-        System.out.println("LCA of 5 and 9 is " + findLCASol2(root, 5, 9).data);
+        System.out.println("LCA of 5 and 9 is " + findLCASol2(root, 5, 9).val);
 
-        System.out.println("LCA of 5 and 4 is " + findLCASol2(root, 5, 4).data);
+        System.out.println("LCA of 5 and 4 is " + findLCASol2(root, 5, 4).val);
 
-        System.out.println("LCA of 8 and 7 is " + findLCASol2(root, 7, 8).data);
+        System.out.println("LCA of 8 and 7 is " + findLCASol2(root, 7, 8).val);
 
 
     }

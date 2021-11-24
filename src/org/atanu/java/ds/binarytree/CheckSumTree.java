@@ -13,14 +13,14 @@ public class CheckSumTree {
 
         // special case: leaf node
         if (root.left == null && root.right == null) {
-            return root.data;
+            return root.val;
         }
 
         // if root's value is equal to sum of all elements present in its
         // left and right subtree
-        if (root.data == isSumTree(root.left) + isSumTree(root.right)) {
+        if (root.val == isSumTree(root.left) + isSumTree(root.right)) {
 
-            return 2 * root.data;
+            return 2 * root.val;
         }
 
         return Integer.MIN_VALUE;
@@ -44,7 +44,7 @@ public class CheckSumTree {
 
         // if root's value is equal to sum of all elements present in its
         // left and right subtree
-        if ((root.data == leftSum + rightSum) && (isSumTreeSol2(root.left) != 0) && (isSumTreeSol2(root.right) != 0)) {
+        if ((root.val == leftSum + rightSum) && (isSumTreeSol2(root.left) != 0) && (isSumTreeSol2(root.right) != 0)) {
             return 1;
         }
 
@@ -58,7 +58,7 @@ public class CheckSumTree {
             return 0;
         }
 
-        return root.data + sum(root.left) + sum(root.right);
+        return root.val + sum(root.left) + sum(root.right);
 
     }
 

@@ -33,7 +33,7 @@ public class LeftView {
 
                 // if this is first node of current level, print it
                 if (i == 1) {
-                    System.out.print(curr.data + " ");
+                    System.out.print(curr.val + " ");
                 }
 
                 if (curr.left != null) {
@@ -62,7 +62,7 @@ public class LeftView {
         // if level is visited for the first time, insert the current node
         // and level information into the map
         if (!map.containsKey(level)) {
-            map.put(level, root.data);
+            map.put(level, root.val);
         }
 
         leftView(root.left, level + 1, map);

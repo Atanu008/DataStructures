@@ -15,7 +15,7 @@ public class DeepestLeavesSum {
             return 0;
         }
         if(currentLevel == maxLevel){
-            sum += node.data;
+            sum += node.val;
         }
         deepestLeavesSum(node.left, currentLevel + 1, maxLevel);
         deepestLeavesSum(node.right, currentLevel + 1, maxLevel);
