@@ -1,6 +1,9 @@
 package org.atanu.java.ds.binarysearch;
 
-public class PeakElement {
+//https://leetcode.com/problems/find-peak-element/
+//LeetCode 162
+//Video : https://www.youtube.com/watch?v=r7U0N2EE_l8
+public class FindPeakElement {
 
     public int findPeakElement(int[] nums) {
 
