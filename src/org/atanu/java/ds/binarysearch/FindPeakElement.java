@@ -2,6 +2,26 @@ package org.atanu.java.ds.binarysearch;
 
 public class PeakElement {
 
+    public int findPeakElement(int[] nums) {
+
+        int low = 0;
+        int high = nums.length -1;
+
+        while(low < high){
+            int mid = low + (high -low)/2;
+
+            //If mid is sgreater than next then there is 100 percentage there will be atleast one pick in left
+            //And we are not sure about right. So lets search Left by doing  high = mid;
+            if(nums[mid] > nums[mid +1]){
+                high = mid;
+            }
+            else{
+                low = mid +1;
+            }
+        }
+
+        return high;
+    }
     //Time Comlexity O(n). Linear Search
     public static void findPeakElementSol1(int[] arr) {
 
