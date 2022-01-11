@@ -24,12 +24,12 @@ public class DeleteInBinarySearchTree {
         }
 
         // if given key is less than the root node, recur for left subtree
-        if (key < root.data) {
+        if (key < root.val) {
 
             root.left = delete(root.left, key);
         }
         // if given key is more than the root node, recur for right subtree
-        else if (key > root.data) {
+        else if (key > root.val) {
 
             root.right = delete(root.right, key);
         }
@@ -50,11 +50,11 @@ public class DeleteInBinarySearchTree {
                 TreeNode inOrderSuccessor = getMin(root.right);
 
                 // Copy the value of successor to current node
-                root.data = inOrderSuccessor.data;
+                root.val = inOrderSuccessor.val;
 
                 // recursively delete the successor. Note that the
                 // successor will have at-most one child (Right child)
-                root.right = delete(root.right, inOrderSuccessor.data);
+                root.right = delete(root.right, inOrderSuccessor.val);
             }
 
             // Case 3: node to be deleted has only one child
@@ -76,11 +76,11 @@ public class DeleteInBinarySearchTree {
 
         // if given key is less than the root node,
         // recur for left subtree
-        else if (key < root.data) {
+        else if (key < root.val) {
             root.left = insertRecursive(root.left, key);
         }
         // else recur for right subtree
-        else if (key > root.data) {
+        else if (key > root.val) {
             root.right = insertRecursive(root.right, key);
         }
 

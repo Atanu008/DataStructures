@@ -12,11 +12,11 @@ public class InsertInBinarySearchTree {
 
         // if given key is less than the root node,
         // recur for left subtree
-        else if (key < root.data) {
+        else if (key < root.val) {
             root.left = insertRecursive(root.left, key);
         }
         // else recur for right subtree
-        else if (key > root.data) {
+        else if (key > root.val) {
             root.right = insertRecursive(root.right, key);
         }
 
@@ -43,15 +43,15 @@ public class InsertInBinarySearchTree {
 
             // if given key is less than the current node,
             // go to left subtree else go to right subtree
-            if (key < curr.data) {
+            if (key < curr.val) {
                 curr = curr.left;
-            } else if (key > curr.data) {
+            } else if (key > curr.val) {
                 curr = curr.right;
             }
         }
 
         // construct a new node and assign to appropriate parent pointer
-        if (key < parent.data) {
+        if (key < parent.val) {
 
             parent.left = new TreeNode(key);
         } else {

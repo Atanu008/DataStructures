@@ -11,12 +11,12 @@ public class LCAInBST {
         }
 
         // if both x and y is smaller than root, LCA exists in left subtree
-        if (root.data > Math.max(x, y)) {
+        if (root.val > Math.max(x, y)) {
             return LCARecursive(root.left, x, y);
         }
 
         // if both x and y is greater than root, LCA exists in right subtree
-        if (root.data < Math.min(x, y)) {
+        if (root.val < Math.min(x, y)) {
             return LCARecursive(root.right, x, y);
         }
 
@@ -32,11 +32,11 @@ public class LCAInBST {
             return false;
         }
 
-        if (root.data == key) {
+        if (root.val == key) {
 
             return true;
         }
-        if (key < root.data) {
+        if (key < root.val) {
 
             return search(root.left, key);
         } else
@@ -58,7 +58,7 @@ public class LCAInBST {
 
         // if lowest common ancestor exists, print it
         if (lca != null) {
-            System.out.println("LCA is " + lca.data);
+            System.out.println("LCA is " + lca.val);
         } else {
             System.out.println("LCA do not exist");
         }

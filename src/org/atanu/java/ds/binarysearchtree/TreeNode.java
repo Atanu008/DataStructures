@@ -2,12 +2,12 @@ package org.atanu.java.ds.binarysearchtree;
 
 public class TreeNode {
 
-    int data;
+    int val;
     TreeNode left, right;
 
     // Function to create a new binary tree node having given key
     public TreeNode(int key) {
-        data = key;
+        val = key;
         left = right = null;
     }
 
@@ -18,7 +18,7 @@ public class TreeNode {
         }
         inOrder(root.left);
 
-        System.out.print(root.data + " ");
+        System.out.print(root.val + " ");
 
         inOrder(root.right);
     }
@@ -32,11 +32,11 @@ public class TreeNode {
 
         // if given key is less than the root node,
         // recur for left subtree
-        else if (key < root.data) {
+        else if (key < root.val) {
             root.left = insertRecursive(root.left, key);
         }
         // else recur for right subtree
-        else if (key > root.data) {
+        else if (key > root.val) {
             root.right = insertRecursive(root.right, key);
         }
 

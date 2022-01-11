@@ -20,7 +20,7 @@ public class CheckSubTree {
             return true;
         }
 
-        return isIdentical(mainTree.left, subTree) || isIdentical(mainTree.right, subTree);
+        return isSubTree(mainTree.left, subTree) || isSubTree(mainTree.right, subTree);
 
     }
 

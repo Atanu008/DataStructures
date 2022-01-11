@@ -12,15 +12,15 @@ public class SearchInBinarySearchTree {
         }
 
         // if key is found
-        if (root.data == key) {
+        if (root.val == key) {
             System.out.println(key + " is Found");
         }
 
         // if given key is less than the root node, recur for left subtree
         // else recur for right subtree
-        if (key < root.data) {
+        if (key < root.val) {
             searchRecursive(root.left, key);
-        } else if (key > root.data) {
+        } else if (key > root.val) {
             searchRecursive(root.right, key);
         }
 
@@ -32,15 +32,15 @@ public class SearchInBinarySearchTree {
 
         while (curr != null) {
             // Return true if Found
-            if (curr.data == key) {
+            if (curr.val == key) {
                 System.out.println(key + " is Found");
                 return true;
             }
 
             // Move current
-            if (key < curr.data) {
+            if (key < curr.val) {
                 curr = curr.left;
-            } else if (key > curr.data) {
+            } else if (key > curr.val) {
                 curr = curr.right;
             }
 
@@ -56,9 +56,9 @@ public class SearchInBinarySearchTree {
         if (root == null) {
 
             return new TreeNode(key);
-        } else if (key < root.data) {
+        } else if (key < root.val) {
             root.left = insertRecursive(root.left, key);
-        } else if (key > root.data) {
+        } else if (key > root.val) {
             root.right = insertRecursive(root.right, key);
         }
 

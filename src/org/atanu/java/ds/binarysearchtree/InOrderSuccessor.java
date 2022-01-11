@@ -9,7 +9,7 @@ public class InOrderSuccessor {
         }
 
         // Case 1 : Right sub tree is present
-        if (root.data == key) {
+        if (root.val == key) {
 
             // Node has Right sub Tree. return leftmost(Min) node of Right sub tree
             if (root.right != null)
@@ -19,13 +19,13 @@ public class InOrderSuccessor {
         // Case 2 : Right sub tree is NOT present
 
         // Node will be in the left sub tree of the Successor
-        if (key < root.data) {
+        if (key < root.val) {
 
             succ = root; // To find the deepest node where key is in the left
             return inOrderSuccessorRecursive(root.left, succ, key);
         }
 
-        if (key > root.data) {
+        if (key > root.val) {
 
             return inOrderSuccessorRecursive(root.right, succ, key);
         }
@@ -60,7 +60,7 @@ public class InOrderSuccessor {
         TreeNode successor = null;
 
         while (ancestor != curr) {
-            if (curr.data < ancestor.data) {
+            if (curr.val < ancestor.val) {
 
                 successor = ancestor;
                 ancestor = ancestor.left;
@@ -79,11 +79,11 @@ public class InOrderSuccessor {
             return null;
         }
 
-        if (root.data == key) {
+        if (root.val == key) {
             return root;
         }
 
-        if (key < root.data) {
+        if (key < root.val) {
             return find(root.left, key);
         } else
             return find(root.right, key);
@@ -133,7 +133,7 @@ public class InOrderSuccessor {
 
             if (prec != null) {
                 System.out.println("Successor of node " + key + " is "
-                        + prec.data);
+                        + prec.val);
             } else {
                 System.out.println("Successor doesn't exists for node "
                         + key);
@@ -148,7 +148,7 @@ public class InOrderSuccessor {
 
             if (prec != null) {
                 System.out.println("Successor of node " + key + " is "
-                        + prec.data);
+                        + prec.val);
             } else {
                 System.out.println("Successor doesn't exists for node "
                         + key);

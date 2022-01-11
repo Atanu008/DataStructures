@@ -1,5 +1,8 @@
 package org.atanu.java.ds.binarytree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 //LeetCode 1302
 //https://leetcode.com/problems/deepest-leaves-sum/
 public class DeepestLeavesSum {
@@ -26,6 +29,53 @@ public class DeepestLeavesSum {
             return 0;
         }
         return 1 + Math.max(getmaxLevel(node.left), getmaxLevel(node.right));
+    }
+
+    //Without Calculating Height
+    //update sum in for maxheight only
+    int maxLevel = 0;
+    public int deepestLeavesSumV2(TreeNode root) {
+        sum = 0;
+        deepestLeavesSum(root, 0);
+        return sum;
+    }
+
+    private void deepestLeavesSum(TreeNode node, int currentLevel) {
+        if(node == null){
+            return ;
+        }
+        if(currentLevel > maxLevel){
+            sum = 0;
+            maxLevel = currentLevel;
+        }
+        if(currentLevel == maxLevel){
+            sum += node.val;
+        }
+        deepestLeavesSum(node.left, currentLevel + 1);
+        deepestLeavesSum(node.right, currentLevel + 1);
+    }
+
+    //BFS and calculating sum at every level
+    public int deepestLeavesSumV3(TreeNode root) {
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        int deepestLeavesSum = 0;
+        while(!queue.isEmpty()){
+            deepestLeavesSum = 0;
+            int size = queue.size();
+            while(size -->0){
+                TreeNode currentNode = queue.poll();
+                deepestLeavesSum += currentNode.val;
+                if(currentNode.left != null){
+                    queue.offer(currentNode.left);
+                }
+                if(currentNode.right != null){
+                    queue.offer(currentNode.right);
+                }
+            }
+        }
+        return deepestLeavesSum;
     }
 
     public static void main(String[] args) {

@@ -14,7 +14,7 @@ public class MinMaxinBST {
             root = root.left;
         }
 
-        return root.data;
+        return root.val;
 
     }
 
@@ -31,7 +31,7 @@ public class MinMaxinBST {
             root = root.right;
         }
 
-        return root.data;
+        return root.val;
 
     }
 

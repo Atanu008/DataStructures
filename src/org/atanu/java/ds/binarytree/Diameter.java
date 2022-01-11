@@ -3,11 +3,11 @@ package org.atanu.java.ds.binarytree;
 import java.util.HashMap;
 import java.util.Map;
 
+//https://leetcode.com/problems/diameter-of-binary-tree/
+//LeetCode 543
 public class Diameter {
 
-    static int ans;
-
-    public static int getDiameter(TreeNode root) {
+    public static int diameterOfBinaryTree(TreeNode root) {
 
         /* base case if tree is empty */
         if (root == null)
@@ -18,8 +18,8 @@ public class Diameter {
         int rightheight = height(root.right);
 
         /* get the diameter of left and right subtrees */
-        int leftdiameter = getDiameter(root.left);
-        int rrightdiameter = getDiameter(root.right);
+        int leftdiameter = diameterOfBinaryTree(root.left);
+        int rrightdiameter = diameterOfBinaryTree(root.right);
 
 
         int maxWithRoot = leftheight + rightheight; // count no of edges in longest path
@@ -70,7 +70,7 @@ public class Diameter {
 
         System.out.println(height(root));
 
-        System.out.println("Diameter of the tree is " + getDiameter(root));
+        System.out.println("Diameter of the tree is " + diameterOfBinaryTree(root));
 
     }
 

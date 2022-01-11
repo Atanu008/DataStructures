@@ -22,11 +22,11 @@ public class LargestBinarySearchTree {
             return true;
         }
 
-        if (root.data < minKey || root.data > maxKey) {
+        if (root.val < minKey || root.val > maxKey) {
             return false;
         }
 
-        return isBST(root.left, minKey, root.data) && isBST(root.right, root.data, maxKey);
+        return isBST(root.left, minKey, root.val) && isBST(root.right, root.val, maxKey);
 
     }
 

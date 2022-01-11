@@ -11,7 +11,7 @@ public class InOrderPredecessor {
         }
 
         // Case 1 : Left sub tree is present
-        if (root.data == key) {
+        if (root.val == key) {
 
             // Node has Left sub Tree. return rightmost(Max)node of Right sub tree
             if (root.left != null) {
@@ -21,12 +21,12 @@ public class InOrderPredecessor {
 
         // Case 2 : Left sub tree is NOT present
 
-        if (key < root.data) {
+        if (key < root.val) {
             return inOrderPredecessorRecursive(root.left, prec, key);
         }
 
         // Node will be in the right sub tree of the Predecessor
-        else if (key > root.data) {
+        else if (key > root.val) {
 
             prec = root;
             return inOrderPredecessorRecursive(root.right, prec, key);
@@ -59,7 +59,7 @@ public class InOrderPredecessor {
         TreeNode predecessor = null;
 
         while (ancestor != curr) {
-            if (curr.data < ancestor.data) {
+            if (curr.val < ancestor.val) {
 
                 ancestor = ancestor.left;
             } else {
@@ -79,11 +79,11 @@ public class InOrderPredecessor {
             return null;
         }
 
-        if (root.data == key) {
+        if (root.val == key) {
             return root;
         }
 
-        if (key < root.data) {
+        if (key < root.val) {
             return find(root.left, key);
         } else
             return find(root.right, key);
@@ -131,7 +131,7 @@ public class InOrderPredecessor {
 
             if (prec != null) {
                 System.out.println("Predecessor of node " + key + " is "
-                        + prec.data);
+                        + prec.val);
             } else {
                 System.out.println("Predecessor doesn't exists for node "
                         + key);
@@ -145,7 +145,7 @@ public class InOrderPredecessor {
 
             if (prec != null) {
                 System.out.println("Predecessor of node " + key + " is "
-                        + prec.data);
+                        + prec.val);
             } else {
                 System.out.println("Predecessor doesn't exists for node "
                         + key);

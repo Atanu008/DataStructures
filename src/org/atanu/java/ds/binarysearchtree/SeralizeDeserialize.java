@@ -17,7 +17,7 @@ public class SeralizeDeserialize {
         String left = serialize(root.left);
         String right = serialize(root.right);
 
-        return root.data + "," + left + right;
+        return root.val + "," + left + right;
 
     }
 

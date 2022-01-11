@@ -13,13 +13,13 @@ public class IsBinarySearchTree {
         }
 
         // if node's value fall outside valid range
-        if (root.data < minKey || root.data > maxKey) {
+        if (root.val < minKey || root.val > maxKey) {
 
             return false;
         }
 
         // recursively check left and right subtrees with updated range
-        return isBST(root.left, minKey, root.data) && isBST(root.right, root.data, maxKey);
+        return isBST(root.left, minKey, root.val) && isBST(root.right, root.val, maxKey);
 
     }
 
@@ -45,12 +45,12 @@ public class IsBinarySearchTree {
         boolean left = isBinarySearchTree(root.left, PrevMinValue);
 
         // value of current node should be more than that of previous node
-        if (root.data <= PrevMinValue.data) {
+        if (root.val <= PrevMinValue.val) {
             return false;
         }
 
         // update previous node data and check if right subtree is BST or not
-        PrevMinValue.data = root.data;
+        PrevMinValue.val = root.val;
 
         return left && isBinarySearchTree(root.right, PrevMinValue);
     }

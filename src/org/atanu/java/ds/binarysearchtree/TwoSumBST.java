@@ -25,13 +25,13 @@ public class TwoSumBST {
 
         // Update the Result Map with true if the .
         // Result map is redundant . But still can be used to check for teh result
-        if (map.containsKey(k - root.data)) {
+        if (map.containsKey(k - root.val)) {
             result.put(k, true);
             return true;
         }
 
         // the nodes value into map
-        map.put(root.data, root.data);
+        map.put(root.val, root.val);
 
         // Recursively traverse left sub Tree . If not fond in Left the Traverse in Right
         return searchInBSTSol1(root.left, k, map, result) || searchInBSTSol1(root.right, k, map, result);
@@ -58,14 +58,14 @@ public class TwoSumBST {
         }
 
         // If the pair is found return true
-        if (set.contains(k - root.data)) {
-            System.out.print("Pair found (" + (k - root.data) + ", "
-                    + root.data + ")");
+        if (set.contains(k - root.val)) {
+            System.out.print("Pair found (" + (k - root.val) + ", "
+                    + root.val + ")");
             return true;
         }
 
         //Include the item in teh set.
-        set.add(root.data);
+        set.add(root.val);
 
         //// search in right subtree
         return searchInBSTSol2(root.right, k, set);

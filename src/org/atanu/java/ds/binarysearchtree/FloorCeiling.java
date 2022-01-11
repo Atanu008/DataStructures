@@ -17,17 +17,17 @@ public class FloorCeiling {
 
         // if node with key's value is found, both floor and ceil is equal
         // to the current node
-        if (root.data == key) {
+        if (root.val == key) {
 
-            fcv.ceiling = root.data;
-            fcv.floor = root.data;
+            fcv.ceiling = root.val;
+            fcv.floor = root.val;
             return;
         }
 
         // if given key is less than the root node, recur for left subtree
-        if (key < root.data) {
+        if (key < root.val) {
 
-            fcv.ceiling = root.data;
+            fcv.ceiling = root.val;
 
             findFloorCeiling(root.left, fcv, key);
 
@@ -35,7 +35,7 @@ public class FloorCeiling {
         // if given key is more than the root node, recur for right subtree
         else {
 
-            fcv.floor = root.data;
+            fcv.floor = root.val;
 
             findFloorCeiling(root.right, fcv, key);
         }
