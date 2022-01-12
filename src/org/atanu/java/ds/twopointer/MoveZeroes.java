@@ -1,8 +1,8 @@
-package org.atanu.java.ds.array;
+package org.atanu.java.ds.twopointer;
 
 import java.util.Arrays;
 
-public class MoveZeroes_LeetCode283 {
+public class MoveZeroes {
 
     public static void moveZeroes(int[] nums) {
         int pivot = 0;

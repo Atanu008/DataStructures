@@ -1,5 +1,7 @@
-package org.atanu.java.ds.array;
+package org.atanu.java.ds.twopointer;
 
+//https://leetcode.com/problems/remove-element/
+//LeetCode 27
 public class RemoveElement {
 
     public static int removeElementSol1(int[] arr, int key) {

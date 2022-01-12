@@ -3,7 +3,7 @@ package org.atanu.java.ds.array;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MaxLenSubarrayZerosOnes {
+public class ContiguousArrayV2 {
 
     // Function to find maximum length sub-array having equal number
     // of 0's and 1's

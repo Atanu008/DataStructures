@@ -1,25 +1,27 @@
-package org.atanu.java.ds.array;
+package org.atanu.java.ds.twopointer;
 
+//https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+//LeetCode 26
 public class RemoveDuplicateFromSortedArray {
 
     public static int removeDuplicateFromSortedArraySol1(int[] arr) {
 
         //Initialize Starting Pointer as j . arr[0] will always have the first element
-        int j = 0;
+        int i = 0;
 
         // Start from Index 1 and compare with previous . arr[0] already placed at the right position
-        for (int i = 1; i < arr.length; i++) {
+        for (int j = 1; j < arr.length; j++) {
 
             if (arr[i] != arr[j]) {
                 // If the elementt is NOT equal to the previous element
                 // Increment the pointer and place the item
-                j++;
-                arr[j] = arr[i];
+                i++;
+                arr[i] = arr[j];
             }
 
         }
 
-        return j + 1;
+        return i + 1;
     }
 
     public static int removeDuplicateFromSortedArraySol2(int[] arr) {
