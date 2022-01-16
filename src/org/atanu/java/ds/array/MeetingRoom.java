@@ -2,30 +2,17 @@ package org.atanu.java.ds.array;
 
 import java.util.Arrays;
 
+//https://leetcode.com/problems/meeting-rooms/
+//LeetCode 252
 public class MeetingRoom {
 
+    //The idea here is to sort the meetings by starting time. Then, go through the meetings one by one and make sure that each meeting ends before the next one starts.
+    public boolean canAttendMeetings(int[][] intervals) {
 
-    public static boolean canAttendMeetings(Interval[] intervals) {
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
 
-        int n = intervals.length;
-
-        int[] starts = new int[n];
-        int[] ends = new int[n];
-
-        for (int i = 0; i < n; i++) {
-
-            starts[i] = intervals[i].start;
-            ends[i] = intervals[i].end;
-        }
-
-        Arrays.sort(starts);
-        Arrays.sort(ends);
-
-        for (int i = 0; i < n - 1; i++) {
-
-            //Check if The next meeting start time is less than the current meeting
-            //If Yes then that meeting can not be attended
-            if (ends[i] > starts[i + 1]) {
+        for (int i = 1; i < intervals.length; i++) {
+            if (intervals[i][0] < intervals[i - 1][1]) {
                 return false;
             }
         }
@@ -35,18 +22,13 @@ public class MeetingRoom {
 
     public static void main(String[] args) {
 
-        Interval[] intervals = new Interval[3];
-        intervals[0] = new Interval(0, 30);
-        intervals[1] = new Interval(5, 10);
-        intervals[2] = new Interval(15, 20);
+        MeetingRoom meetingRoom = new MeetingRoom();
+        int[][] intervals = {{0, 30}, {5, 10}, {15, 20}};
 
-        Interval[] intervals1 = new Interval[2];
-        intervals1[0] = new Interval(7, 10);
-        intervals1[1] = new Interval(2, 4);
+        System.out.println("All Meeting can be attended " + meetingRoom.canAttendMeetings(intervals));
 
-        System.out.println("All Meeting can be attended " + canAttendMeetings(intervals));
-
-        System.out.println("All Meeting can be attended " + canAttendMeetings(intervals1));
+        intervals = new int[][] {{7, 10}, {2, 4}};
+        System.out.println("All Meeting can be attended " + meetingRoom.canAttendMeetings(intervals));
 
     }
 
