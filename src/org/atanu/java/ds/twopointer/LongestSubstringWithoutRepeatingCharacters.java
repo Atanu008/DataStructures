@@ -5,6 +5,7 @@ import java.util.Map;
 
 //https://leetcode.com/problems/longest-substring-without-repeating-characters/
 //LeetCode 3
+//Some times also called Longest Substring with Distinct Characters
 public class LongestSubstringWithoutRepeatingCharacters {
 
     public int lengthOfLongestSubstring(String s) {
@@ -87,5 +88,9 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
     public static void main(String[] args) {
 
+        LongestSubstringWithoutRepeatingCharacters withoutRepeatingCharacters = new LongestSubstringWithoutRepeatingCharacters();
+        System.out.println("Length of the longest substring: " + withoutRepeatingCharacters.lengthOfLongestSubstringV3("aabccbb"));
+        System.out.println("Length of the longest substring: " + withoutRepeatingCharacters.lengthOfLongestSubstringV3("abbbb"));
+        System.out.println("Length of the longest substring: " + withoutRepeatingCharacters.lengthOfLongestSubstringV3("abccde"));
     }
 }

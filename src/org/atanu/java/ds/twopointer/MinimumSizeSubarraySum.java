@@ -4,6 +4,11 @@ package org.atanu.java.ds.twopointer;
 //LeetCode 209
 public class MinimumSizeSubarraySum {
 
+    //TC
+    //The time complexity of the above algorithm will be O(N)O(N).
+    //The outer for loop runs for all elements, and the inner while loop processes each element only once;
+    //therefore, the time complexity of the algorithm will be O(N+N)O(N+N),
+    // which is asymptotically equivalent to O(N)O(N).
     public int minSubArrayLen(int target, int[] nums) {
 
         int windowEnd = 0;
@@ -12,8 +17,9 @@ public class MinimumSizeSubarraySum {
         int runningSum = 0;
 
         while(windowEnd < nums.length){
-            runningSum += nums[windowEnd];
+            runningSum += nums[windowEnd];// add the next element
 
+            // shrink the window as small as possible until the 'windowSum' is smaller than Target
             while(runningSum >= target){
                 minLength = Math.min(minLength, windowEnd - windowStart +1);
                 runningSum -= nums[windowStart];

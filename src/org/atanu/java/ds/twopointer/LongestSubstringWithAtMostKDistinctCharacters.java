@@ -16,12 +16,14 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
         int end = 0;
         Map<Character, Integer> map = new HashMap<>();
 
+        // in the following loop we'll try to extend the range [windowStart, windowEnd]
         while (windowEnd < str.length()) {
 
             char rightchar = str.charAt(windowEnd);
 
             map.put(rightchar, map.getOrDefault(rightchar, 0) + 1);
 
+            // shrink the sliding window, until we are left with 'k' distinct characters in the frequency map
             while (map.size() > k) {
 
                 char leftChar = str.charAt(windowStart);
