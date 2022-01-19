@@ -11,6 +11,7 @@ import java.util.Map;
 //so we need shrink the window from the left side and also update the character count in the map.
 public class LongestRepeatingCharacterReplacement {
 
+    //Mo
     public int characterReplacement(String s, int k) {
 
         Map<Character, Integer> frequencyMap = new HashMap<>();
