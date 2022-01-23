@@ -4,6 +4,20 @@ package org.atanu.java.ds.twopointer;
 //LeetCode 26
 public class RemoveDuplicateFromSortedArray {
 
+    //This Solution looks clean
+    public int removeDuplicates(int[] arr) {
+        int nextNonDuplicate = 1; // index of the next non-duplicate element
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[nextNonDuplicate - 1] != arr[i]) {
+                arr[nextNonDuplicate] = arr[i];
+                nextNonDuplicate++;
+            }
+        }
+
+        return nextNonDuplicate;
+    }
+
+    //sane idea as above , but only implementation is different . Two Pointer
     public static int removeDuplicateFromSortedArraySol1(int[] arr) {
 
         //Initialize Starting Pointer as j . arr[0] will always have the first element

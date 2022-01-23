@@ -1,4 +1,4 @@
-package org.atanu.java.ds.array;
+package org.atanu.java.ds.twopointer;
 
 import java.util.ArrayList;
 import java.util.Arrays;

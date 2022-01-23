@@ -14,16 +14,18 @@ public class ThreeSumSmaller {
         Arrays.sort(nums);
         int count = 0;
         for (int i = 0; i < nums.length - 2; i++) {
-            int j = i + 1;
-            int k = nums.length - 1;
+            int left = i + 1;
+            int right = nums.length - 1;
 
-            while (j < k) {
-                if (nums[i] + nums[j] + nums[k] < target) {
-                    count += k - j;
-                    j++;
-
+            while (left < right) {
+                // found the triplet
+                // since arr[right] >= arr[left], therefore, we can replace arr[right] by any number between
+                // left and right to get a sum less than the target sum
+                if (nums[i] + nums[left] + nums[right] < target) {
+                    count += right - left;
+                    left++;
                 } else {
-                    k--;
+                    right--; // we need a pair with a smaller sum
                 }
             }
         }

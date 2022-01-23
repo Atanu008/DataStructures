@@ -1,5 +1,9 @@
 package org.atanu.java.ds.twopointer;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 //https://leetcode.com/problems/subarray-product-less-than-k/
 //LeetCode 713
 //Kind of similar solution as LeetCode 209 https://leetcode.com/problems/minimum-size-subarray-sum/
@@ -39,6 +43,27 @@ public class SubarrayProductLessThanK {
         return countSubArray;
     }
 
+    //Solution To Find the sub Arrays
+    public  List<List<Integer>> findSubarrays(int[] arr, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        double product = 1;
+        int left = 0;
+        for (int right = 0; right < arr.length; right++) {
+            product *= arr[right];
+            while (product >= target && left < arr.length)
+                product /= arr[left++];
+            // since the product of all numbers from left to right is less than the target therefore,
+            // all subarrays from left to right will have a product less than the target too; to avoid
+            // duplicates, we will start with a subarray containing only arr[right] and then extend it
+            List<Integer> tempList = new LinkedList<>();
+            for (int i = right; i >= left; i--) {
+                tempList.add(0, arr[i]);
+                result.add(new ArrayList<>(tempList));
+            }
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         SubarrayProductLessThanK subarrayProductLessThanK = new SubarrayProductLessThanK();
         int[] nums = {10,5,2,6};
@@ -49,5 +74,8 @@ public class SubarrayProductLessThanK {
         //Note that [10, 5, 2] is not included as the product of 100 is not strictly less than k.
         System.out.println("subarrays that have product less than "+ k +" are: "
                 + subarrayProductLessThanK.numSubarrayProductLessThanK(nums, k));
+
+        List<List<Integer>> result = subarrayProductLessThanK.findSubarrays(nums,k);
+        result.forEach(a -> System.out.println(a));
     }
 }
