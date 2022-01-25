@@ -30,8 +30,8 @@ public class HappyNumber {
                 return false;
             }
             else {
-                n = sum;
                 set.add(n);
+                n = sum;
             }
 
         }
@@ -54,6 +54,33 @@ public class HappyNumber {
             }
         }
         return false;
+    }
+
+
+    //https://www.educative.io/courses/grokking-the-coding-interview/39q3ZWq27jM
+    public boolean isHappyV3(int n) {
+
+        int slow = n;
+        int fast = n;
+
+        do{
+            slow = findSquareSum(slow);
+            fast = findSquareSum(findSquareSum(fast));
+        }while(slow != fast);
+
+        return slow == 1;
+    }
+
+    private int findSquareSum(int num) {
+
+        int squareSum = 0;
+        while(num > 0){
+            int digit = num % 10;
+            squareSum += digit*digit;
+            num = num/10;
+        }
+
+        return squareSum;
     }
 
     public static void main(String[] args) {
