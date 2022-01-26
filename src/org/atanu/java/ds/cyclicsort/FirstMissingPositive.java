@@ -1,4 +1,4 @@
-package org.atanu.java.ds.array;
+package org.atanu.java.ds.cyclicsort;
 
 import java.util.HashSet;
 
