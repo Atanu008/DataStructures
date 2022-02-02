@@ -27,7 +27,7 @@ public class BinaryTreeLevelOrderTraversalII {
                     queue.offer(current.right);
                 }
             }
-
+            // append the current level at the beginning
             result.add(0,levelNodes); //this the trick :)
         }
 
