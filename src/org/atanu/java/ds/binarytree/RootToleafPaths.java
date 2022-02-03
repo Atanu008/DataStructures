@@ -3,6 +3,7 @@ package org.atanu.java.ds.binarytree;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+//Given a binary tree, return all root-to-leaf paths.
 public class RootToleafPaths {
 
     public static void printRootToleafPaths(TreeNode root, Deque<Integer> path) {

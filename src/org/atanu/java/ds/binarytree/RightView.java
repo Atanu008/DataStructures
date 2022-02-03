@@ -43,9 +43,9 @@ public class RightView {
     }
 
 
-    // traverse nodes in reverse pre-order
-    //For every node encountered, we insert the node and level information into the map.
-    //Finally when all nodes are processed, we traverse the map and print the right view
+    //The idea is to traverse the tree in a preorder fashion and pass level information in function arguments.
+    // For every node encountered, insert the node and level information into the map.
+    //Finally, when all nodes are processed, traverse the map and print the right view.
 
     public static void rightView(TreeNode root, int level, Map<Integer, Integer> map) {
         if (root == null) {
@@ -55,7 +55,7 @@ public class RightView {
         // insert the current node and level information into the map
         map.put(level, root.val);
 
-        // recur for right subtree before right subtree
+        // recur for the left subtree before the right subtree
         rightView(root.left, level + 1, map);
         rightView(root.right, level + 1, map);
     }
