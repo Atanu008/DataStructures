@@ -3,6 +3,7 @@ package org.atanu.java.ds.binarysearch;
 //https://leetcode.com/problems/find-peak-element/
 //LeetCode 162
 //Video : https://www.youtube.com/watch?v=r7U0N2EE_l8
+//Caould ble aso Termed as Bitonic Array Maximum : https://www.educative.io/courses/grokking-the-coding-interview/RMyRR6wZoYK
 public class FindPeakElement {
 
     public int findPeakElement(int[] nums) {

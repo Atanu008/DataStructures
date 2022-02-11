@@ -5,7 +5,7 @@ package org.atanu.java.ds.array;
  * 1. https://www.geeksforgeeks.org/array-rotation/
  *
  */
-public class Problem_1 {
+public class LeftRotate {
 
     public static void main(String[] args) {
 

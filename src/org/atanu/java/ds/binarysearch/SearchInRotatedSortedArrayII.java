@@ -2,6 +2,8 @@ package org.atanu.java.ds.binarysearch;
 
 //https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
 //LeetCode 81
+
+//https://www.educative.io/courses/grokking-the-coding-interview/RMPVM2Y4PW0
 public class SearchInRotatedSortedArrayII {
     public boolean search(int[] arr, int target) {
 
@@ -18,7 +20,11 @@ public class SearchInRotatedSortedArrayII {
             }
 
             //If low , Mid and High is same then we can not decide what to pick. move the duplicate pointers.
-            //we will not lost the value as mis will still have the value
+            //we will not loose any value as as these values are not same as key/target
+
+            // the only difference from the previous solution,
+            // if numbers at indexes start, mid, and end are same, we can't choose a side
+            // the best we can do, is to skip one number from both ends as key != arr[mid]
             if( (arr[low] == arr[mid]) && (arr[high] == arr[mid]) ) {++low; --high;}
             // if right half (A[mid..right]) is sorted and mid is not
             // the key element

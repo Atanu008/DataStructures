@@ -49,7 +49,7 @@ public class FindMinimumInRotatedSortedArray {
             }
         }
         // invalid input
-        return -1;
+        return -1; //Ca return 0 also i.e array is not rotated
     }
 
     public int findMinV2(int[] arr) {

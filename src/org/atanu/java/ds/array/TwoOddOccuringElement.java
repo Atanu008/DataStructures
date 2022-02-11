@@ -42,7 +42,7 @@ public class TwoOddOccuringElement {
         // Find a set bit in the
         // XOR (We find rightmost
         // set bit here)
-        int setBit = res & (~res + 1);
+        int setBit = res & (~res + 1); //https://www.youtube.com/watch?v=XcSr6TIMl7w
 
 
         // Traverse through all
