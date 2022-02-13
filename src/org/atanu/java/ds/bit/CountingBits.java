@@ -13,6 +13,7 @@ public class CountingBits {
         return countBits;
     }
 
+    //Count set bit for a number
     //Brian Kernighan’s algorithm //Can check Educative
     private int getCountBit(int n){
         // n = 5 .     101
