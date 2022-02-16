@@ -1,4 +1,4 @@
-package org.atanu.java.ds.array;
+package org.atanu.java.ds.heap;
 
 import java.util.Arrays;
 import java.util.PriorityQueue;
@@ -29,6 +29,26 @@ public class MergeKSortedArray {
         return result;
     }
 
+    private class HeapNode implements Comparable<HeapNode>{
+
+        int[] arr;
+        int index;
+
+        public HeapNode(int[] arr, int index) {
+            this.arr = arr;
+            this.index = index;
+        }
+
+        public boolean hashNext(){
+            return this.index < this.arr.length -1;
+        }
+
+        @Override
+        public int compareTo(HeapNode other) {
+            return arr[index] - other.arr[other.index];
+        }
+    }
+
     public static void main(String[] args) {
         int[][] array = {{1, 3, 4}, {5, 6, 11}, {2, 9, 10}};
         int [] result = new MergeKSortedArray().mergeKSortedArray(array);
@@ -36,22 +56,3 @@ public class MergeKSortedArray {
     }
 }
 
-class HeapNode implements Comparable<HeapNode>{
-
-    int[] arr;
-    int index;
-
-    public HeapNode(int[] arr, int index) {
-        this.arr = arr;
-        this.index = index;
-    }
-
-    public boolean hashNext(){
-        return this.index < this.arr.length -1;
-    }
-
-    @Override
-    public int compareTo(HeapNode other) {
-        return arr[index] - other.arr[other.index];
-    }
-}
