@@ -10,7 +10,7 @@ public class Graph {
     int V;
     // A List of Lists to represent an adjacency list
     // Can be represented as Map<Integer, LinkedList<Integer>>
-    List<LinkedList<Integer>> adjList = null;
+    List<List<Integer>> adjList = null;
 
     public Graph(int N){
         V = N;

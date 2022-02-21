@@ -1,27 +1,33 @@
 package org.atanu.java.ds.graph;
 
-public class DetectCycleDirectedOne {
+public class DetectCycleDirectedOneV1 {
 
-    private static boolean hasCycle(Graph graph, int v, boolean[] discovered, boolean[] inResurssion) {
+    private static boolean hasCycle(Graph graph, int v, boolean[] visited, boolean[] inRecursion) {
 
-        //If it is in recurssion return True
-        if (inResurssion[v] == true) {
+        //If it is in recursion return True
+        //if node is currently in recursion stack that means we have found a cycle
+        if (inRecursion[v]) {
             return true;
         }
-
+        //if it is already visited (and not in Stack) then there is no cycle
+        if(visited[v]) {
+            return false;
+        }
         //Mark in recursion
-        inResurssion[v] = true;
+        inRecursion[v] = true;
         //Mark it visited. We can mark after the while as well.
-        discovered[v] = true;
+        visited[v] = true;
+
+        //run cyclic function recursively on each neighbour path
         for (int u : graph.adjList.get(v)) {
-            if (hasCycle(graph, u, discovered, inResurssion)) {
+            if (hasCycle(graph, u, visited, inRecursion)) {
                 return true;
             }
 
         }
 
-        // Make the recurssion is false again
-        inResurssion[v] = false;
+        // Make the recursion is false again
+        inRecursion[v] = false;
         return false;
 
     }
@@ -29,7 +35,7 @@ public class DetectCycleDirectedOne {
     public static void main(String[] args) {
 
         int N = 4;
-        boolean[] discovered = new boolean[N];
+        boolean[] visited = new boolean[N];
         boolean[] inResurssion = new boolean[N];
 
         Graph graph = new Graph(N);
@@ -42,11 +48,11 @@ public class DetectCycleDirectedOne {
 
         for (int i = 0; i < N; i++) {
 
-            if (!discovered[i] && hasCycle(graph, i, discovered, inResurssion)) {
+            if (!visited[i] && hasCycle(graph, i, visited, inResurssion)) {
                 System.out.println("This Graph Has Cycle"); // Will Print True for each connected component. you can return hergi
             }
-            if (!discovered[i]) {
-                boolean result = hasCycle(graph, i, discovered, inResurssion);
+            if (!visited[i]) {
+                boolean result = hasCycle(graph, i, visited, inResurssion);
                 System.out.println(result + " " + i); // Printing the cycle check for non conncted components
             }
         }

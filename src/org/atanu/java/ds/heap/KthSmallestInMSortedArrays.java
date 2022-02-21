@@ -6,6 +6,10 @@ import java.util.PriorityQueue;
 
 //https://www.educative.io/courses/grokking-the-coding-interview/myAqDMyRXn3
 
+//Similar Problem : Given ‘M’ sorted arrays, find the median number among all arrays.
+//Solution: This problem is similar to our parent problem with K=Median.
+//So if there are ‘N’ total numbers in all the arrays we need to find the K’th minimum number where K=N/2K=N/2.
+
 //Similar Problem is MergeKSortedArray.java. We have the solution here.
 //In that program we are storing the array reference itself ,
 //But like this implementation we can store only the array indexes

@@ -4,6 +4,7 @@ package org.atanu.java.ds.heap;
 //LeetCide 373
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -69,6 +70,35 @@ public class FindKPairsWithSmallestSums {
         }
     }
 
+
+
+    public List<List<Integer>> kSmallestPairsV2(int[] nums1, int[] nums2, int k) {
+
+        PriorityQueue<List<Integer>> maxHeap = new PriorityQueue<>((a, b) -> (b.get(0) + b.get(1)) - (a.get(0) + a.get(1)));
+        for (int i = 0; i < nums1.length && i < k; i++) {
+            for (int j = 0; j < nums2.length && j < k; j++) {
+                //Add First K Pair
+                if (maxHeap.size() < k) {
+                    maxHeap.add(Arrays.asList(nums1[i],nums2[j] ));
+                } else {
+                    //As the arrays are ascending , if thet pair is larger than the peak
+                    //Then no other next pair would be less. Need to break of the loop
+                    //And the Heap contains K pair
+                    if(nums1[i] + nums2[j] > maxHeap.peek().get(0) + maxHeap.peek().get(1)){
+                        break;
+                    }
+                    //We Got a lesser pair. Pop the Max Pair and push this pair
+                    else if (nums1[i] + nums2[j] < maxHeap.peek().get(0) + maxHeap.peek().get(1)) {
+                        maxHeap.poll();
+                        maxHeap.add(Arrays.asList(nums1[i],nums2[j] ));
+                    }
+
+                }
+            }
+        }
+        return new ArrayList<>(maxHeap);
+    }
+
     public static void main(String[] args) {
         FindKPairsWithSmallestSums findKPairsWithSmallestSums = new FindKPairsWithSmallestSums();
         int[] nums1 = {1,7,11};
@@ -79,6 +109,9 @@ public class FindKPairsWithSmallestSums {
         // [1,2],[1,4],[1,6],[7,2],[7,4],[11,2],[7,6],[11,4],[11,6]
 
         List<List<Integer>> result = findKPairsWithSmallestSums.kSmallestPairs(nums1, nums2, k);
+        result.forEach(System.out::println);
+        System.out.println("V2");
+        result = findKPairsWithSmallestSums.kSmallestPairsV2(nums1, nums2, k);
         result.forEach(System.out::println);
     }
 }
