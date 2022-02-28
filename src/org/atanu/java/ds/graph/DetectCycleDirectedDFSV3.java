@@ -1,6 +1,6 @@
 package org.atanu.java.ds.graph;
 
-public class DetectCycleDirectedTwo {
+public class DetectCycleDirectedDFSV3 {
 
     enum Status {
         UNVISITED, INRECURSSION, VISITED

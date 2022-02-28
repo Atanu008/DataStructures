@@ -1,6 +1,6 @@
 package org.atanu.java.ds.graph;
 
-public class DetectCycleDirectedOneV1 {
+public class DetectCycleDirectedDFSV1 {
 
     private static boolean hasCycle(Graph graph, int v, boolean[] visited, boolean[] inRecursion) {
 

@@ -2,7 +2,7 @@ package org.atanu.java.ds.graph;
 
 import java.util.List;
 
-public class DetectCycleDirectedOneV2 {
+public class DetectCycleDirectedDFSV2 {
 
     public boolean hasCycleDFS(int node, List<List<Integer>> adjList, boolean[] visited, boolean[] inRecursion) {
 
@@ -25,7 +25,7 @@ public class DetectCycleDirectedOneV2 {
     }
 
     public boolean hasCycle(int vertices, List<List<Integer>> adjList) {
-        DetectCycleDirectedOneV2 detectCycle = new DetectCycleDirectedOneV2();
+        DetectCycleDirectedDFSV2 detectCycle = new DetectCycleDirectedDFSV2();
         boolean[] visited = new boolean[vertices];
         boolean[] inRecursion = new boolean[vertices];
 
@@ -53,7 +53,7 @@ public class DetectCycleDirectedOneV2 {
         graph.addEdge(new Edge(2, 3), true);
         graph.addEdge(new Edge(3, 3), true); //Comment this for No Cycle
 
-        DetectCycleDirectedOneV2 detectCycle = new DetectCycleDirectedOneV2();
+        DetectCycleDirectedDFSV2 detectCycle = new DetectCycleDirectedDFSV2();
         boolean result = detectCycle.hasCycle(N, graph.adjList);
         System.out.println("Has Cycle "+ result);
     }
