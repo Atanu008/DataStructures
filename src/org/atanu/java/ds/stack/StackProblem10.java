@@ -57,7 +57,10 @@ public class StackProblem10 {
 
         int hist[] = {2, 4, 5, 1, 2};
         int max_area = findMaxRectangle(hist);
+        System.out.println("Maximum area is " + max_area);
 
+        hist = new int[]{2, 4, 5, 1, 2};
+        max_area = findMaxRectangle(hist);
         System.out.println("Maximum area is " + max_area);
     }
 
