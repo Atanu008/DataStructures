@@ -2,7 +2,7 @@ package org.atanu.java.ds.graph;
 
 //https://leetcode.com/problems/number-of-closed-islands/
 //LeetCode 1254
-//This Approach is similar to
+//This Approach is similar to Enclave solution
 public class NumberOfClosedIslands {
 
     int[][] dirs = {{0, 1},{-1, 0},{0, -1},{1, 0}};

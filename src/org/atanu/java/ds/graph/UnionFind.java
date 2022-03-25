@@ -27,9 +27,21 @@ public class UnionFind {
         }
     }
 
+    public int getNumberOfComponent() {
+        int count = 0;
+        for (int i = 0; i < root.length; i++) {
+            if (root[i] == i) { //If the same element is root i.e it belengs to its same set , if its diffeent that means this element have differner root
+                count++;
+            }
+        }
+
+        return count;
+    }
+
     public boolean connected(int x, int y) {
         return find(x) == find(y);
     }
+
 
     public static void main(String[] args) {
         UnionFind uf = new UnionFind(10);
