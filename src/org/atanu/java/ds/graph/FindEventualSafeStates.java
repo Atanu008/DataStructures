@@ -6,6 +6,7 @@ import java.util.List;
 
 //https://leetcode.com/problems/find-eventual-safe-states/
 //LeetCode 802
+//Intuition : https://www.youtube.com/watch?v=Re_v0j0CRsg&t=1s
 //Exactly same idea as Cycle Detection in Directed Graph .
 //Here we need to find nodes which are not part of the cycle
 public class FindEventualSafeStates {
