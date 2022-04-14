@@ -43,7 +43,7 @@ public class RemoveDuplicateThree {
         linkedList.append(3);
         linkedList.append(4);
         linkedList.append(4);
-
+        linkedList.append(8);
         linkedList.printList(linkedList.head);
 
         Node changedHead = removeDuplicateMethod1(linkedList.head);
