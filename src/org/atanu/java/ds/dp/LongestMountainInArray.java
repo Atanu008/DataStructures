@@ -6,8 +6,6 @@ import java.util.Arrays;
 //LeetCode 845
 public class LongestMountainInArray {
 
-
-
     //3 Pass Solution
     public int longestMountain(int[] arr) {
         //Base case .
@@ -105,6 +103,13 @@ public class LongestMountainInArray {
         return dp;
     }
 
+    public static void main(String[] args) {
+        LongestMountainInArray longestMountainInArray = new LongestMountainInArray();
+        int[] arr = {2,1,4,7,3,2,5};
+        int a = longestMountainInArray.longestMountain(arr);
+        int b = longestMountainInArray.longestMountainV2(arr);
+        System.out.println(a + " "+ b);
+    }
 
 
 }
