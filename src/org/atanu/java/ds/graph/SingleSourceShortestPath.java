@@ -3,7 +3,7 @@ package org.atanu.java.ds.graph;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-public class BFSShortestPath {
+public class SingleSourceShortestPath {
 
     public void shortestPath(Graph graph, int source, int destination, boolean[] visited){
 
@@ -38,17 +38,23 @@ public class BFSShortestPath {
 
         //Print the Path between source and destination
         int current = destination;
+        StringBuilder path = new StringBuilder("");
         while(current != source){
+            path.append(current + "--");
             System.out.print(current + " -- ");
             current = parent[current];
         }
         System.out.println(source);
 
+        System.out.println("++++");
+        path.append(source);
+        System.out.println(path.reverse().toString());
+
     }
 
     public static void main(String[] args) {
 
-        BFSShortestPath bfsShortestPath = new BFSShortestPath();
+        SingleSourceShortestPath bfsShortestPath = new SingleSourceShortestPath();
         int N = 7;
         Graph graph = new Graph(N);
         graph.addEdge(0,1, false);

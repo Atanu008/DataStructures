@@ -67,7 +67,7 @@ public class GraphValidTree {
 
         edges = new int[][]{{0, 1}, {1, 2}, {2, 3}, {1, 3}, {1, 4}};
         result = graphValidTree.validTree(n, edges);
-        //Output: true . Has Cycle (3-1)
+        //Output: false
         System.out.println(result);
 
     }

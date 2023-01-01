@@ -1,5 +1,6 @@
 package org.atanu.java.ds.graph;
 
+//We need to find back edge. This idea will work for undirected graph too .
 public class DetectCycleDirectedDFSV1 {
 
     private static boolean hasCycle(Graph graph, int v, boolean[] visited, boolean[] inRecursion) {

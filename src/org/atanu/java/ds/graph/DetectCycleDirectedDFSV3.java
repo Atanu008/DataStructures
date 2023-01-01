@@ -1,5 +1,7 @@
 package org.atanu.java.ds.graph;
 
+//We need to find back edge. This idea will work for undirected graph too .
+//Use This verion of teh code.
 public class DetectCycleDirectedDFSV3 {
 
     enum Status {
