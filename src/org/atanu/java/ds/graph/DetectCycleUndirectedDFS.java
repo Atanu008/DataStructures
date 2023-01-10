@@ -2,7 +2,7 @@ package org.atanu.java.ds.graph;
 
 //https://www.techiedelight.com/check-undirected-graph-contains-cycle-not/
 //https://www.udemy.com/course/graph-theory-algorithms-for-competitive-programming/learn/lecture/27022082#announcements
-public class DetectCycleUndirectedDFSV1 {
+public class DetectCycleUndirectedDFS {
 
     private static boolean hasCycle(int node, int parent, Graph graph, boolean[] visited) {
 
@@ -35,7 +35,7 @@ public class DetectCycleUndirectedDFSV1 {
         graph.addEdge(new Edge(1, 2), false);
         graph.addEdge(new Edge(2, 3), false);
         graph.addEdge(new Edge(3, 4), false);
-        graph.addEdge(new Edge(1, 4), true);//This forms a cycle
+        graph.addEdge(new Edge(1, 4), false);//This forms a cycle
 
         //Check for different component
         //For one component this loop is not necessary

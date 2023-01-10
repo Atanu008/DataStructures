@@ -5,9 +5,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+//For the graph to be a valid tree, it must have exactly n - 1 edges.
+//Any less, and it can't possibly be fully connected. Any more, and it has to contain cycles.
+//Additionally, if the graph is fully connected and contains exactly n - 1 edges,
+//it can't possibly contain a cycle, and therefore must be a tree!
 public class GraphValidTreeV1 {
     public boolean validTree(int n, int[][] edges) {
-
+        // Condition 1: The graph must contain n - 1 edges.
         if (edges.length != n - 1) return false;
         List<List<Integer>> adjacencyList = new ArrayList<>();
         Set<Integer> seen = new HashSet<>();
