@@ -53,7 +53,7 @@ public class WordBreak {
     //Video : https://www.youtube.com/watch?v=2NaaM_z_Jig
     public boolean wordBreakV3(String s, List<String> wordDict) {
         Set<String> wordSet = new HashSet<>(wordDict);
-        int[] dp = new int[s.length() + 1];
+        int[] dp = new int[s.length()];
 
 
         for(int end = 0; end < s.length(); end ++){
@@ -69,7 +69,7 @@ public class WordBreak {
                 }
             }
         }
-        return dp[s.length() -1] > 0;
+        return dp[s.length() - 1] > 0;
     }
 
     //Same as version 3 . Little modification in loop parameter
