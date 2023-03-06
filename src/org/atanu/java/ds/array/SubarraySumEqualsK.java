@@ -5,6 +5,7 @@ import java.util.Map;
 
 //https://leetcode.com/problems/subarray-sum-equals-k/
 //LeetCode 560
+//Video : https://www.youtube.com/watch?v=20v8zSo2v18 . Just see first 2 min. its crystal clear
 public class SubarraySumEqualsK {
     public int subarraySum(int[] nums, int k) {
         int count = 0; int sum = 0;

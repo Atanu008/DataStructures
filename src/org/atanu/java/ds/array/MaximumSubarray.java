@@ -5,12 +5,13 @@ import java.util.Arrays;
 //https://leetcode.com/problems/maximum-subarray/
 //LeetCode 53
 public class MaximumSubarray {
+    //Kadanes Algo . Prefer this code snippet
     public int maxSubArray(int[] nums) {
         // stores maximum sum sub-array found so far
-        int maxSoFar = nums[0];
+        int maxSoFar = nums[0]; //Result
         // stores maximum sum of sub-array ending at current position
-        int maxEndingHere = nums[0];
-        for (int i = 1; i < nums.length; i++) {
+        int maxEndingHere = 0;
+        for (int i = 0; i < nums.length; i++) {
             // update maximum sum of sub-array "ending" at index i (by adding
             // current element to maximum sum ending at previous index i-1)
             maxEndingHere = maxEndingHere + nums[i];
