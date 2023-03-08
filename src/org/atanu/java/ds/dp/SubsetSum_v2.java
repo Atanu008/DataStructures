@@ -23,7 +23,7 @@ public class SubsetSum_v2 {
         }
         //Now if we have come this far that means total is NOT Zero
         //Now if n == 0, i.e we have exhausted all the number then its not possible to form the total
-        //Return true
+        //Return false
         if(n == 0){
             return false;
         }
