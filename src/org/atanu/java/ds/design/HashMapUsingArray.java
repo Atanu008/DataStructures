@@ -1,6 +1,6 @@
 package org.atanu.java.ds.design;
 
-import java.sql.SQLOutput;
+
 import java.util.Arrays;
 
 // LeetCode 706
