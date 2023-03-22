@@ -12,13 +12,13 @@ public class ClimbingStairs {
     }
 
     private int climbStairs(int n, int[] dp){
-        //Zero steps can be done on only one way
-        if(n==0){
-            return 1;
-        }
         // you can not make negative step. way is abolute zero
         if(n < 0){
             return 0;
+        }
+        //Zero steps can be done on only one way
+        if(n==0){
+            return 1;
         }
         if(dp[n] != 0){
             return dp[n];
