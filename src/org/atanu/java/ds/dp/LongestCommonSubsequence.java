@@ -12,7 +12,7 @@ public class LongestCommonSubsequence {
 
     private int longestCommonSubsequence(int i, int j, String text1, String text2, Integer[][] dp){
         // base case
-        //we reach the end of either of the two strings, we return 0
+        // we reach the end of either of the two strings, we return 0
         if(i == text1.length() || j == text2.length()){
             return 0;
         }

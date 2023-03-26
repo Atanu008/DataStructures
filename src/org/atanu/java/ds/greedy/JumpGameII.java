@@ -1,6 +1,6 @@
-package org.atanu.java.ds.array;
+package org.atanu.java.ds.greedy;
 
-public class JumpGameTwo {
+public class JumpGameII {
 
     public static int jump(int[] nums) {
 
