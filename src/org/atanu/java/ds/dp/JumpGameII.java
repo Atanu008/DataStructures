@@ -4,12 +4,16 @@ import java.util.Arrays;
 
 //https://leetcode.com/problems/jump-game-ii/description/
 //Leetcode 45
+
 //There is a greedy solution too in O(n)
 public class JumpGameII {
 
-    //Define state(i) as the minimum jumps to reach i
-    //state(i) = min(1 + state(j)) for each j that can jump to i.
-    //The goal state is state(nums.length - 1).
+    // This solution is kind of Longest Increasing Subsequence
+
+    // Define state(i) as the minimum jumps to reach i
+    // state(i) = min(1 + state(j)) for each j that can jump to i.
+    // The goal state is state(nums.length - 1).
+
     public int jump(int[] nums) {
 
         int n = nums.length;

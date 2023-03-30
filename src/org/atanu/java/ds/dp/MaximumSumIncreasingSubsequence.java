@@ -1,7 +1,9 @@
 package org.atanu.java.ds.dp;
 
-//Variation Of Longest Increasing Subsequence
-//https://www.geeksforgeeks.org/maximum-sum-increasing-subsequence-dp-14/
+// Variation Of Longest Increasing Subsequence
+// https://www.geeksforgeeks.org/maximum-sum-increasing-subsequence-dp-14/
+// https://www.educative.io/courses/grokking-dynamic-programming-a-deep-dive-using-java/qAqAWlyGRNG
+// Video : https://www.youtube.com/watch?v=R7DrJsTkK8w
 public class MaximumSumIncreasingSubsequence {
 
     public int maximumSumIncreasingSubsequence(int[] nums) {

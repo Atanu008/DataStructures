@@ -77,7 +77,6 @@ public class WordBreak {
         Set<String> wordSet = new HashSet<>(wordDict);
         int[] dp = new int[s.length() + 1];
 
-
         for(int end = 1; end <= s.length(); end ++){
             for(int start = 0; start < end; start++){
                 String wordToCheck = s.substring(start,end);

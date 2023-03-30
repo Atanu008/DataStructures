@@ -2,7 +2,10 @@ package org.atanu.java.ds.dp;
 
 // Variation Of Longest Increasing Subsequence
 // Another variation is Leetcode 1671 Minimum Number of Removals to Make Mountain Array
+// https://www.educative.io/courses/grokking-dynamic-programming-a-deep-dive-using-java/3Yw0xvBKQVx
+
 //Video : https://www.youtube.com/watch?v=jdfpGSSyN2I
+
 public class LongestBitonicSubsequence {
     //We can separately calculate LIS ans LDS for every index i.e., from the beginning to the end of the array and vice versa.
     // The required length of LBS would be the one that has the maximum sum of LIS and LDS for a given index.
@@ -33,7 +36,7 @@ public class LongestBitonicSubsequence {
 
         int bitonicLength = 0;
         for(int i = 0; i < nums.length; i++){
-            bitonicLength = Math.max(bitonicLength, LIS[i]+LDS[i] -1);
+            bitonicLength = Math.max(bitonicLength, LIS[i]+LDS[i] -1); // -1 as the common element added twice as LIS and LDS
         }
 
         return bitonicLength;

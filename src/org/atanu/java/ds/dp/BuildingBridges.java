@@ -3,8 +3,11 @@ package org.atanu.java.ds.dp;
 import java.util.Arrays;
 
 //Another Variation as Longest Increasing Subsequence
-//https://www.geeksforgeeks.org/dynamic-programming-building-bridges/
-// Video : https://www.youtube.com/watch?v=o1h3aoeSTOU&t=1831s
+// https://www.geeksforgeeks.org/dynamic-programming-building-bridges/
+// https://www.educative.io/courses/grokking-dynamic-programming-a-deep-dive-using-java/g7OGMj3xD93
+// Video : https://www.youtube.com/watch?v=o1h3aoeSTOU&t=1831s (First 15 - 16 Minute is enough)
+
+// For a bridge if not be overlapped , if north banks are ascending their south banks also has to be
 public class BuildingBridges {
 
     // Sort On basis on North Bank
@@ -13,6 +16,8 @@ public class BuildingBridges {
         // Sort On basis on North Bank
         // If North Bank is equal , Sort on basis of South bank
         Arrays.sort(bridges, (a , b) -> { if(a[0] != b[0]) return a[0] - b[0]; else return a[1] - b[1];});
+        System.out.println("Bridges after sorting On North Bank");
+        System.out.println(Arrays.deepToString(bridges));
         int n = bridges.length;
         int[] dp = new int[n];
 
