@@ -1,31 +1,42 @@
 package org.atanu.java.ds.graph;
 
-// LeetCode Premium and Techiedelight
-// Coding Minutes is good too
-public class UnionFind {
-    private int[] root;
+// https://cp-algorithms.com/data_structures/disjoint_set_union.html#search-for-connected-components-in-an-image
+// Video : https://www.youtube.com/watch?v=aBxjDBC4M1U (see from 37 minutes to 40 max)
+public class UnionFindPathCompressionUnionBySize {
 
-    public UnionFind(int size) {
-        root = new int[size];
-        for(int i = 0; i < size; i++){
+    int[] root;
+    int[] size;
+
+    public UnionFindPathCompressionUnionBySize(int n){
+        root = new int[n];
+        size = new int[n];
+
+        for(int i = 0; i < n; i++){
             root[i] = i;
+            size[i] = 1; // The initial "size" of each vertex is 1, because each of them is having one size initially
         }
     }
 
-    public int find(int x) {
-        if(root[x] == x) {
+    public int find(int x){
+
+        if(root[x] == x){
             return x;
         }
-
-        return find(root[x]);
+        return root[x] = find(root[x]); // path compression
     }
 
     public void union(int x, int y) {
+
         int rootX = find(x);
         int rootY = find(y);
 
-        if(rootX != rootY) {
+        if(size[rootX] > size[rootY]){
             root[rootY] = rootX;
+            size[rootX] += size[rootY];
+        }
+        else{ // Dont need else if as this will cover both  < and == . In both cases we are making rootY as parent
+            root[rootX] = rootY;
+            size[rootY] += size[rootX];
         }
     }
 
@@ -44,9 +55,8 @@ public class UnionFind {
         return find(x) == find(y);
     }
 
-
     public static void main(String[] args) {
-        UnionFind uf = new UnionFind(10);
+        UnionFindPathCompressionUnionBySize uf = new UnionFindPathCompressionUnionBySize(10);
         // 1-2-5-6-7 3-8-9 4
         uf.union(1, 2);
         uf.union(2, 5);
