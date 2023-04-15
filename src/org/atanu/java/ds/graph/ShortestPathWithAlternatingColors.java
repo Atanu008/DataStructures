@@ -33,7 +33,7 @@ public class ShortestPathWithAlternatingColors {
         }
 
         Queue<int[]> queue = new LinkedList<>();
-        boolean[][] visited = new boolean[n][2];// One Node can have possiblu Two edges [n][2] will record both state
+        boolean[][] visited = new boolean[n][2];// One Node can have possible Two edges [n][2] will record both state
         // Mark the first Node visited
         visited[0][0] = true;
         visited[0][1] = true;
