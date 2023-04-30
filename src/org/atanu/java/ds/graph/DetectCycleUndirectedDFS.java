@@ -2,6 +2,17 @@ package org.atanu.java.ds.graph;
 
 //https://www.techiedelight.com/check-undirected-graph-contains-cycle-not/
 //https://www.udemy.com/course/graph-theory-algorithms-for-competitive-programming/learn/lecture/27022082#announcements
+// https://www.udemy.com/course/graph-theory-algorithms-for-competitive-programming/learn/lecture/26857748#overview
+
+// This back-edge concept will not work for directed graphs (check few minutes from 2 min)
+// Check https://www.udemy.com/course/graph-theory-algorithms-for-competitive-programming/learn/lecture/26857760#overview
+// suppose there is a directed edge from 2 -> 1.
+// We start DFS from 1 and mark it visited
+// Now we start from 2 and goes to 1
+// But one is visited and NOT 2's parent , so according to this algorithm this is a cycle
+// Bit its not a cycle ,
+// So this algorithm does not work for directed graphs
+
 public class DetectCycleUndirectedDFS {
 
     private static boolean hasCycle(int node, int parent, Graph graph, boolean[] visited) {
@@ -18,6 +29,7 @@ public class DetectCycleUndirectedDFS {
             // if neighbour is discovered, and neighbour is not a parent
             else if(neighbour != parent){
                 // we found a back-edge (cycle)
+                // Back-edge denotes a cycle in graph
                 System.out.println("Node "+ node +" Parent "+parent+" Neighbour "+ neighbour);
                 return true;
             }

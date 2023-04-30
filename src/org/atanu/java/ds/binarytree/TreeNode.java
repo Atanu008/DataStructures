@@ -2,8 +2,8 @@ package org.atanu.java.ds.binarytree;
 
 public class TreeNode {
 
-    int val;
-    TreeNode left, right;
+    public int val;
+    public TreeNode left, right;
 
     // Function to create a new binary tree node having given key
     public TreeNode(int key) {

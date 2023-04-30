@@ -1,0 +1,81 @@
+package org.atanu.java.ds.graph.bridgesandarticulationpoint;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+// https://leetcode.com/problems/critical-connections-in-a-network/description/
+// Leetcode 1192
+public class CriticalConnectionsInANetwork {
+
+    public List<List<Integer>> criticalConnections(int n, List<List<Integer>> connections) {
+
+        List<List<Integer>> adjList = new ArrayList<>();
+        // Build the Graph from Connection
+        buildGraph(n, connections, adjList);
+
+        boolean[] visited = new boolean[n];
+        int[] discovered = new int[n];
+        int[] low = new int[n];
+        List<List<Integer>> bridges = new ArrayList<>();
+        // Start DFS , this loop is there as there can be disjoint sets
+        for(int i = 0; i < n; i++){
+            if(!visited[i]){
+                dfs(i, -1, 1, adjList, visited, discovered, low, bridges);
+            }
+        }
+
+        return bridges;
+    }
+
+    private void dfs(int currentNode, int parent, int time, List<List<Integer>> adjList, boolean[] visited, int[] discovered, int[] low, List<List<Integer>> bridges) {
+
+        visited[currentNode] = true;
+        // set discovery time and low of current currentNode as time.
+        discovered[currentNode] = time;
+        low[currentNode] = time;
+        time++; //increment the time variable
+
+        for(int child : adjList.get(currentNode)){
+
+            // the child_node has been not been visited before
+            // Forward edge in the tree
+            // Do DFS
+            if(!visited[child]){
+                dfs(child, currentNode, time, adjList, visited, discovered, low, bridges);
+                // Check if the subtree rooted with child has a connection to one of the ancestors of currentNode
+                // low[child] may point to ancestors of currentNode via any back-edge
+                // i.e currentNode also can connect to that ancestors via this child and via the back-edge of the child
+                // So once dfs is completed, we take the min low of neighbour and it own self
+                // i.e low[child] might be an ancestor of currentNode
+                low[currentNode] = Math.min(low[currentNode], low[child]);
+                // in case the lowest reach time is greater than current node's inTime
+                // that means we can't reach from neighbour to this current node if this current->next
+                // edge is removed , so its a bridge edge
+                if(low[child] > discovered[currentNode]){
+                    bridges.add(Arrays.asList(currentNode, child));
+                }
+            }
+
+            // if child node has been visited before it is not parent , means that we found an ancestor
+            // then its a back-edge
+            else if(child != parent){
+                // As there can be many back-edges, finds the ancestor with the least discovery time
+                low[currentNode] = Math.min(low[currentNode], discovered[child]);
+            }
+        }
+    }
+    private void buildGraph(int n, List<List<Integer>> connections, List<List<Integer>> adjList){
+
+        for(int i = 0; i < n; i++){
+            adjList.add(new ArrayList<>());
+        }
+        for(int i = 0; i < connections.size(); i++){
+            int nodeA = connections.get(i).get(0);
+            int nodeB = connections.get(i).get(1);
+
+            adjList.get(nodeA).add(nodeB);
+            adjList.get(nodeB).add(nodeA);
+        }
+    }
+}
