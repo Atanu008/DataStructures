@@ -19,6 +19,8 @@ import java.util.List;
 
 public class Bridges {
 
+    private int time = 1;
+
     public static void main(String[] args) {
         Bridges bridges = new Bridges();
         int n = 4;
@@ -62,14 +64,14 @@ public class Bridges {
         List<List<Integer>> bridges = new ArrayList<>();
         for(int i = 0; i < n; i++){
             if(!visited[i]){
-                dfs(i, -1, 1, adjList, visited, discovered, low, bridges);
+                dfs(i, -1, adjList, visited, discovered, low, bridges);
             }
         }
 
         bridges.forEach(System.out::println);
     }
 
-    private void dfs(int currentNode, int parent, int time, List<List<Integer>> adjList, boolean[] visited, int[] discovered, int[] low, List<List<Integer>> bridges) {
+    private void dfs(int currentNode, int parent, List<List<Integer>> adjList, boolean[] visited, int[] discovered, int[] low, List<List<Integer>> bridges) {
 
         visited[currentNode] = true;
         // set discovery time and low of current currentNode as time.
@@ -83,7 +85,7 @@ public class Bridges {
             // Forward edge in the tree
             // Do DFS
             if(!visited[child]){
-                dfs(child, currentNode, time, adjList, visited, discovered, low, bridges);
+                dfs(child, currentNode, adjList, visited, discovered, low, bridges);
                 // Check if the subtree rooted with child has a connection to one of the ancestors of currentNode
                 // low[child] may point to ancestors of currentNode via any back-edge
                 // i.e currentNode also can connect to that ancestors via this child and via the back-edge of the child

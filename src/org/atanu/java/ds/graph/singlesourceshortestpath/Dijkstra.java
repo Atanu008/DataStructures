@@ -1,4 +1,4 @@
-package org.atanu.java.ds.graph;
+package org.atanu.java.ds.graph.singlesourceshortestpath;
 
 import java.util.*;
 

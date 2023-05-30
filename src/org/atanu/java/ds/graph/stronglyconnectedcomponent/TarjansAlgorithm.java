@@ -5,13 +5,41 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
-// https://www.topcoder.com/thrive/articles/tarjans-algorithm-for-strongly-connected-components
+// Back edges :  point from a node to one of its ancestors in the DFS tree.
+// Forward edges : point from a node to one of its descendants.
+// Cross edges : point from a node to a previously visited node that is neither an ancestor nor a descendant.
+
+// https://www.topcoder.com/thrive/articles/tarjans-algorithm-for-strongly-connected-components (why stack is needed explained)
 // https://www.baeldung.com/cs/scc-tarjans-algorithm
 // https://www.geeksforgeeks.org/tarjan-algorithm-find-strongly-connected-components/
 // https://gist.github.com/SuryaPratapK/41adc04cc89a3ffb6e8d2398f6fd2a8d
 // Video : https://www.youtube.com/watch?v=ZeDNSeilf-Y
+
+// ALGORITHM:
+// To cope with the random traversal order of the DFS,
+// Tarjan’s algorithm maintains a stack of valid nodes from which to update low-link values.
+// Nodes are added to the stack of valid nodes as they are explored for the first time.
+// Nodes are removed from the stack each time a complete SCC is found.
+
+// UPDATE CONDITION FOR LOW-LINK
+// If u and v are nodes in a graph and we were currently exploring u, then our new low-link update condition is:
+// To update node u to node v low-link there has to be a path of edges from u to v and node v must be on the stack.
+
+// Algorithm
+// 1. A dfs is run over the nodes and the subtrees of SCCs are removed and recorded as they are encounered.
+
+// 2. Two values dfs_discovered(u) and dfs_low(u) are maintained for each of the users.
+//    dfs_discovered(u) is the value of the counter when the node u is explored for the first time.
+//    dfs_low(u) stores the lowest dfs_discovered reachable from u which is not the part of another SCC.
+
+// 3. As the nodes are explored, they are pushed onto a stack.
+// 4. The unexplored children of a node are explored and dfs_low(u) is accordingly updated.
+//    A node is encountered with dfs_low(u) == dfs_discovered(u) is the first explored node in its strongly connected component
+//    and all the nodes above it in the stack are popped out and assigned the appropriate SCC number.
+
 public class TarjansAlgorithm {
 
+    private int time = 1; // class level var is needed to track time
     public void stronglyConnectedComponent(int n, List<List<Integer>> edges){
 
         // Discovered Time : Time at which current node was discovered during DFS
@@ -21,25 +49,27 @@ public class TarjansAlgorithm {
         Arrays.fill(discovered, -1);
         // Lowest Time : it is the discovered time of a node which can be traversed by at most one back-edge in current subtree
         int[] low = new int[n];
-        Arrays.fill(discovered, -1); // its not necessary
+        Arrays.fill(low, -1); // its not necessary
 
-        boolean[] inRecursion = new boolean[n];
+        boolean[] inStack = new boolean[n];
         Stack<Integer> stack = new Stack<>();
         List<List<Integer>> adjList = new ArrayList<>();
-        //Build Dirested Graph
+        //Build Directed Graph
         buildGraph(n , edges, adjList);
 
         for(int i = 0; i < n; i++){
             if(discovered[i] == -1){
-                findComponent(i, adjList, discovered, low, inRecursion, stack, 1);
+                findComponent(i, adjList, discovered, low, inStack, stack);
             }
         }
 
+        System.out.println(Arrays.toString(discovered));
+        System.out.println(Arrays.toString(low));
     }
 
-    private void findComponent(int currentNode, List<List<Integer>> adjList, int[] discovered, int[] low, boolean[] inRecursion, Stack<Integer> stack, int time) {
+    private void findComponent(int currentNode, List<List<Integer>> adjList, int[] discovered, int[] low, boolean[] inStack, Stack<Integer> stack) {
 
-        inRecursion[currentNode] = true;
+        inStack[currentNode] = true;
         stack.push(currentNode);
         discovered[currentNode] = time;
         low[currentNode] = time;
@@ -48,14 +78,18 @@ public class TarjansAlgorithm {
         for(int child : adjList.get(currentNode)){
 
             if(discovered[child] == -1){
-                findComponent(child, adjList, discovered, low, inRecursion, stack, time);
+                findComponent(child, adjList, discovered, low, inStack, stack);
                 // Check if the subtree rooted with child has a connection to one of the ancestors of currentNode
                 low[currentNode] = Math.min(low[currentNode], low[child]);
             }
-            // If child is still in recursion tree then there is cycle via a back-edge
-            // update low
-            else if(inRecursion[child]){
-                // As there can be many back-edges, finds the ancestor with the least discovery time
+            // Successor child is in stack S and hence in the current SCC
+            // If w is not on stack, then (currentNode, child) is an edge pointing to an SCC already found and must be ignored
+            // it does not necessarily have to be a back-edge . Doubt ? why so. looks like considering cross-edge
+
+            // update low currentNode as child is in stack means for child in not in different SSC (check step 2 in Algorithm)
+            // Check fourth Graph for better understanding
+            else if(inStack[child]){
+
                 low[currentNode] = Math.min(low[currentNode], discovered[child]);
             }
         }
@@ -63,18 +97,18 @@ public class TarjansAlgorithm {
         // For starting node of the cycle discovered[currentNode] == low[currentNode]
         // all the other nodes low will be less than the discovered time for back-edge, only the head/start will have them same
         // do back track to get the cycle,
-
         if(discovered[currentNode] == low[currentNode]){
             while (stack.peek() != currentNode){
                 int poppedNode = stack.pop();
+
                 System.out.print( poppedNode+ " ");
-                inRecursion[poppedNode] = false; // I dint think this is necessary , as we are doing inRecursion is false in last dfs statement line 68
+                inStack[poppedNode] = false; // mark it as a part of SSC
             }
-            inRecursion[stack.peek()] = false; // I dint think this is necessary , as we are doing inRecursion is false in last dfs statement line 68
+            inStack[stack.peek()] = false; // mark it as a part of SSC
             System.out.println(stack.pop() + " "); // pop currentNode
         }
 
-        inRecursion[currentNode] = false;
+        //inStack[currentNode] = false; , we should not do this, only found SSC items will be marked not is stack
     }
 
     public static void main(String[] args) {
@@ -89,16 +123,16 @@ public class TarjansAlgorithm {
         edges.add(Arrays.asList(0, 3));
         edges.add(Arrays.asList(3, 4));
 
-        System.out.println("SSC in first graph ");
-        tarjansAlgorithm.stronglyConnectedComponent(n , edges);
+        //System.out.println("SSC in first graph ");
+        //tarjansAlgorithm.stronglyConnectedComponent(n , edges);
         edges.clear();
 
         n = 4;
         edges.add(Arrays.asList(0, 1));
         edges.add(Arrays.asList(1, 2));
         edges.add(Arrays.asList(2, 3));
-        System.out.println("\nSSC in second graph ");
-        tarjansAlgorithm.stronglyConnectedComponent(n , edges);
+        //System.out.println("\nSSC in second graph ");
+        //tarjansAlgorithm.stronglyConnectedComponent(n , edges);
         edges.clear();
 
         n = 7;
@@ -110,8 +144,8 @@ public class TarjansAlgorithm {
         edges.add(Arrays.asList(1, 6));
         edges.add(Arrays.asList(3, 5));
         edges.add(Arrays.asList(4, 5));
-        System.out.println("\nSSC in third graph ");
-        tarjansAlgorithm.stronglyConnectedComponent(n , edges);
+        //System.out.println("\nSSC in third graph ");
+        //tarjansAlgorithm.stronglyConnectedComponent(n , edges);
         edges.clear();
 
         n = 11;

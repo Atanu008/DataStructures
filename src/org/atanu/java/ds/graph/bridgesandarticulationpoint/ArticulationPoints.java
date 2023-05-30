@@ -18,6 +18,7 @@ import java.util.List;
 
 public class ArticulationPoints {
 
+    private int time = 1;
     public static void main(String[] args) {
 
         ArticulationPoints articulationPoints = new ArticulationPoints();
@@ -64,7 +65,7 @@ public class ArticulationPoints {
 
         for(int i = 0; i < n; i++){
             if(!visited[i]){
-                dfs(i, -1, 1, adjList, visited, discovered, low, isArticulationPoints);
+                dfs(i, -1, adjList, visited, discovered, low, isArticulationPoints);
             }
         }
 
@@ -76,7 +77,7 @@ public class ArticulationPoints {
         }
     }
 
-    private void dfs(int currentNode, int parent, int time, List<List<Integer>> adjList, boolean[] visited, int[] discovered, int[] low, boolean[] isArticulationPoints) {
+    private void dfs(int currentNode, int parent, List<List<Integer>> adjList, boolean[] visited, int[] discovered, int[] low, boolean[] isArticulationPoints) {
 
         visited[currentNode] = true;
         // set discovery time and low of current currentNode as time.
@@ -92,7 +93,7 @@ public class ArticulationPoints {
             // Do DFS
             if(!visited[child]){
                 numberOfChild++; // increment the child in DFS Tree
-                dfs(child, currentNode, time, adjList, visited, discovered, low, isArticulationPoints);
+                dfs(child, currentNode, adjList, visited, discovered, low, isArticulationPoints);
                 // Check if the subtree rooted with child has a connection to one of the ancestors of currentNode
                 // low[child] may point to ancestors of currentNode via any back-edge
                 // i.e currentNode also can connect to that ancestors via this child and via the back-edge of the child

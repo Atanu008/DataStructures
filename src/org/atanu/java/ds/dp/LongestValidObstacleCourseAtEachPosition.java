@@ -30,13 +30,15 @@ public class LongestValidObstacleCourseAtEachPosition {
         return result;
     }
 
+    // check LowerBoundUpperBound.java for more explanation
+    //upper_bound returns first element in the sorted vector such that it is strictly greater than the element k
     private int upperBoundBinarySearch(List<Integer> nums, int target) {
         int low = 0;
         int high = nums.size() - 1;
 
         while (low < high) {
             int mid = low + (high - low) / 2;
-            if (nums.get(mid) <= target) {
+            if (nums.get(mid) <= target) { // see <= as its in obstacle condition
                 low = mid + 1;
             } else {
                 high = mid; //To Go left High has to move(help) left
