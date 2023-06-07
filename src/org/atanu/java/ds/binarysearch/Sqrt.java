@@ -2,9 +2,17 @@ package org.atanu.java.ds.binarysearch;
 
 //https://leetcode.com/problems/sqrtx/
 //LeetCode 69
+// Video : https://www.youtube.com/watch?v=zdMhGxRWutQ
 public class Sqrt {
 
-    //This implemetation is same as the finding right most element in sorted array
+    // If the sqrt is integer like 7 for 49
+    // then mid * == x would satishfy and mid will be teh answer
+    // But in case where sqrt is not integer (for Eg N = 50)
+    // We need to find largest mid sush that mid * mid < N
+    // As we need to find largest . Need to Go right
+    // Below are the two templates we can use.
+
+    //This implementation is same as the finding right most element in sorted array
     public int mySqrt(int x) {
         if (x == 0)
             return 0;
@@ -24,7 +32,7 @@ public class Sqrt {
 
     }
 
-    //This implemetation is also same as the finding right most element in sorted array
+    //This implementation is also same as the finding right most element in sorted array
     public int mySqrtV2(int x) {
         if (x == 0)
             return 0;

@@ -33,7 +33,6 @@ public class KthSmallestNumberInMultiplicationTable {
         for(int currentRow = 1; currentRow <= row; currentRow++){
             count += Math.min(guessedNumber/currentRow, column);
         }
-
         return count;
     }
 

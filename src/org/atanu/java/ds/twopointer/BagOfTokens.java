@@ -2,9 +2,10 @@ package org.atanu.java.ds.twopointer;
 
 import java.util.Arrays;
 
-//https://leetcode.com/problems/bag-of-tokens/
-//LeetCode 948
-//Video : https://www.youtube.com/watch?v=1GubKefOabc
+// https://leetcode.com/problems/bag-of-tokens/
+// LeetCode 948
+// Video : https://www.youtube.com/watch?v=1GubKefOabc
+
 public class BagOfTokens {
     //Always aim for highest point
     //Sort the tokens so we can buy from lowest & sell from highest which means =>
@@ -13,6 +14,7 @@ public class BagOfTokens {
     //Otherwise, we are finished.
     public int bagOfTokensScore(int[] tokens, int power) {
 
+        // Sort the Array , to have less power in left and more power in right
         Arrays.sort(tokens);
         int left = 0; //will point to the the smallest token as the toneks are sorted now
         int right = tokens.length - 1; //will point to the the largest token as the toneks are sorted now
@@ -30,6 +32,7 @@ public class BagOfTokens {
                 points--;
                 power += tokens[right--];
             } else {
+                // Not enough Power Or Points. return
                 break; // basically return maxPointsGained;
             }
         }

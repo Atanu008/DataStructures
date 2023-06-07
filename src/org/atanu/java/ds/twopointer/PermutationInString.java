@@ -3,11 +3,11 @@ package org.atanu.java.ds.twopointer;
 import java.util.HashMap;
 import java.util.Map;
 
-//https://leetcode.com/problems/permutation-in-string/
-//LeetCode 567
-//Same Pattern used as
-//https://leetcode.com/problems/minimum-window-substring/
-//LeetCode 76
+// https://leetcode.com/problems/permutation-in-string/
+// LeetCode 567
+// Same Pattern used as
+// https://leetcode.com/problems/minimum-window-substring/
+// LeetCode 76
 public class PermutationInString {
 
     public boolean checkInclusion(String t, String s) {
@@ -30,16 +30,15 @@ public class PermutationInString {
                 if (map.get(ch) >= 0) {
                     count--;
                 }
-
             }
-            //When we have found all the pattern chars in Source
-            //Return true
-            if(count == 0){
-                return true;
-            }
-            //If the window size is greater than the length of the pattern, shrink the window to make it equal to the pattern’s size
-            if (windowEnd >= t.length() - 1) {
 
+            while(count == 0) {
+                // Count 0 means we have all the character from pattern
+                // But it if the window length is same as the pattern/target
+                // then the window is the anagram/permutation of the pattern
+                if(windowEnd - windowStart + 1 == t.length()){
+                    return true;
+                }
                 char startChar = s.charAt(windowStart);
 
                 if(map.containsKey(startChar)){
@@ -62,11 +61,11 @@ public class PermutationInString {
 
     public static void main(String[] args) {
         PermutationInString permutationInString = new PermutationInString();
-        String s1 = "ab", s2 = "eidbaooo";
-        System.out.println(permutationInString.checkInclusion(s1,s2));
-        s1 = "ab";
-        s2 = "eidboaoo";
-        System.out.println(permutationInString.checkInclusion(s1,s2));
+        String t = "ab", s = "eidbaooo";
+        System.out.println(permutationInString.checkInclusion(t,s));
+        t = "ab";
+        s = "eidboaoo";
+        System.out.println(permutationInString.checkInclusion(t,s));
 
     }
 }

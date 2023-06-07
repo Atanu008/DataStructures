@@ -5,10 +5,11 @@ import java.util.Arrays;
 //https://leetcode.com/problems/heaters/description/
 //Leetcdoe 475
 
-//The Goal is to find the maximum radius of a heater
-//For each house, find its position between those heaters (thus we need the heaters array to be sorted).
-//Calculate the distances between this house and left heater and right heater, get a MIN value of those two values. Corner cases are there is no left or right heater.
-//Get MAX value among distances in step 2. It's the answer.
+// The Goal is to find the maximum radius of a heater
+// For each house, find its position between those heaters (thus we need the heaters array to be sorted).
+// Calculate the distances between this house and left heater and right heater, get a MIN value of those two values.
+// Corner cases are there is no left or right heater.
+// Get MAX value among distances in step 2. It's the answer.
 
 //Video : https://www.youtube.com/watch?v=xR2SzAmiUpM&t=1281s . will get the idea in first 5 minute itself
 
@@ -45,10 +46,10 @@ public class Heaters {
                 return heaterPosition;
             }
             else if(heaters[mid] < house){
-                heaterPosition.justLeftHeater = heaters[mid];
+                heaterPosition.justLeftHeater = heaters[mid]; // Basically Getting Floor
                 low = mid + 1;
             }else{
-                heaterPosition.justRightHeater = heaters[mid];
+                heaterPosition.justRightHeater = heaters[mid]; // Basically Getting Ceiling
                 high = mid - 1;
             }
         }

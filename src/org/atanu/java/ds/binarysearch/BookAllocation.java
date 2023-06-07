@@ -30,7 +30,7 @@ public class BookAllocation {
             max = Math.max(max, a);
         }
 
-        // Low can not be less than the maximum elemnt of the Array
+        // Low can not be less than the maximum element of the Array
         // Can be set to zero
         int low = max;
         // If one day then the max range would be summation of all the elements
@@ -61,12 +61,12 @@ public class BookAllocation {
             if (sum > mid) {
                 // Now sum is greater than mid , that means student wont be assigned this page
                 // We need a new student,
-                //Add this weight to sum
+                // Add this weight to sum
                 requiredStudent++;
-                sum = books[i]; // update curr_sum
+                sum = books[i]; // update curr_sum . books[i] belongs to new student now
             }
         }
-        return requiredStudent <= students;
+        return requiredStudent == students;
     }
 
     // using (high < low Template)
@@ -84,9 +84,8 @@ public class BookAllocation {
         int high = sum;
 
         while(low < high) {
-
             int mid = low + (high - low) / 2;
-
+            System.out.println("Mid "+ mid);
             if(isPossible(books, mid, students)){
                 high = mid;
             }else{
@@ -103,9 +102,14 @@ public class BookAllocation {
         int[] books = {12, 34, 67, 90};
 
         int students = 2; //No. of students
-        System.out.println("Minimum number of pages = " +
-                bookAllocation.allocatePages(books, students));
+        //System.out.println("Minimum number of pages = " +
+           //     bookAllocation.allocatePages(books, students));
 
+        //System.out.println("Minimum number of pages = " +
+          //      bookAllocation.allocatePages_v2(books, students));
+
+        books = new int[]{40, 30, 30};
+        students = 3;
         System.out.println("Minimum number of pages = " +
                 bookAllocation.allocatePages_v2(books, students));
     }

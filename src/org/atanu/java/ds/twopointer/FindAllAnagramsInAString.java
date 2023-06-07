@@ -35,14 +35,14 @@ public class FindAllAnagramsInAString {
                 }
 
             }
-            //When we have found all the pattern chars in Source
-            //Return true
-            if(count == 0){
-                anagramIndexes.add(windowStart);
-            }
-            //If the window size is greater than the length of the pattern, shrink the window to make it equal to the pattern’s size
-            if (windowEnd >= p.length() - 1) {
 
+            while(count == 0) {
+                // Count 0 means we have all the character from pattern
+                // But it if the window length is same as the pattern
+                // then the window is the anagram of the pattern
+                if(windowEnd - windowStart + 1 == p.length()){
+                    anagramIndexes.add(windowStart);
+                }
                 char startChar = s.charAt(windowStart);
 
                 if(map.containsKey(startChar)){

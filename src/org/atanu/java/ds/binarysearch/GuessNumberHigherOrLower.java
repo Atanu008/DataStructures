@@ -11,18 +11,19 @@ public class GuessNumberHigherOrLower {
         while(low <= high){
 
             int mid = low + (high - low)/2;
-
-            if(guess(mid) == 0){
+            int gussed = guess(mid);
+            // Correct Guess
+            if(gussed == 0){
                 return mid;
             }
+            // Guess is Higher , Need to search left
             else if(guess(mid) == -1){
                 high = mid -1;
             }
-            else{
+            else{ //Guess is Lower , Need to search Right
                 low = mid +1;
             }
         }
-
         return -1;
 
     }

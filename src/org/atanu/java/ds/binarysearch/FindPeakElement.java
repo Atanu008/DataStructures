@@ -2,10 +2,14 @@ package org.atanu.java.ds.binarysearch;
 
 //https://leetcode.com/problems/find-peak-element/
 //LeetCode 162
-//Video : https://www.youtube.com/watch?v=r7U0N2EE_l8
+
 //Caould ble aso Termed as Bitonic Array Maximum : https://www.educative.io/courses/grokking-the-coding-interview/RMyRR6wZoYK
+
+// Looks like Leetcode 162 and 852 essentially same problem
+
 public class FindPeakElement {
 
+    //Video : https://www.youtube.com/watch?v=r7U0N2EE_l8
     public int findPeakElement(int[] nums) {
 
         int low = 0;
@@ -14,7 +18,7 @@ public class FindPeakElement {
         while(low < high){
             int mid = low + (high -low)/2;
 
-            //If mid is sgreater than next then there is 100 percentage there will be atleast one pick in left
+            //If mid is greater than next then there is 100 percentage there will be at least one pick in left
             //And we are not sure about right. So lets search Left by doing  high = mid;
             if(nums[mid] > nums[mid +1]){
                 high = mid;
@@ -26,29 +30,52 @@ public class FindPeakElement {
 
         return high;
     }
-    //Time Comlexity O(n). Linear Search
-    public static void findPeakElementSol1(int[] arr) {
 
-        int first = arr[0];
-        int last = arr[arr.length - 1];
+    //Iterative Version
 
-        if (arr.length > 2 && first > arr[1])
-            System.out.println(first);
-        if (arr.length > 2 && last > arr[arr.length - 2])
-            System.out.println(last);
+    public int findPeakElement_v2(int[] nums) {
 
-        for (int i = 1; i < arr.length - 1; i++) {
+        int low = 0;
+        int high = nums.length - 1;
 
-            if (arr[i] >= arr[i - 1] && arr[i] >= arr[i + 1])
-                System.out.println("Peak Element is " + arr[i]);
+        while(low <= high) {
+
+            int mid = low + (high - low) / 2;
+
+            // check if mid element is greater than its neighbors
+            // It also covers the single element case
+            if((mid == 0 || nums[mid - 1] < nums[mid]) && (mid == nums.length - 1 || nums[mid + 1] < nums[mid])){
+                return mid;
+                // If middle element is not peak and its left neighbor is
+                // greater than it,then left half must have a peak element
+            }else if(mid == 0 || nums[mid - 1] > nums[mid]) {
+                high = mid - 1;
+            }
+            // If middle element is not peak and its right neighbor
+            // is greater than it, then right half must have a peak
+            else{
+                low = mid + 1;
+            }
         }
+        return -1;
     }
 
-    public static int findPeakElementSol2(int[] A, int low, int high) {
+    // Recursive Version
+    public int findPeakElement_v3(int[] nums) {
+
+        return findPeakElementUtil(nums, 0, nums.length - 1);
+    }
+
+    //Binary search starting with left = 0, right = n-1, mid = (left + right) / 2
+    //If nums[mid-1] < nums[mid] && nums[mid] > nums[mid+1] return mid as peak.
+    //Else if nums[mid-1] > nums[mid] then search peak on the Left side.
+    // Otherwise Search in Right side
+    public int findPeakElementUtil(int[] A, int low, int high) {
 
         int mid = low + (high - low) / 2;
 
         // check if mid element is greater than its neighbors
+        // It also covers the single element case
         if ((mid == 0 || A[mid - 1] <= A[mid]) &&
                 (mid == A.length - 1 || A[mid + 1] <= A[mid])) {
             return mid;
@@ -57,23 +84,21 @@ public class FindPeakElement {
         // If middle element is not peak and its left neighbor is
         // greater than it,then left half must have a peak element
         if (mid > 0 && A[mid - 1] > A[mid]) {
-            return findPeakElementSol2(A, low, mid - 1);
+            return findPeakElementUtil(A, low, mid - 1);
         }
 
         // If middle element is not peak and its right neighbor
         // is greater than it, then right half must have a peak
-        // element
-        return findPeakElementSol2(A, mid + 1, high);
+        return findPeakElementUtil(A, mid + 1, high);
 
     }
 
     public static void main(String[] args) {
+        FindPeakElement findPeakElement = new FindPeakElement();
         int arr[] = {1, 2, 1, 4, 1, 0};
         //	int arr[] = {1, 3, 5, 10, 9, 20};
 
-        findPeakElementSol1(arr);
-
-        int index = findPeakElementSol2(arr, 0, arr.length - 1);
+        int index = findPeakElement.findPeakElement_v3(arr);
 
         System.out.println("Peak Element is " + arr[index]);
 

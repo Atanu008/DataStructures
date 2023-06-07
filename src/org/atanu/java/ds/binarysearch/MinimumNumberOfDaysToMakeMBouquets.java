@@ -21,9 +21,9 @@ public class MinimumNumberOfDaysToMakeMBouquets {
             high = Math.max(high, day);
         }
 
-        //Need Minumum. To minimize we need to go left.
+        //Need Minimum. To minimize we need to go left.
         //High will play that role.
-        //If we can make bouqet with Mid then we will set high to mid. As this is possible candidate
+        //If we can make bouquet with Mid then we will set high to mid. As this is possible candidate
         while(low < high){
 
             int mid = low + (high - low)/2;
@@ -49,8 +49,7 @@ public class MinimumNumberOfDaysToMakeMBouquets {
             if(day <= midDay){
                 flowersCollected++;
             }
-            //set flowersCollected to 0 if we can not take this as the steak has to be in sequence
-            else{
+            else{//set flowersCollected to 0 if we can not take this as the steak has to be in sequence
                 flowersCollected = 0;
             }
 

@@ -80,7 +80,6 @@ public class FirstLastPositionInSortedArray {
     }
 
     //●	When can we have infinite loops - whenever mid is not making progress.
-
     public int searchRightV2(int[] nums, int target) {
         int low = 0;
         int high = nums.length - 1;

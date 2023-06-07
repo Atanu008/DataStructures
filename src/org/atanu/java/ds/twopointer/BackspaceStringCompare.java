@@ -1,7 +1,7 @@
 package org.atanu.java.ds.twopointer;
 
-//https://leetcode.com/problems/backspace-string-compare/
-//LeetCode 844
+// https://leetcode.com/problems/backspace-string-compare/
+// LeetCode 844
 //Stack Solution is present in Stack
 
 //The time complexity of the above algorithm will be O(M+N)O(M+N)
@@ -22,15 +22,16 @@ public class BackspaceStringCompare {
 
             int i1 = getIndexOfNextValidChar(s, index1);
             int i2 = getIndexOfNextValidChar(t, index2);
-
+            // reached the end of both the strings
             if (i1 < 0 && i2 < 0) {
                 return true;
             }
-
+            // reached the end of one of the strings
             if (i1 < 0 || i2 < 0) {
                 return false;
             }
-
+            // check if the characters are equal
+            // Return false if NOT Equal
             if (s.charAt(i1) != t.charAt(i2)) {
                 return false;
             }
@@ -46,12 +47,12 @@ public class BackspaceStringCompare {
         int backspaceCount = 0;
         while (index >= 0) {
 
-            if (str.charAt(index) == '#') {
+            if (str.charAt(index) == '#') { // found a backspace character
                 backspaceCount++;
-            } else if (backspaceCount > 0) {
+            } else if (backspaceCount > 0) { // Current Char a non-backspace character and backspace before. so remove current char
                 backspaceCount--;
             } else {
-                break;
+                break; // if backspace is computed or no backspace
             }
 
             index--;

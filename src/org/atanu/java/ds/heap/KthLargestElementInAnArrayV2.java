@@ -1,7 +1,5 @@
 package org.atanu.java.ds.heap;
 
-import org.atanu.java.ds.matrix.SearchSorted2DMatrix;
-
 import java.util.Random;
 
 //Using Quick Select

@@ -1,8 +1,9 @@
 package org.atanu.java.ds.binarysearch;
 
-////Same as Book Allocation and CapacityToShipPackagesWithinDDays
-//https://leetcode.com/problems/split-array-largest-sum/
-//LeetCode 410
+// Same as Book Allocation and CapacityToShipPackagesWithinDDays
+// Video : https://www.youtube.com/watch?v=eq6dAJefOqc
+// https://leetcode.com/problems/split-array-largest-sum/
+// LeetCode 410
 public class SplitArrayLargestSum {
 
     public int splitArray(int[] nums, int m) {
@@ -33,6 +34,7 @@ public class SplitArrayLargestSum {
         return ans;
     }
 
+    // check if it is possible to split to m subarrays which each subarry's sum less than or equal to mid
     private boolean isPossible(int[] nums, int mid, int m) {
 
         int requiredSubArray = 1;
@@ -40,8 +42,7 @@ public class SplitArrayLargestSum {
         for (int i = 0; i < nums.length; i++) {
             sum += nums[i];
             if (sum > mid) {
-                //we need more days to accomodate the mid
-                //Add this weight to sum
+                // sub array exceeding mid , create a new sb array
                 requiredSubArray++;
                 sum = nums[i];
             }
@@ -68,7 +69,7 @@ public class SplitArrayLargestSum {
         int high = sum;
         while (low < high) {
             int mid = low + (high - low) / 2;
-            if (ok(nums, mid, m)) {
+            if (ok(nums, mid, m)) { // Possible to have subarray <= m having mid as maximum subarray sum
                 high = mid;
             } else {
                 low = mid + 1;
@@ -82,14 +83,12 @@ public class SplitArrayLargestSum {
 
         int requiredSubArray = 1;
         int sum = 0;
-
         for (int i = 0; i < nums.length; i++) {
-
             if(sum + nums[i] > mid){
+                // sub array exceeding mid , create a new sb array
                 requiredSubArray++;
                 sum = 0;
             }
-
             sum += nums[i];
         }
         return requiredSubArray <= m;

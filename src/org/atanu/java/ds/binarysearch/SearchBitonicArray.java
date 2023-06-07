@@ -1,6 +1,8 @@
 package org.atanu.java.ds.binarysearch;
 
-//https://www.educative.io/courses/grokking-the-coding-interview/7n3BlOvqW0r
+// https://www.educative.io/courses/grokking-the-coding-interview/7n3BlOvqW0r
+// I think its same as https://leetcode.com/problems/find-in-mountain-array/
+
 public class SearchBitonicArray {
 
     public static int search(int[] arr, int key) {
@@ -13,8 +15,8 @@ public class SearchBitonicArray {
         return binarySearch(arr, maxIndex + 1, arr.length - 1, key);
     }
 
-    //// find index of the maximum value in a bitonic array
-    //Same as finding Peak
+    // find index of the maximum value in a bitonic array
+    // Same as finding Peak
     public static int findMaxIndex(int[] arr) {
 
         int low = 0;

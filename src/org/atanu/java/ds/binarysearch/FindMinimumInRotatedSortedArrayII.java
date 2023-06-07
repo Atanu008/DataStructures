@@ -12,12 +12,14 @@ public class FindMinimumInRotatedSortedArrayII {
         while (low < high){
             int mid = low + (high -low)/2;
 
-            //No possible solution here. we can discard the left part as it is not sarted as mid greater than high
+            // No possible solution In Left Part.
+            // Right part as it is not sorted as mid greater than high . elemnt will be in Rihht part only
+            // Discard the left part
             if(nums[mid] > nums[high]){
                 low = mid+1;
             }
             else if(nums[mid] < nums[high]){
-                //If arr[mid] is <= arr[high] so it is sorted and psooible solution.
+                //If arr[mid] is <= arr[high] so it is sorted and NOT Possible solution.
                 //so we need to move left . high is will to move left
                 high = mid;
             }

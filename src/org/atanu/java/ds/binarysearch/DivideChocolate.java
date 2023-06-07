@@ -3,6 +3,14 @@ package org.atanu.java.ds.binarysearch;
 //https://leetcode.com/problems/divide-chocolate/
 //LeetCode 1231
 
+//You have one chocolate bar that consists of some chunks. Each chunk has its own sweetness given by the array sweetness.
+//
+//You want to share the chocolate with your k friends so you start cutting the chocolate bar into k + 1 pieces using k cuts, each piece consists of some consecutive chunks.
+//
+//Being generous, you will eat the piece with the minimum total sweetness and give the other pieces to your friends.
+//
+//Find the maximum total sweetness of the piece you can get by cutting the chocolate bar optimally.
+
 //Same as Book Allocation Types. Here its to maximize i.e Go Right
 public class DivideChocolate {
 
@@ -20,10 +28,10 @@ public class DivideChocolate {
             high +=  sweet;
         }
 
-        //Check for maximum sweetness for which we can distribute to K
+        // Check for maximum sweetness for which we can distribute to K
         // Maximize the sweetness
         // So We need to go right . and Low will play the role
-        // Going right; mid = low + (high - low)/2 +1 . (Plus 1 to avoind Integer Division issue)
+        // Going right; mid = low + (high - low)/2 +1 . (Plus 1 to avoid Integer Division issue)
         while(low < high){
 
             int mid = low + (high - low)/2 +1;
@@ -47,7 +55,7 @@ public class DivideChocolate {
         for(int sweet: sweetness){
 
             curSweetness += sweet;
-            //Cut a chunk when sweetness greater than equal to Traget
+            //Cut a chunk when sweetness greater than equal to Target
             if(curSweetness >= targetSweetness){
                 chunk++;
                 curSweetness = 0;

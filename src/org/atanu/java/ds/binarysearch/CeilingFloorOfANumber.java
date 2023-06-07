@@ -1,59 +1,96 @@
 package org.atanu.java.ds.binarysearch;
 
+//https://www.techiedelight.com/find-floor-ceil-number-sorted-array/
+//This is kinda more intuitive than version 1
 public class CeilingFloorOfANumber {
 
-    public int searchCeilingOfANumber(int[] arr, int key) {
-        if (key > arr[arr.length - 1]) // if the 'key' is bigger than the biggest element
-            return -1;
+    // Function to find the ceil of `x` in a sorted array nums[],
+    // i.e., the smallest integer greater than or equal to `x`
+    // Institution:  Mark Ceil while doing search to Left
+    public static int getCeil(int[] nums, int x)
+    {
+        // search space is nums[left…right]
+        int left = 0, right = nums.length - 1;
 
-        int start = 0, end = arr.length - 1;
-        while (start <= end) {
-            int mid = start + (end - start) / 2;
-            if (key < arr[mid]) {
-                end = mid - 1;
-            } else if (key > arr[mid]) {
-                start = mid + 1;
-            } else { // found the key
-                return mid;
+        // initialize ceil to -1
+        int ceil = -1;
+
+        // loop till the search space is exhausted
+        while (left <= right)
+        {
+            // find the mid-value in the search space
+            int mid = (left + right) / 2;
+
+            // if `x` is equal to the middle element, it is the ceil
+            if (nums[mid] == x) {
+                return nums[mid];
+            }
+
+            // if `x` is less than the middle element, the ceil exists in the
+            // subarray nums[left…mid]; update ceil to the middle element
+            // and reduce our search space to the left subarray nums[left…mid-1]
+            else if (x < nums[mid])
+            {
+                ceil = nums[mid];
+                right = mid - 1;
+            }
+
+            // if `x` is more than the middle element, the ceil exists in the
+            // right subarray nums[mid+1…right]
+            else {
+                left = mid + 1;
             }
         }
-        // since the loop is running until 'start <= end', so at the end of the while loop, 'start == end+1'
-        // we are not able to find the element in the given array, so the next big number will be arr[start]
-        return start;
+
+        return ceil;
     }
 
-    public int searchFloorOfANumber(int[] arr, int key) {
-        if (key < arr[0]) // if the 'key' is smaller than the smallest element
-            return -1;
+    // Function to find the floor of `x` in a sorted array nums[],
+    // i.e., the largest integer less than or equal to `x`
+    // Institution:  Mark Floor while doing search to Right
+    public static int getFloor(int[] nums, int x)
+    {
+        int left = 0, right = nums.length - 1;
 
-        int start = 0, end = arr.length - 1;
-        while (start <= end) {
-            int mid = start + (end - start) / 2;
-            if (key < arr[mid]) {
-                end = mid - 1;
-            } else if (key > arr[mid]) {
-                start = mid + 1;
-            } else { // found the key
-                return mid;
+        // initialize floor to -1
+        int floor = -1;
+
+        // loop till the search space is exhausted
+        while (left <= right)
+        {
+            // find the mid-value in the search space
+            int mid = (left + right) / 2;
+
+            // if `x` is equal to the middle element, it is the floor
+            if (nums[mid] == x) {
+                return nums[mid];
+            }
+
+            // if `x` is less than the middle element, the floor exists in the left
+            // subarray nums[left…mid-1]
+            else if (x < nums[mid]) {
+                right = mid - 1;
+            }
+
+            // if `x` is more than the middle element, the floor exists in the
+            // subarray nums[mid…right]; update floor to the middle element
+            // and reduce our search space to the right subarray nums[mid+1…right]
+            else {
+                floor = nums[mid];
+                left = mid + 1;
             }
         }
-        // since the loop is running until 'start <= end', so at the end of the while loop, 'start == end+1'
-        // we are not able to find the element in the given array, so the next smaller number will be arr[end]
-        return end;
+
+        return floor;
     }
 
-    public static void main(String[] args) {
-        CeilingFloorOfANumber ceilingFloorOfANumber = new CeilingFloorOfANumber();
-        System.out.println(ceilingFloorOfANumber.searchCeilingOfANumber(new int[] { 4, 6, 10 }, 6));
-        System.out.println(ceilingFloorOfANumber.searchCeilingOfANumber(new int[] { 1, 3, 8, 10, 15 }, 12));
-        System.out.println(ceilingFloorOfANumber.searchCeilingOfANumber(new int[] { 4, 6, 10 }, 17));
-        System.out.println(ceilingFloorOfANumber.searchCeilingOfANumber(new int[] { 4, 6, 10 }, -1));
-        System.out.println(ceilingFloorOfANumber.searchCeilingOfANumber(new int[] { 4, 6, 10 }, 11));
+    public static void main(String[] args)
+    {
+        int[] nums = { 1, 4, 6, 8, 9 };
 
-        System.out.println(ceilingFloorOfANumber.searchFloorOfANumber(new int[] { 1, 3, 5, 6 }, 7));
-        System.out.println(ceilingFloorOfANumber.searchFloorOfANumber(new int[] { 4, 6, 10 }, 7));
-        System.out.println(ceilingFloorOfANumber.searchFloorOfANumber(new int[] { 1, 3, 8, 10, 15 }, 12));
-        System.out.println(ceilingFloorOfANumber.searchFloorOfANumber(new int[] { 4, 6, 10 }, 17));
-        System.out.println(ceilingFloorOfANumber.searchFloorOfANumber(new int[] { 4, 6, 10 }, -1));
+        for (int i = 0; i <= 10; i++) {
+            System.out.println("Number " + i + " —> ceil is " + getCeil(nums, i)
+                    + ", floor is " + getFloor(nums, i));
+        }
     }
 }

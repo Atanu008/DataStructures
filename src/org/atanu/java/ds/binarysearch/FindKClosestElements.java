@@ -50,6 +50,7 @@ public class FindKClosestElements {
         return result;
     }
 
+
     //Find the right Index
     //Collect elements from Left and Right
     public List<Integer> findClosestElementsV2(int[] arr, int k, int x) {

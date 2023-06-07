@@ -52,6 +52,7 @@ public class FindMinimumInRotatedSortedArray {
         return -1; //Ca return 0 also i.e array is not rotated
     }
 
+    // Institution : Min will always lay on non sorted side. Discard teh sorted side
     public int findMinV2(int[] arr) {
         int low = 0;
         int high = arr.length - 1;
@@ -60,17 +61,30 @@ public class FindMinimumInRotatedSortedArray {
         while (low < high){
             int mid = low + (high -low)/2;
 
-            //No possible solution here. we can discard the left part as it is not sarted as mid greater than high
+            // No possible solution in left half as it is sorted
+            // Right Half is not sorted
+            // we can discard the left part as it is not sorted as mid greater than high
+            // example:  [3,4,5,6,7,8,9,1,2]
+            // in the first iteration, when we start with mid index = 4, right index = 9.
+            // if nums[mid] > nums[right], we know that at some point to the right of mid,
+            // the pivot must have occurred, which is why the values wrapped around
+            // so that nums[right] is less then nums[mid]
+
             if(arr[mid] > arr[high]){
                 low = mid+1;
             }
             else{
-                //If arr[mid] is < arr[high] so it is sorted and possible solution.
+
+                //If arr[mid] is <= arr[high] so Right part is sorted and NO possible solution
                 //so we need to move left . high is will to move left
+                //# example: [8,9,1,2,3,4,5,6,7]
+                // in the first iteration, when we start with mid index = 4, right index = 9.
+                // if nums[mid] <= nums[right], we know the numbers continued increasing to
+                // the right of mid, so they never reached the pivot and wrapped around.
+                // therefore, we know the pivot must be at index <= mid.
                 high = mid;
             }
         }
-
         return arr[high];
 
     }

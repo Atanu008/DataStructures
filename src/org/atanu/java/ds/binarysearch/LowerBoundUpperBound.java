@@ -36,7 +36,8 @@ public class LowerBoundUpperBound {
         int l = 0, r = list.size() - 1;
         while (l < r) {
             int mid = (l + r) / 2;
-            //Eliminate the lower Elements. as we need find the lower bound.
+            // as mid is smaller than the target , then all the elements from left would be smaller too
+            // Eliminate the left lower Elements, as we need find the lower bound(element just >= target).
             if (list.get(mid) < target)
                 l = mid + 1;
             else

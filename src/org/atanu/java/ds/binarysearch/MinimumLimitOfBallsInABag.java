@@ -39,11 +39,15 @@ public class MinimumLimitOfBallsInABag {
 
         int requiredOperations = 0;
         for(int num : nums){
+            // no. of operations required to bring n less than or eq to curr assumed penalty
             int minCut = num / penalty;
+            // Suppose you have 12 balls in a bag and the maximum number of balls in a single bag you want is 6.
+            // So for a bag with balls 12, we only need one operation
+            // so that every new bag has balls less than equal to 6, 12 ->6+6.
+            // But 12/6 is 2 That's why subtract one.
             if(num % penalty == 0){
                 minCut--;
             }
-
             requiredOperations += minCut;
         }
 

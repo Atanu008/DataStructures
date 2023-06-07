@@ -11,7 +11,6 @@ public class FirstBadVersion {
             int high = n;
 
             while(low < high){
-
                 int mid = low + (high -low)/2;
                 if(isBadVersion(mid)){
                     high = mid;
@@ -20,7 +19,6 @@ public class FirstBadVersion {
                     low = mid + 1;
                 }
             }
-
             return high;
         }
 

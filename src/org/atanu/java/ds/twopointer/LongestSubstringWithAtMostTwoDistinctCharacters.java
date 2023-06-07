@@ -22,7 +22,9 @@ public class LongestSubstringWithAtMostTwoDistinctCharacters {
             char endChar = s.charAt(windowEnd);
             map.put(endChar , map.getOrDefault(endChar,0) +1);
 
-            // slidewindow contains more than 2 characters
+            // sliding window contains more than 2 characters
+            // So thats a invalid window . we want at most i.e lesser or equal to k(2)
+            // Shrink the window from left until it become valid . i.e map.size() <= 2
             while(map.size() > 2){
                 char startChar = s.charAt(windowStart);
                 map.put(startChar, map.get(startChar) -1);
@@ -44,6 +46,16 @@ public class LongestSubstringWithAtMostTwoDistinctCharacters {
     public static void main(String[] args) {
         LongestSubstringWithAtMostTwoDistinctCharacters longestSubstring = new LongestSubstringWithAtMostTwoDistinctCharacters();
         String s = "eceba";
+        //Output: 3
+        //Explanation: The substring is "ece" with length 3.
+        System.out.println(longestSubstring.lengthOfLongestSubstringTwoDistinct(s));
+
+        s = "aaaa";
+        //Output: 3
+        //Explanation: The substring is "ece" with length 3.
+        System.out.println(longestSubstring.lengthOfLongestSubstringTwoDistinct(s));
+
+        s = "";
         //Output: 3
         //Explanation: The substring is "ece" with length 3.
         System.out.println(longestSubstring.lengthOfLongestSubstringTwoDistinct(s));

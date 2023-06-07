@@ -22,7 +22,7 @@ public class NumberOfSubsequencesThatSatisfyTheGivenSumCondition {
 
         while(left <= right) {
             if(nums[left] + nums[right] > target) {
-                right--; // nums[right] which is macimum is too big so decrease it
+                right--; // nums[right] which is maximum is too big so decrease it
             } else {
                 res = (res + powOf2[right-left] ) % mod; // every number between right and left be either picked or not picked so that is why pow(2, right - left) essentially
                 left++; // increment left to find next set of min and max

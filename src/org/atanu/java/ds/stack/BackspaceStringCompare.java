@@ -17,7 +17,7 @@ public class BackspaceStringCompare {
             if(ch != '#'){
                 stackA.push(ch);
             }
-            //Pop in case of #
+            //Pop in case of # . Check Non empty before pop
             else if(!stackA.isEmpty()){
                 stackA.pop();
             }
@@ -29,7 +29,7 @@ public class BackspaceStringCompare {
             if(ch != '#'){
                 stackB.push(ch);
             }
-            //Pop in case of #
+            //Pop in case of # . Check Non empty before pop
             else if(!stackB.isEmpty()){
                 stackB.pop();
             }

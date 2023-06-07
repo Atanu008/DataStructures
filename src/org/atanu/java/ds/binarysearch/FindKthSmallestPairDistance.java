@@ -25,14 +25,26 @@ public class FindKthSmallestPairDistance {
     }
 
 
+    // Video : https://www.youtube.com/watch?v=veu_Q-da6ZY (after 8 minute , and few minutes)
+
     //low = min_diff_between_all_nums
     //high = a[n - 1] - a[0]
     //all possible sums are in between low and high
     //binary search tries to find such distance that amount of smaller distances are not greater than k.
-    //countPairsLesserThanMid(arr, mid) < k means mid distance is too small, we need a bigger one,
-    //So We go right . low = mid +1;
+    // Suppose we found a mid , having mid as difference if we get exactly k pair <= mid , then mid is my answer
+
     //countPairsLesserThanMid(arr, mid) >= k means mid distance is big enough, but can be smaller . That's why high = mid
-    //by the end of binary search we will have the exact distance equal to low such that number of smaller distances is not greater than k
+    //by the end of binary search we will have the exact distance equal to low
+    //such that number of smaller distances is not greater than k
+
+    // countPairsLesserThanMid(arr, mid) < k
+    // Suppose we got N pair that are lesseOrEqual to Mid
+    // Now if we decrement Mid we would get less pair(lesser than N)
+    // So if N i.r countPairsLesserThanMid(arr, mid) s=itself is smaller than k
+    // then we can not check lower values . Need to check higher values only i.e Mid + 1
+    // means mid distance is too small, we need a bigger one,
+    // So We go right . low = mid +1;
+
     public int smallestDistancePair(int[] nums, int k) {
 
         Arrays.sort(nums);
@@ -54,9 +66,25 @@ public class FindKthSmallestPairDistance {
         int count = 0;
         int n = nums.length;
         for (int i = 0; i < n; ++i) {
-            int j = i;
+            int j = i + 1;
             while (j < n && nums[j] - nums[i] <= mid) ++j;
-            count += j - i-1;
+            count += j - i - 1; // -1 because j is increased one more time in loop
+        }
+        return count;
+    }
+
+    public int countPairsLesserThanMid_v2(int[] nums, int mid){
+        int count = 0;
+        int n = nums.length;
+        int windowEnd = 0;
+        int windowStart = 0;
+        while(windowEnd < nums.length) {
+
+            while (nums[windowEnd] - nums[windowStart] > mid){
+                windowStart++;
+            }
+            count += windowEnd - windowStart;
+            windowEnd++;
         }
         return count;
     }

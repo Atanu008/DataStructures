@@ -19,14 +19,6 @@ public class InsertionSort {
 
     }
 
-    private static void swap(int i, int j, int[] array) {
-
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-
-    }
-
     static void printArray(int arr[]) {
         int size = arr.length;
         for (int i = 0; i < size; i++)

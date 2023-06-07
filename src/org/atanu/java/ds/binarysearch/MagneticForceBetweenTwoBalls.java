@@ -2,8 +2,8 @@ package org.atanu.java.ds.binarysearch;
 
 import java.util.Arrays;
 
-//https://leetcode.com/problems/magnetic-force-between-two-balls/description/
-//Lee
+// https://leetcode.com/problems/magnetic-force-between-two-balls/description/
+// Leetcode 1552
 public class MagneticForceBetweenTwoBalls {
 
     //minimum magnetic force between any two balls is maximum

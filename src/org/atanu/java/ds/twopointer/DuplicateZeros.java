@@ -1,8 +1,27 @@
 package org.atanu.java.ds.twopointer;
 
-//https://leetcode.com/problems/duplicate-zeros/description/
-//Leetcode 1089
+import java.util.LinkedList;
+import java.util.Queue;
+
+// https://leetcode.com/problems/duplicate-zeros/description/
+// Leetcode 1089
 public class DuplicateZeros {
+
+    // Most Intutive
+    // However require more space
+    public void duplicateZeros_v3(int[] nums) {
+        Queue<Integer> queue = new LinkedList<>();
+
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] == 0){
+                queue.offer(0);
+                queue.offer(0);
+            }else{
+                queue.offer(nums[i]);
+            }
+            nums[i] = queue.poll();
+        }
+    }
 
     public void duplicateZeros(int[] a) {
 
@@ -16,14 +35,15 @@ public class DuplicateZeros {
             if(copy[j] == 0){
                 if(i < a.length){
                     a[i] = copy[j];//copy twice if zero
-                    i++;
                 }
+                i++;
             }
             j++;
         }
     }
 
     //SC - O(1)
+    // Dont try this at home :)
     public void duplicateZeros_v2(int[] arr) {
         int zeroCount = 0;
         for(int a : arr){

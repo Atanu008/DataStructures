@@ -14,7 +14,6 @@ public class FindInMountainArray {
 
         while(low < high){
             int mid = low + (high - low) / 2;
-
             if(mountainArr.get(mid) < mountainArr.get(mid+1)){
                 low = mid + 1;
             }

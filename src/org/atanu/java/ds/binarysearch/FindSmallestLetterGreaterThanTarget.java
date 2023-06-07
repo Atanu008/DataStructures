@@ -8,17 +8,16 @@ public class FindSmallestLetterGreaterThanTarget {
     public char nextGreatestLetter(char[] letters, char key) {
         int n = letters.length;
 
-        int start = 0, end = n - 1;
-        while (start <= end) {
-            int mid = start + (end - start) / 2;
-            if (key < letters[mid]) {
-                end = mid - 1;
-            } else { //if (key >= letters[mid]) {
-                start = mid + 1;
+        int low = 0, high = n - 1;
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            // If letters[mid] > key , then its a possible answer. But need the minimum. Lets go left
+            if (letters[mid] > key) {
+                high = mid;
+            } else { // letters[mid] <= key , no wat it can be present in left part , chek right part
+                low = mid + 1;
             }
         }
-        // since the loop is running until 'start <= end', so at the end of the while loop, 'start == end+1'
-        //Basically its for the last element
-        return letters[start % n];
+        return letters[high] >= key ? letters[high] : letters[0];
     }
 }

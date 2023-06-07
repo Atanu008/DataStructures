@@ -1,5 +1,12 @@
 package org.atanu.java.ds.binarysearch;
 
+// Given an array of integers sorted in ascending order, and a target value,
+// find the element in the array that has minimum difference with the target value.
+
+//Input: a[] = [2, 5, 10, 12, 15], target = 6
+//Output: 5
+//Explanation: The difference between the target value '6' and '5' is the minimum.
+
 public class MinimumDifferenceElement {
 
     public int searchMinDiffElement(int[] arr, int key) {
@@ -26,6 +33,9 @@ public class MinimumDifferenceElement {
         //Another way to think about is
         //need to find floor & ceil of the given element and
         //return one of them which has min diff with the given key
+        //At the end of the while loop,
+        //a[start] is the ceiling of target (Smallest number greater than target), and
+        //a[end] is the floor of target (Largest number smaller than target).
         if ((arr[start] - key) < (key - arr[end]))
             return arr[start];
         return arr[end];
@@ -34,6 +44,7 @@ public class MinimumDifferenceElement {
     public static void main(String[] args) {
 
         MinimumDifferenceElement minimumDifferenceElement = new MinimumDifferenceElement();
+        System.out.println(minimumDifferenceElement.searchMinDiffElement(new int[] { 2, 5, 10, 12, 15 }, 6));
         System.out.println(minimumDifferenceElement.searchMinDiffElement(new int[] { 4, 6, 10 }, 7));
         System.out.println(minimumDifferenceElement.searchMinDiffElement(new int[] { 4, 6, 10 }, 4));
         System.out.println(minimumDifferenceElement.searchMinDiffElement(new int[] { 1, 3, 8, 10, 15 }, 12));

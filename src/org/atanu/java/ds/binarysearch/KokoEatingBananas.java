@@ -3,12 +3,13 @@ package org.atanu.java.ds.binarysearch;
 //https://leetcode.com/problems/koko-eating-bananas/
 //LeetCode 875
 //Video : https://www.youtube.com/watch?v=LzZFUTWE55c
+
 public class KokoEatingBananas {
 
     public int minEatingSpeed(int[] piles, int h) {
 
-        int low = 1; //lets take it 1
-        int high = Integer.MIN_VALUE;
+        int low = 1;
+        int high = piles[0];
 
         //Max pile element will be the max speed at which
         for(int a : piles){
@@ -36,15 +37,18 @@ public class KokoEatingBananas {
     //To find the value of possible(K),
     //(ie. whether Koko with an eating speed of K can eat all bananas in H hours),
     //we simulate it. For each pile of size p > 0,
-    //we can deduce that Koko finishes it in Math.ceil(p / K) = ((p-1) // K) + 1 hours,
+    //we can deduce that Koko finishes it in Math.ceil(p / K)
+
     //and we add these times across all piles and compare it to H.
     public boolean canEatAllBanana(int[] piles, int h, int currentSpeed){
 
         long time = 0;
         for(int p: piles){
-            time += (p-1)/currentSpeed +1;
+            time += p / currentSpeed;
+            if(p % currentSpeed != 0){
+                time++;
+            }
         }
-
         return time <= h;
     }
 

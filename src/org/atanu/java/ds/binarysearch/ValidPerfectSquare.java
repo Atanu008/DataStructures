@@ -1,7 +1,7 @@
 package org.atanu.java.ds.binarysearch;
 
-//https://leetcode.com/problems/valid-perfect-square/
-//LeetCode 367
+// https://leetcode.com/problems/valid-perfect-square/
+// LeetCode 367
 public class ValidPerfectSquare {
 
     public boolean isPerfectSquare(int num) {
@@ -39,6 +39,7 @@ public class ValidPerfectSquare {
         return i*i == num;
     }
 
+    //A square number is 1+3+5+7+9...
     public boolean isPerfectSquareV3(int num) {
 
         int i = 1;
@@ -56,6 +57,10 @@ public class ValidPerfectSquare {
         System.out.println(isPerfectSquare);
 
         n = 14;
+        isPerfectSquare = validPerfectSquare.isPerfectSquare(n);
+        System.out.println(isPerfectSquare);
+
+        n = 4;
         isPerfectSquare = validPerfectSquare.isPerfectSquare(n);
         System.out.println(isPerfectSquare);
     }

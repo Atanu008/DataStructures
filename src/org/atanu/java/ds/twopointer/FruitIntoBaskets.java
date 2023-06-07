@@ -3,11 +3,11 @@ package org.atanu.java.ds.twopointer;
 import java.util.HashMap;
 import java.util.Map;
 
-//https://leetcode.com/problems/fruit-into-baskets/
-//LeetCode 904
-//same as below
-//https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/
-//LeetCode 159
+// https://leetcode.com/problems/fruit-into-baskets/
+// LeetCode 904
+// same as below
+// https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/
+// LeetCode 159
 
 //This problem follows the Sliding Window pattern and is quite similar to Longest Substring with K Distinct Characters.
 //In this problem, we need to find the length of the longest subarray with no more than two distinct characters (or fruit types!).

@@ -2,6 +2,15 @@ package org.atanu.java.ds.binarysearch;
 
 //https://leetcode.com/problems/search-in-rotated-sorted-array/
 //LeetCode 33
+// Video : https://www.youtube.com/watch?v=1uu3g_uu8O0
+
+// Another Possible Solution : (My Intution . Need to give it a try)
+// I beleive this can be acheived via another approach also
+// (https://leetcode.com/problems/find-in-mountain-array/
+// Binary find peak in the mountain (LeetCode 852. Peak Index in a Mountain Array)
+// Binary find the target in strict increasing array
+// Binary find the target in strict decreasing array
+
 public class SearchInRotatedSortedArray {
 
     public static int search(int[] arr, int target) {
@@ -18,13 +27,14 @@ public class SearchInRotatedSortedArray {
                 return mid;
             }
 
-            // if right half (A[mid..right]) is sorted and mid is not
-            // the key element
+            // if right half (A[mid..right]) is sorted and mid is not the key element
+            // will check if it is in right sorted half , if there (target > arr[mid] && target <= arr[high])
+            // then will search in that half only
             if (arr[mid] <= arr[high]) {
 
                 // compare key with A[mid] and A[right] to know
                 // if it lies in A[mid..right] or not
-                if (target > arr[mid] && target <= arr[high]) {
+                if (target > arr[mid] && target <= arr[high]) { // target is within the sorted second half of the array
                     // go searching in right sorted half
                     low = mid + 1;
                 } else {
@@ -32,8 +42,9 @@ public class SearchInRotatedSortedArray {
                 }
             }
 
-            // if left half (A[left..mid]) is sorted and mid is not
-            // the key element
+            // if left half (A[left..mid]) is sorted and mid is not the key element
+            // will check if it is in left sorted half , if there (target < arr[mid] && target >= arr[low])
+            // then will search in that half only
             else if (arr[mid] >= arr[low]) {
 
                 // compare key with A[left] and A[mid] to know
@@ -64,6 +75,14 @@ public class SearchInRotatedSortedArray {
             System.out.println("Element not found in the array");
         }
 
+        A = new int[]{9, 12, 17, 2, 4, 5};
+        key = 2;
+        index = search(A, key);
+        if (index != -1) {
+            System.out.println("Element found at index " + index);
+        } else {
+            System.out.println("Element not found in the array");
+        }
     }
 
 }

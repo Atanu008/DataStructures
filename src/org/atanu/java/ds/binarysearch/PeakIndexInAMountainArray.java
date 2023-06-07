@@ -1,7 +1,8 @@
 package org.atanu.java.ds.binarysearch;
 
 //https://leetcode.com/problems/peak-index-in-a-mountain-array/
-//LeetCode 852
+// LeetCode 852
+// Looks like Leetcode 162 and 852 essentially same problem
 public class PeakIndexInAMountainArray {
 
     //Return index where its not strictly increasing
@@ -11,7 +12,6 @@ public class PeakIndexInAMountainArray {
         while(arr[i] < arr[i+1]){
             i++;
         }
-
         return i;
     }
 
@@ -32,6 +32,7 @@ public class PeakIndexInAMountainArray {
     //(Note:This element can't be the peak).So s=mid+1
 
     //Binary Search
+    // Most Intuitive Version
     public int peakIndexInMountainArrayV2(int[] arr) {
 
         int low = 0;
@@ -39,31 +40,23 @@ public class PeakIndexInAMountainArray {
 
         while(low < high){
             int mid = low + (high -low)/2;
-            //Increasing seq.Not present in left
-            //searchin Right
-            if(arr[mid] < arr[mid+1]){
-                low = mid + 1;
+
+            // Decreasing Sequence . Peak can not lie in Right part
+            //If mid is greater than next then there is 100 percentage there will be at least one pick in left
+            //And we are not sure about right. So lets search Left by doing  high = mid;
+            if(arr[mid] > arr[mid+1]){
+                high = mid;
             }
             else{
-                high = mid;
+                //Increasing seq.Not present in left
+                //searching Right
+                //And if the next element is greater than the current,
+                //this means that we are climbing the peak therefore peak happens to be on the right part
+                //(Note:This element(mid) can't be the peak as mid+1 is greater).So low =mid+1
+                low = mid + 1;
             }
         }
 
         return high;
-    }
-
-    public int peakIndexInMountainArrayV3(int[] A) {
-        int lo = 0, hi = A.length - 1;
-        while (lo <= hi) {
-            int mid = lo + (hi - lo) / 2;
-            if (A[mid] < A[mid + 1]) { // peak index is after mid.
-                lo = mid + 1;
-            }else if (A[mid -1] > A[mid]) { // peak index is before mid.
-                hi = mid - 1;
-            }else { // peak index is mid.
-                return mid;
-            }
-        }
-        return -1; // no peak.
     }
 }

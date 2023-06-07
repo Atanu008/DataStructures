@@ -19,7 +19,6 @@ public class InsertPosition {
 
             // Search left if the target is smaller than mid
             if (target < arr[mid]) {
-
                 high = mid - 1;
             }
 
