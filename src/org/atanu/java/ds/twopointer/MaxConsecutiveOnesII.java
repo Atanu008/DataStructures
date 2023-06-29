@@ -1,8 +1,8 @@
 package org.atanu.java.ds.twopointer;
 
-//https://leetcode.com/problems/max-consecutive-ones-ii/
-//LeetCode 487
-//MaxConsecutiveOnes III is more generalized version. it takes K switch . here K == 1
+// https://leetcode.com/problems/max-consecutive-ones-ii/
+// LeetCode 487
+// MaxConsecutiveOnes III is more generalized version. it takes K switch . here K == 1
 public class MaxConsecutiveOnesII {
 
     public int findMaxConsecutiveOnes(int[] nums) {
@@ -19,7 +19,9 @@ public class MaxConsecutiveOnesII {
                 zeros++;
             }
 
-            // if our window is invalid, contract our window
+            // One zero is allowed i.e one flip from zero to One
+            // if zeros greater than 1 then the window is Invalid
+            // Shrink the Window
             while(zeros > 1){
                 if(nums[windowStart] == 0){
                     zeros--;

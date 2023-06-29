@@ -19,9 +19,8 @@ public class MaxConsecutiveOnesIII {
                 zeros++;
             }
 
-            // if our window is invalid, contract our window
-            //Shrink the window if number of zeros is greater than K
-            //After while is done window will have at most K zeros
+            // if our window has zeros > k then its a Invalid window, Shrink the Window
+            // After while is done window will have at most K zeros
             while (zeros > k) {
                 if (nums[windowStart] == 0) {
                     zeros--;

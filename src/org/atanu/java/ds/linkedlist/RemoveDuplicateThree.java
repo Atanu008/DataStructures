@@ -2,7 +2,40 @@ package org.atanu.java.ds.linkedlist;
 
 import org.atanu.java.ds.linkedlist.LinkedList.Node;
 
+// https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/description/
+// Leetcode 82
+
 public class RemoveDuplicateThree {
+
+    public ListNode deleteDuplicates(ListNode head) {
+        // sentinel
+        ListNode dummy = new ListNode();
+        // predecessor = the last node
+        // before the sublist of duplicates
+        ListNode prev = dummy;
+        dummy.next = head;
+        ListNode current = head;
+
+        while (current != null) {
+            // if it's a beginning of duplicates sublist
+            // skip all duplicates
+            if (current.next != null && current.val == current.next.val) {
+                // move till the end of duplicates sublist
+                while (current.next != null && current.val == current.next.val) {
+                    current = current.next;
+                }
+                // skip all duplicates
+                prev.next = current.next; // current points to last duplicate. so current.next will skip all duplicates
+                // otherwise, move predecessor
+            } else {
+                prev = prev.next; // Or prev = current;
+            }
+
+            // move forward
+            current = current.next;
+        }
+        return dummy.next;
+    }
 
     private static Node removeDuplicateMethod1(Node head) {
 
@@ -12,21 +45,23 @@ public class RemoveDuplicateThree {
         Node current = head;
 
         while (current != null) {
-            while (prev.next != null && current.next != null && prev.next.data == current.next.data) {
-                current = current.next;
-            }
-
-            //Current Has not moved . Next to current is different element
-            //Just move the prev Pointer
-            if (prev.next == current) {
-                prev = prev.next;
-            } else {
+            // if it's a beginning of duplicates sublist
+            // skip all duplicates
+            if (current.next != null && current.data == current.next.data) {
+                // move till the end of duplicates sublist
+                while (current.next != null && current.data == current.next.data) {
+                    current = current.next;
+                }
+                // skip all duplicates
                 prev.next = current.next;
+                // otherwise, move predecessor
+            } else {
+                prev = prev.next;
             }
 
+            // move forward
             current = current.next;
         }
-
         return dummy.next;
 
     }

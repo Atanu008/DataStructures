@@ -31,7 +31,7 @@ public class NextGreaterElementI {
         int result[] = new int[nums.length];
 
         for(int i = nums.length -1; i >=0; i--) {
-            //Maintain a Monotonic Increasing Stack
+            // Maintain a Monotonic Increasing Stack
             // pop elements that aren't greater than the current element
             while(!stack.isEmpty() && stack.peek() < nums[i]) {
                 stack.pop();

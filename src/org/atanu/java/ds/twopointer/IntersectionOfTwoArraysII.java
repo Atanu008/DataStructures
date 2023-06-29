@@ -25,20 +25,23 @@ public class IntersectionOfTwoArraysII {
 
     public int[] intersect(int[] nums1, int[] nums2) {
 
-        Map<Integer, Integer> frequencyMap = new HashMap<>();
-        for(int a : nums1) {
-            frequencyMap.put(a, frequencyMap.getOrDefault(a, 0) +1);
+        if(nums1.length > nums2.length){
+            return intersect(nums2, nums1);
         }
-        List<Integer> result = new ArrayList<>();
-        for(int b : nums2) {
-            if(frequencyMap.containsKey(b) && frequencyMap.get(b) > 0) {
-                result.add(b);
-                frequencyMap.put(b, frequencyMap.get(b) -1); //Decrement Frequency If Found in secod Arrau
+        List<Integer> list = new ArrayList<>();
+        Map<Integer, Integer> freq = new HashMap<>();
+        for(int num : nums1){
+            freq.put(num, freq.getOrDefault(num, 0) + 1);
+        }
+
+        for(int num : nums2){
+            if(freq.containsKey(num) && freq.get(num) > 0){
+                list.add(num);
+                freq.put(num, freq.get(num) - 1);
             }
         }
 
-        //Convert List Array. This one is not best I guess
-        return result.stream().mapToInt(a ->a).toArray();
+        return list.stream().mapToInt(a ->a).toArray();
     }
 
     // Two Pointer Approach
@@ -50,7 +53,7 @@ public class IntersectionOfTwoArraysII {
 
         int i = 0;
         int j = 0;
-        List<Integer> list = new ArrayList<Integer>();
+        List<Integer> list = new ArrayList<>();
         while(i < nums1.length && j < nums2.length) {
             if(nums1[i] == nums2[j]){
                 list.add(nums1[i]);

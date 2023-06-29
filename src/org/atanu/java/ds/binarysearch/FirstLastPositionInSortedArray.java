@@ -2,8 +2,8 @@ package org.atanu.java.ds.binarysearch;
 
 import java.util.Arrays;
 
-//https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
-//LeetCode 34
+// https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
+// LeetCode 34
 public class FirstLastPositionInSortedArray {
     public int[] searchRange(int[] nums, int target) {
 

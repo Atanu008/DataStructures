@@ -87,9 +87,7 @@ public class MergeSort {
             int mid = start + (end - start) / 2; // same as (start + end) / 2 , but avoids overflow
             mergeSort(array, start, mid);
             mergeSort(array, mid + 1, end);
-            System.out.println(start + " " + mid + " " + end);
             merge(array, start, mid, end); // Using only One auxiliary array
-
             //mergeUsingTwoarray(array, start, mid, end); // Using Two array
         }
     }

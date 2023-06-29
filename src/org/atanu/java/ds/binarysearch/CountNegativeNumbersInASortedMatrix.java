@@ -1,5 +1,7 @@
 package org.atanu.java.ds.binarysearch;
 
+// https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/
+// Leetcode 1351
 public class CountNegativeNumbersInASortedMatrix {
 
     // Simple approach
@@ -7,7 +9,6 @@ public class CountNegativeNumbersInASortedMatrix {
         int count = 0;
 
         for(int[] nums : grid){
-
             int i = 0;
             while(i < nums.length && nums[i] >= 0){
                 i++;

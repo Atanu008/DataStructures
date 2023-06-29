@@ -4,53 +4,46 @@ package org.atanu.java.ds.twopointer;
 //LeetCode 27
 public class RemoveElement {
 
-    public static int removeElementSol1(int[] arr, int key) {
-
+    public int removeElement(int[] nums, int key) {
         //we will store other elements in the ith Index
-        int i = 0;
+        int index = 0;
 
-        for (int j = 0; j < arr.length; j++) {
+        for (int j = 0; j < nums.length; j++) {
 
             //forward if the element is not equal to Key
-            if (arr[j] != key) {
-                arr[i++] = arr[j];
+            if (nums[j] != key) {
+                nums[index] = nums[j];
+                index++;
             }
         }
-
-        return i;
+        return index;
     }
 
-    public static int removeElementSol2(int[] arr, int key) {
-
+    public int removeElement_v2(int[] nums, int key) {
         int i = 0;
-        int n = arr.length;
-
+        int n = nums.length;
         while (i < n) {
-
-            if (arr[i] == key) {
-                // MOve the Nth elemnt to Ith element if the key matches
-                arr[i] = arr[n - 1];
+            if (nums[i] == key) {
+                // MOve the Nth element to Ith element if the key matches
+                nums[i] = nums[n - 1];
                 n--;
             }
             //Otherwise forward i
             else {
-
                 i++;
             }
 
         }
-
         return i;
     }
 
     public static void main(String[] args) {
 
-
         int[] arr = {1, 2, 5, 3, 4, 7, 3, 2, 1, 5, 6, 1};
 
         //System.out.println(removeElementSol1(arr,2));
 
-        System.out.println(removeElementSol2(arr, 2));
+        System.out.println(new RemoveElement().removeElement(arr, 2));
     }
 
 }

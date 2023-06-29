@@ -13,32 +13,32 @@ public class LongestContinuousSubarrayWithAbsoluteDiffLessThanOrEqualToLimit {
         Deque<Integer> decreseaingQueue = new LinkedList<>();
         Deque<Integer> increasingQueue = new LinkedList<>();
 
-        int high = 0;
-        int low = 0;
+        int windowEnd = 0;
+        int windowStart = 0;
 
         int longest = 0;
-        while(high < nums.length){
+        while(windowEnd < nums.length){
 
-            while(!decreseaingQueue.isEmpty() && decreseaingQueue.peekLast() < nums[high]){
+            while(!decreseaingQueue.isEmpty() && decreseaingQueue.peekLast() < nums[windowEnd]){
                 decreseaingQueue.pollLast();
             }
-            decreseaingQueue.addLast(nums[high]);
+            decreseaingQueue.addLast(nums[windowEnd]);
 
-            while(!increasingQueue.isEmpty() && increasingQueue.peekLast() > nums[high]){
+            while(!increasingQueue.isEmpty() && increasingQueue.peekLast() > nums[windowEnd]){
                 increasingQueue.pollLast();
             }
-            increasingQueue.addLast(nums[high]);
+            increasingQueue.addLast(nums[windowEnd]);
 
 
             while(decreseaingQueue.peekFirst() - increasingQueue.peekFirst() > limit){
-                if(decreseaingQueue.peekFirst() == nums[low]) decreseaingQueue.pollFirst();
-                if(increasingQueue.peekFirst() == nums[low]) increasingQueue.pollFirst();
-                low++;
+                if(decreseaingQueue.peekFirst() == nums[windowStart]) decreseaingQueue.pollFirst();
+                if(increasingQueue.peekFirst() == nums[windowStart]) increasingQueue.pollFirst();
+                windowStart++;
             }
 
-            longest = Math.max(longest, high - low + 1);
+            longest = Math.max(longest, windowEnd - windowEnd + 1);
 
-            high++;
+            windowEnd++;
         }
 
         return longest;

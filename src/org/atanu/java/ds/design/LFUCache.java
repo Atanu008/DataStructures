@@ -7,7 +7,6 @@ import java.util.Map;
 public class LFUCache {
 
     int capacity;
-    int size;
     int minFrequency;
     Map<Integer, DoubleLinkedList> frequencyMap;
     Map<Integer, Node> cache;
@@ -22,7 +21,6 @@ public class LFUCache {
      * */
     public LFUCache(int capacity) {
         this.capacity = capacity;
-        size = 0;
         minFrequency = 0;
         this.cache = new HashMap<>();
         frequencyMap = new HashMap<>();
@@ -85,6 +83,7 @@ public class LFUCache {
         // if current list the the last list which has lowest frequency and current node is the only node in that list
         // we need to remove the entire list and then increase min frequency value by 1
         if(nodeFreq == minFrequency && currentList.size == 0){
+            frequencyMap.remove(nodeFreq); // nodeFreq and minFrequency is same only
             minFrequency++;
         }
 

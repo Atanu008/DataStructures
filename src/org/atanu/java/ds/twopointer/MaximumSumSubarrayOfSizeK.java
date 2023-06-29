@@ -1,8 +1,8 @@
 package org.atanu.java.ds.twopointer;
 
 public class MaximumSumSubarrayOfSizeK {
-    //Brute Force
-    //A basic brute force solution will be to calculate the sum of all ‘k’ sized subarrays
+    // Brute Force
+    // A basic brute force solution will be to calculate the sum of all ‘k’ sized subarrays
     // of the given array to find the subarray with the highest sum.
     // We can start from every index of the given array and add the next ‘k’ elements to find the subarray’s sum
     public static int findMaxSumSubArray(int k, int[] arr) {
@@ -26,7 +26,7 @@ public class MaximumSumSubarrayOfSizeK {
         for (int windowEnd = 0; windowEnd < arr.length; windowEnd++) {
             windowSum += arr[windowEnd]; // add the next element
             // slide the window, we don't need to slide if we've not hit the required window size of 'k'
-            if (windowEnd >= k -1) {
+            if (windowEnd >= k - 1) {
                 maxSum = Math.max(maxSum, windowSum);
                 windowSum -= arr[windowStart]; // subtract the element going out
                 windowStart++; // slide the window ahead

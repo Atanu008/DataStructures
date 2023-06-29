@@ -7,7 +7,6 @@ public class MaxConsecutiveOnes {
 
         int countMaxConsecutiveOnes = 0;
         int runningCount = 0;
-
         for(int a : nums){
             if(a == 1){
                 runningCount++;

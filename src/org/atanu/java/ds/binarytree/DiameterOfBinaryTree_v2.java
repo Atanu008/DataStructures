@@ -5,7 +5,10 @@ import java.util.Map;
 
 //https://leetcode.com/problems/diameter-of-binary-tree/
 //LeetCode 543
-public class Diameter {
+
+// Brute Force Solution
+//
+public class DiameterOfBinaryTree_v2 {
 
     public static int diameterOfBinaryTree(TreeNode root) {
 

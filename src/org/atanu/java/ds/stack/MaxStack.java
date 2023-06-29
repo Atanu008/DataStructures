@@ -4,6 +4,8 @@ import java.util.Stack;
 
 //https://leetcode.com/problems/max-stack/
 //LeetCode 716
+// Video : https://www.youtube.com/watch?v=z5hFSEFf6Mg
+
 public class MaxStack {
 
     Stack<Integer> originalStack;

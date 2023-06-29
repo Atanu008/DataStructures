@@ -66,7 +66,7 @@ public class BookAllocation {
                 sum = books[i]; // update curr_sum . books[i] belongs to new student now
             }
         }
-        return requiredStudent == students;
+        return requiredStudent <= students; // ?
     }
 
     // using (high < low Template)

@@ -20,7 +20,7 @@ public class LetterCasePermutationV2 {
 
         for (int i = index; i < charArray.length; i++) {
             char ch = charArray[i];
-            //If the Char is Upper make it to lower and do DFS . after DFS revert it(make upper again)
+            // If the Char is Upper make it to lower and do DFS . after DFS revert it(make upper again)
             // For lower do the opposite
             if (Character.isLetter(ch)) {
                 if(Character.isUpperCase(ch))

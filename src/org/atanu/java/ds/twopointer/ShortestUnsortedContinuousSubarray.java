@@ -5,7 +5,10 @@ import java.util.Arrays;
 //https://leetcode.com/problems/shortest-unsorted-continuous-subarray/
 //LeetCode 581
 public class ShortestUnsortedContinuousSubarray {
-    //We can sort a copy of the given array numsnums, say given by nums\_sortednums_sorted. Then, if we compare the elements of numsnums and nums\_sortednums_sorted, we can determine the leftmost and rightmost elements which mismatch. The subarray lying between them is, then, the required shorted unsorted subarray.
+    // We can sort a copy of the given array numsnums, say given by nums\_sortednums_sorted.
+    // Then, if we compare the elements of numsnums and nums\_sortednums_sorted,
+    // we can determine the leftmost and rightmost elements which mismatch.
+    // The subarray lying between them is, then, the required shorted unsorted subarray.
     public int findUnsortedSubarray(int[] nums) {
 
         //Create and sort the clonned Array

@@ -9,11 +9,9 @@ public class ValidPalindrome {
         if(s == null || s.isEmpty()){
             return true;
         }
-
         int i = 0;
         int j = s.length() -1;
-
-        while(i <= j){
+        while(i < j){
             int headChar = s.charAt(i);
             int tailChar = s.charAt(j);
 
@@ -31,7 +29,6 @@ public class ValidPalindrome {
                 j--;
             }
         }
-
         return true;
     }
 

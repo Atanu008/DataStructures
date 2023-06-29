@@ -1,5 +1,8 @@
 package org.atanu.java.ds.binarysearch;
 
+// https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array/description/
+// Leetcode 1287
+
 public class ElementAppearingMoreThan25PercentageInSortedArray_v2 {
 
     // Binary Search Solution

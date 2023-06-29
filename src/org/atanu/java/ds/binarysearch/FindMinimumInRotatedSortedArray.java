@@ -6,8 +6,9 @@ package org.atanu.java.ds.binarysearch;
 // Leetcode 153
 public class FindMinimumInRotatedSortedArray {
 
-    //
-    //This will return the rotation count.
+
+    // This will also return the rotation count. .
+    // Index of the minimum
     public static int findMin(int[] arr) {
 
         int length = arr.length;

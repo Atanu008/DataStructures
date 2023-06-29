@@ -2,6 +2,9 @@ package org.atanu.java.ds.twopointer;
 
 import java.util.Arrays;
 
+// https://leetcode.com/problems/move-zeroes/description/
+// Leetcode 283
+
 public class MoveZeroes {
 
     public static void moveZeroes(int[] nums) {

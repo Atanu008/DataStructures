@@ -14,8 +14,8 @@ public class PathSumIII {
         }
         findPathSum(root,0,targetSum); //Start from Root Node
 
-        pathSum(root.left,targetSum); //Recursiveley check from every Node and check sum
-        pathSum(root.right,targetSum);//Recursiveley check from every Node and check sum
+        pathSum(root.left,targetSum); //Recursively check from every Node and check sum
+        pathSum(root.right,targetSum);//Recursively check from every Node and check sum
 
         return totalCount;
     }
@@ -35,9 +35,11 @@ public class PathSumIII {
     }
 
     //++++++++
-    //Prefix Sum Approach
+    // Prefix Sum Approach
     // Find a number of continuous subarrays that sum to target.
-    //This time in Binary Tree
+    // This time in Binary Tree
+    // Video : https://www.youtube.com/watch?v=yyZA4v0x16w
+
     int count = 0;
     HashMap<Integer, Integer> prefixSum = new HashMap<>();
     int k;

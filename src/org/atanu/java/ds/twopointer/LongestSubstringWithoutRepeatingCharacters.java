@@ -3,9 +3,9 @@ package org.atanu.java.ds.twopointer;
 import java.util.HashMap;
 import java.util.Map;
 
-//https://leetcode.com/problems/longest-substring-without-repeating-characters/
-//LeetCode 3
-//Some times also called Longest Substring with Distinct Characters
+// https://leetcode.com/problems/longest-substring-without-repeating-characters/
+// LeetCode 3
+// Some times also called Longest Substring with Distinct Characters
 public class LongestSubstringWithoutRepeatingCharacters {
 
     public int lengthOfLongestSubstring(String s) {

@@ -1,7 +1,7 @@
 package org.atanu.java.ds.twopointer;
 
 //https://leetcode.com/problems/move-pieces-to-obtain-a-string/description/
-//:eetCode 2337
+//LeetCode 2337
 public class MovePiecesToObtainAString {
 
     //Just traverse both the strings and check whether relative charcters ('R' or 'L') are equal or not,

@@ -9,10 +9,11 @@ public class SwapAdjacentInLRString {
 
     //We first compare two strings with X removed. This checks relative position between Ls and Rs are correct.
 
-//Then we find the indices for each occurence of L and check the condition in the above figure. Then we do the same for R.
+    //Then we find the indices for each occurence of L and check the condition in the above figure. Then we do the same for R.
 
     //Its exactly same as //https://leetcode.com/problems/move-pieces-to-obtain-a-string/description/
-//LeetCode 2337
+    //LeetCode 2337
+
     public boolean canTransform(String start, String end) {
         int iStart = 0;
         int iTarget = 0;

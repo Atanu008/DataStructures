@@ -30,6 +30,29 @@ public class ContainerWithMostWater {
         return maxArea;
     }
 
+    // same as above . just we are moving both pointer in case of same
+    // may be little improvement in runtime
+    public int maxArea_v2(int[] height) {
+        int left =0, right = height.length-1, maxArea =0;
+
+        while(left<=right){
+            int w = right - left;
+
+            int are = w*Math.min(height[left], height[right]);
+            maxArea = Math.max(are, maxArea);
+
+            if(height[left] < height[right]){
+                left++;
+            } else if(height[left] > height[right]){
+                right--;
+            } else{
+                left++;
+                right--;
+            }
+        }
+        return maxArea;
+    }
+
     public static void main(String[] args) {
 
         int[] heights = {1, 5, 4, 3};

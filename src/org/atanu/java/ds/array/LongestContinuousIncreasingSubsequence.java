@@ -4,22 +4,22 @@ package org.atanu.java.ds.array;
 //LeetCode 647
 public class LongestContinuousIncreasingSubsequence {
 
-        public int findLengthOfLCIS(int[] nums) {
-            int result = 0; //Empty array would result to zero
-            int count = 0;
-            for(int i = 0; i < nums.length; i++){
-                //If next element is bigger then increment the running count and update Max(result)
-                //Default increase for first element.
-                if(i == 0 || nums[i] > nums[i - 1]){
-                    count++;
-                }
-                else{//Reset count its not increasing any more
-                    count = 1;
-                }
-                result = Math.max(count,result);
+    public int findLengthOfLCIS(int[] nums) {
+        int result = 1;
+        int count = 1;
+        for(int i = 1; i < nums.length; i++){
+            //If next element is bigger then increment the running count and update Max(result)
+            //Default increase for first element.
+            if(nums[i] > nums[i - 1]){
+                count++;
             }
+            else{//Reset count its not increasing any more
+                count = 1;
+            }
+            result = Math.max(count,result);
+        }
 
-            return result;
+        return result;
     }
 
     public static void main(String[] args) {

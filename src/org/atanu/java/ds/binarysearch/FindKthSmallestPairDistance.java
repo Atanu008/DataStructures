@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-//https://leetcode.com/problems/find-k-th-smallest-pair-distance/
-//LeetCode 719
+// https://leetcode.com/problems/find-k-th-smallest-pair-distance/
+// LeetCode 719
 public class FindKthSmallestPairDistance {
 
     //Brute Force
@@ -52,11 +52,11 @@ public class FindKthSmallestPairDistance {
         while (low < high) {
             int mid = (low + high)/2;
             int count = countPairsLesserThanMid(nums,mid);
-            if (count >= k){
-                high = mid;
+            if (count < k){
+                low = mid + 1;
             }
             else{
-                low = mid + 1;
+                high = mid;
             }
         }
         return high;

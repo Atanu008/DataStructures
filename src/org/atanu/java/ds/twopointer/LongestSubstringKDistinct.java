@@ -3,9 +3,9 @@ package org.atanu.java.ds.twopointer;
 import java.util.HashMap;
 import java.util.Map;
 
-
 //Same as https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
 //Here we are capturing the result String
+
 public class LongestSubstringKDistinct {
 
     public static int findLength(String str, int k) {
@@ -36,16 +36,13 @@ public class LongestSubstringKDistinct {
 
             }
 
-
             //maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
-
             if (windowEnd - windowStart + 1 > maxLength) {
                 maxLength = windowEnd - windowStart + 1;
                 start = windowStart;
                 end = windowEnd;
             }
         }
-
         System.out.print("Longest Substring with K Distinct " + str.substring(start, end + 1) + "   ");
 
         return maxLength;

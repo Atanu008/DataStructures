@@ -9,6 +9,7 @@ import java.util.Map;
 public class ElementAppearingMoreThan25PercentageInSortedArray {
 
     // O(N)
+    // This better than the Binary search approach
     public int findSpecialInteger(int[] arr) {
         int quarter = arr.length / 4;
         // For a number to be Majority it has to be presnst i + quarter as the array is sorted

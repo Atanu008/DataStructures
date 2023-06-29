@@ -1,8 +1,8 @@
 package org.atanu.java.ds.twopointer;
 
-//https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/
-//LeetCode 1493
-////Almost exactly same as 1004. Max Consecutive Ones III
+// https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/
+// LeetCode 1493
+// Almost exactly same as 1004. Max Consecutive Ones III
 public class LongestSubarrayOf1AfterDeletingOneElement {
 
     public int longestSubarray(int[] nums) {
@@ -20,8 +20,8 @@ public class LongestSubarrayOf1AfterDeletingOneElement {
             }
 
             // if our window is invalid, contract our window
-            //Shrink the window if number of zeros is greater than K
-            //After while is done window will have at most K zeros
+            // Shrink the window if number of zeros is greater than K
+            // After while is done window will have No Zero . (k == 1) here
             while (zeros > 1) {
                 if (nums[windowStart] == 0) {
                     zeros--;
@@ -30,7 +30,8 @@ public class LongestSubarrayOf1AfterDeletingOneElement {
             }
 
             // update our longest sequence answer
-            //we don't write (windowEnd-windowStart+1) because we need to give its length after removing the zero
+            // we don't write (windowEnd-windowStart+1)
+            // because we need to give its length after removing the zero
             longestOnes = Math.max(longestOnes, windowEnd - windowStart);
             // expand our window
             windowEnd++;

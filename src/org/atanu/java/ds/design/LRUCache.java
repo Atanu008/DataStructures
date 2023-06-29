@@ -22,10 +22,10 @@ public class LRUCache {
         if(node_map.containsKey(key)){
             Node data = node_map.get(key);
 
-            //Remove node from the LinkedList
+            //Remove node from the LinkedList Tail
             remove(data);
 
-            //Insert node to the LinkedList
+            //Insert node to the LinkedList Head
             insert(data);
 
             return data.value;

@@ -28,6 +28,7 @@ public class BinaryTreePaths {
         // if leaf node is found, Add current Path to the Paths list
         if (root.left == null && root.right == null) {
             paths.add(path);
+            return;
         }
 
         //Extend Path

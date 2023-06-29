@@ -3,15 +3,24 @@ package org.atanu.java.ds.twopointer;
 import java.util.HashMap;
 import java.util.Map;
 
-//https://leetcode.com/problems/longest-repeating-character-replacement/
-//LeetCode 424
-//Video : https://www.youtube.com/watch?v=gqXU1UyA8pk
-//Key Idea: Adding characters to the window and use the map to track the number of dominant char(meaning the character that counts the most in the window).
-//Expanding the window as wide as it can be until window size - number of dominant character > k which means there are at least k characters are not same as the dominant character,
-//so we need shrink the window from the left side and also update the character count in the map.
+// https://leetcode.com/problems/longest-repeating-character-replacement/
+// LeetCode 424
+// Video : https://www.youtube.com/watch?v=gqXU1UyA8pk
+// Key Idea:
+// Adding characters to the window and use the map to track the number of dominant char(meaning the character that counts the most in the window).
+// Expanding the window as wide as it can be until window size - number of dominant character <= k
+// which means there are at least k characters are not same as the dominant character,
+// so we need shrink the window from the left side and also update the character count in the map.
 public class LongestRepeatingCharacterReplacement {
 
-    //Mo
+    // We will need to know how many letters in our substring that we need to replace.
+    // To find out the lettersToReplace = (end - start + 1) - mostFreqLetter;
+    // Pretty much you take the size of the window minus the most freq letter that is in the current window.
+    // Now that we know how many characters that need to be replaced in our window,
+    // we can deduce that if lettersToReplace > k
+    // then the window is invalid and we decrease the window size from the left.
+
+    // lettersToReplace <= k . its a valid window . calculate the window length and update the result
     public int characterReplacement(String s, int k) {
 
         Map<Character, Integer> frequencyMap = new HashMap<>();

@@ -4,23 +4,37 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+// https://leetcode.com/problems/two-sum/description/
+// Leetcode 1
+
 public class TwoSum {
+
+    public int[] twoSum(int[] nums, int target) {
+
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for(int i = 0; i < nums.length; i++){
+            int complement = target - nums[i];
+            if(map.containsKey(complement)){
+                return new int[]{map.get(complement), i};
+            }
+            map.put(nums[i], i);
+        }
+        return new int[]{};
+    }
 
 
     private static void findPairSolution1(int[] a, int sum) {
-
         // consider each element except last element
         for (int i = 0; i < a.length - 1; i++) {
 
             for (int j = i + 1; j < a.length; j++) {
-
                 // if desired sum is found, print it and return
                 if (a[i] + a[j] == sum) {
                     System.out.println(a[i] + " " + a[j]);
                 }
             }
         }
-
     }
 
     private static void findPairSolution3(int[] a, int sum) {
@@ -31,39 +45,28 @@ public class TwoSum {
         // check if pair (arr[i], sum-arr[i]) exists
         // if difference is seen before, print the pair
         for (int i = 0; i < a.length; i++) {
-
             int temp = sum - a[i];
-
             if (map.containsKey(temp)) {
-
                 System.out.println(a[i] + " " + temp);
             }
-
             // store index of current element in the map
             map.put(a[i], i);
         }
     }
 
     private static void findPairSolution2(int[] a, int sum) {
-
         // sort the array in ascending order
         Arrays.sort(a);
-
         // maintain two pointer to end-points of the array
         int low = 0;
         int high = a.length - 1;
-
         // reduce search space arr[low..high] at each iteration of the loop
-
         // loop till low is less than high
         while (low < high) {
-
             // sum found
             if (a[low] + a[high] == sum) {
-
                 System.out.println(a[low] + " " + a[high]);
             }
-
             // increment low index if total is less than the desired sum
             // decrement high index is total is more than the sum
             if (a[low] + a[high] < sum) {
@@ -88,6 +91,9 @@ public class TwoSum {
 
         findPairSolution3(A, sum);
 
+        int[] nums = {2,7,11,15};
+        int target = 9;
+        System.out.println(Arrays.toString(new TwoSum().twoSum(nums, target)));
     }
 
 

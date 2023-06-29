@@ -55,7 +55,11 @@ public class DivideChocolate {
         for(int sweet: sweetness){
 
             curSweetness += sweet;
-            //Cut a chunk when sweetness greater than equal to Target
+            // Cut a chunk when sweetness greater than equal to Target
+            // Current sweetness can never be less than targetSweetness
+            // as we are targeting chunk sweetness >= targetSweetness
+            // as we can not divide one sweetness(sweetness[i]),
+            // we need to take the whole sweetness
             if(curSweetness >= targetSweetness){
                 chunk++;
                 curSweetness = 0;

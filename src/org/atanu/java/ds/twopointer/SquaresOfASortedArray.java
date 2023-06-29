@@ -12,7 +12,7 @@ public class SquaresOfASortedArray {
         int low = 0;
         int high = nums.length -1;
         int index = high;
-        while(low<= high){
+        while(low <= high){
             if(Math.abs(nums[low]) > Math.abs(nums[high])){
                 result[index] = nums[low]*nums[low];
                 low++;

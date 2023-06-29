@@ -1,5 +1,6 @@
 package org.atanu.java.ds.greedy;
 
+// Video : https://www.youtube.com/watch?v=wLPdkLM_BWo
 public class JumpGameII {
 
     public static int jump(int[] nums) {
@@ -32,24 +33,21 @@ public class JumpGameII {
 
         int jump = 0;
 
-        int canTillJump = 0; // How Far we can reach for next step.Farthest we can reach
-        int maxJump = 0; // How Far we can already Reach
+        int furthest = 0; // How Far we can reach for next step.Farthest we can reach
+        int current = 0; // How Far we can already Reach
 
         for (int i = 0; i < nums.length; i++) {
 
-            if (i > maxJump) {
+            furthest = Math.max(furthest, i + nums[i]);
 
-                ++jump;
-                maxJump = Math.max(maxJump, canTillJump);
-                System.out.println(maxJump);
-                if (maxJump >= nums.length - 1) { // This means if we can reach this our last jump
+            if (i == current) {
+                ++jump; // We need to make a jump
+                current = furthest;
+                if (current >= nums.length - 1) { // This means if we can reach this our last jump
                     return jump;
                 }
             }
-
-            canTillJump = Math.max(canTillJump, i + nums[i]);
         }
-
         return jump;
     }
 

@@ -6,6 +6,8 @@ import java.util.List;
 //https://leetcode.com/problems/permutations/
 //LeetCode 46
 //This Solution works only for unique string/array. duplicates not handled
+// Video : https://www.youtube.com/watch?v=R3Sm9V2OSCo
+
 public class Permutations {
     List<List<Integer>> result = new ArrayList<>();
     public List<List<Integer>> permute(int[] nums) {
