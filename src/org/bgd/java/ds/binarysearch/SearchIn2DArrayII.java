@@ -12,8 +12,8 @@ public class SearchIn2DArrayII {
     public boolean searchMatrix(int[][] matrix, int target) {
         int startrow = matrix.length - 1;
         int startcol = 0;
-        while(startrow >= 0 && startrow < matrix.length && startcol >= 0 && startcol < matrix[0].length) {
-            if(target > matrix[startrow][startcol]) {
+        while (startrow >= 0 && startrow < matrix.length && startcol >= 0 && startcol < matrix[0].length) {
+            if (target > matrix[startrow][startcol]) {
                 startcol++;
             } else if (target < matrix[startrow][startcol]) {
                 startrow--;

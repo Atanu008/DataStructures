@@ -26,4 +26,4 @@ public class MergeTwoLinkedLists {
         return result.next;
     }
 }
-}
+

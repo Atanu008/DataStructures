@@ -18,15 +18,15 @@ public class MaximumSlidingWindow {
         int[] result = new int[nums.length - k + 1];
         int r = 0;
 
-        for(int i = 0; i< nums.length; i++) {
-            if(!deque.isEmpty() && deque.peek() == i - k) {
+        for (int i = 0; i < nums.length; i++) {
+            if (!deque.isEmpty() && deque.peek() == i - k) {
                 deque.pollFirst();
             }
-            while(!deque.isEmpty() && nums[deque.peekLast()] < nums[i]) {
+            while (!deque.isEmpty() && nums[deque.peekLast()] < nums[i]) {
                 deque.pollLast();
             }
             deque.offer(i);
-            if(i >= k-1) {
+            if (i >= k - 1) {
                 result[r++] = deque.peekFirst();
             }
         }

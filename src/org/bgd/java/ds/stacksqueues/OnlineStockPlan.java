@@ -26,10 +26,10 @@ public class OnlineStockPlan {
 
         public int next(int price) {
             int d = 1;
-            while(!stack.isEmpty() && stack.peek()[0] <= price) {
+            while (!stack.isEmpty() && stack.peek()[0] <= price) {
                 d += stack.pop()[1];
             }
-            stack.push(new int[] {price, d});
+            stack.push(new int[] { price, d });
             return d;
         }
     }

@@ -50,7 +50,7 @@ public class LargestRectangleInHistogram {
                 index = i;
             }
         }
-        area = heights[index] * (end-start+1);
+        area = heights[index] * (end - start + 1);
         int largest = Math.max(largestRect(heights, start, index - 1), largestRect(heights, index + 1, end));
         return Math.max(area, largest);
     }

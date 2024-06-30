@@ -18,19 +18,19 @@ public class NextGreaterElement {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
         Deque<Integer> stack = new ArrayDeque<>();
         Map<Integer, Integer> nextGreater = new HashMap<>();
-        for(int i : nums2) {
-            while(!stack.isEmpty() && stack.peek() < i) {
+        for (int i : nums2) {
+            while (!stack.isEmpty() && stack.peek() < i) {
                 nextGreater.put(stack.pop(), i);
             }
             stack.push(i);
         }
 
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             nextGreater.put(stack.pop(), -1);
         }
         int[] result = new int[nums1.length];
         int k = 0;
-        for(int i : nums1) {
+        for (int i : nums1) {
             result[k++] = nextGreater.get(i);
         }
         return result;

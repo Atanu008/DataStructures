@@ -3,38 +3,42 @@ package org.bgd.java.ds.tree.binarytree;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 public class ZigzagTraversal {
 
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> answer = new ArrayList<>();
-        if(root == null) {
+        if (root == null) {
             return answer;
         }
+        List<Integer> levelList = new LinkedList<>();
 
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        boolean leftToRight = false;
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.addLast(root);
+        queue.addLast(null);
+        boolean leftToRight = true;
         while (!queue.isEmpty()) {
-            leftToRight = !leftToRight;
-            int s = queue.size();
-            List<Integer> list = new ArrayList<>();
-            for(int i = 0; i< s; i++) {
-                TreeNode top =queue.poll();
-                if(leftToRight) {
-                    list.addFirst(top.val);
+            TreeNode curr = queue.pollFirst();
+            if (curr != null) {
+                if (leftToRight) {
+                    levelList.addLast(curr.val);
                 } else {
-                    list.addLast(top.val);
+                    levelList.addFirst(curr.val);
                 }
-                if(top.left != null) {
-                    queue.offer(top.left);
+                if (curr.left != null) {
+                    queue.addLast(curr.left);
                 }
-                if(top.right != null) {
-                    queue.offer(top.right);
+                if (curr.right != null) {
+                    queue.addLast(curr.right);
                 }
+            } else {
+                answer.add(levelList);
+                levelList = new LinkedList<>();
+                if (!queue.isEmpty()) {
+                    queue.addLast(null);
+                }
+                leftToRight = !leftToRight;
             }
-            answer.add(list);
         }
         return answer;
     }

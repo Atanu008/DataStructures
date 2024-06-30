@@ -10,9 +10,10 @@ public class ReverseNodesInGroupsOfEvenLength {
     public LinkedListNode reverseEvenLengthGroups(LinkedListNode head) {
         return head;
     }
+
     private LinkedListNode reverse(LinkedListNode head, int n) {
         LinkedListNode prev = null, curr = head;
-        while(curr != null && n > 0) {
+        while (curr != null && n > 0) {
             LinkedListNode t = curr.next;
             curr.next = prev;
             prev = curr;

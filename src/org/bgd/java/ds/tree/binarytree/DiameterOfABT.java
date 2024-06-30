@@ -7,8 +7,9 @@ public class DiameterOfABT {
         diameterOfBinaryTree(root, max);
         return max[0];
     }
+
     public int diameterOfBinaryTree(TreeNode root, int[] max) {
-        if(root == null) {
+        if (root == null) {
             return 0;
         }
 

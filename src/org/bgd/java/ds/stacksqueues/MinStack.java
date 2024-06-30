@@ -20,16 +20,17 @@ import java.util.Deque;
 public class MinStack {
     Deque<Integer> stack;
     Deque<Integer> min;
+
     public MinStack() {
         stack = new ArrayDeque<>();
         min = new ArrayDeque<>();
     }
 
     public void push(int val) {
-        if(stack.isEmpty()) {
+        if (stack.isEmpty()) {
             min.push(val);
         } else {
-            if(min.peek() >= val){
+            if (min.peek() >= val) {
                 min.push(val);
 
             }
@@ -39,7 +40,7 @@ public class MinStack {
 
     public void pop() {
         int top = stack.pop();
-        if(top == min.peek()) {
+        if (top == min.peek()) {
             min.pop();
         }
     }

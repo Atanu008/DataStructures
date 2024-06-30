@@ -11,7 +11,7 @@ import java.util.Queue;
  */
 public class InvertBT {
     public TreeNode invertTree(TreeNode root) {
-        if(root == null) {
+        if (root == null) {
             return root;
         }
 
@@ -26,7 +26,7 @@ public class InvertBT {
      * Iterative solution using Queue
      */
     public TreeNode invertTreeII(TreeNode root) {
-        if(root == null) {
+        if (root == null) {
             return root;
         }
 
@@ -38,10 +38,10 @@ public class InvertBT {
             TreeNode temp = top.left;
             top.left = top.right;
             top.right = temp;
-            if(top.left != null) {
+            if (top.left != null) {
                 queue.offer(top.left);
             }
-            if(top.right != null) {
+            if (top.right != null) {
                 queue.offer(top.right);
             }
         }

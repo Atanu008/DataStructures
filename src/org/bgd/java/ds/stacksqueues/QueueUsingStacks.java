@@ -23,6 +23,7 @@ import java.util.Deque;
 public class QueueUsingStacks {
 
 }
+
 class MyQueue {
     Deque<Integer> stack1;
     Deque<Integer> stack2;
@@ -33,11 +34,11 @@ class MyQueue {
     }
 
     public void push(int x) {
-        while(!stack1.isEmpty()) {
+        while (!stack1.isEmpty()) {
             stack2.push(stack1.pop());
         }
         stack1.push(x);
-        while(!stack2.isEmpty()) {
+        while (!stack2.isEmpty()) {
             stack1.push(stack2.pop());
         }
     }

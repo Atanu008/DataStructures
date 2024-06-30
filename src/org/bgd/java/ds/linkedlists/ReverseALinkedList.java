@@ -9,7 +9,7 @@ package org.bgd.java.ds.linkedlists;
 public class ReverseALinkedList {
     public ListNode reverseList(ListNode head) {
         ListNode prev = null, curr = head;
-        while(curr != null) {
+        while (curr != null) {
             ListNode next = curr.next;
             curr.next = prev;
             prev = curr;

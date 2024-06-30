@@ -17,7 +17,7 @@ import java.util.Deque;
 
 public class DepthOfBT {
     public int maxDepth(TreeNode root) {
-        if(root == null) {
+        if (root == null) {
             return 0;
         }
         return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
@@ -28,22 +28,22 @@ public class DepthOfBT {
      */
 
     public int maxDepthII(TreeNode root) {
-        if(root == null) {
+        if (root == null) {
             return 0;
         }
         Deque<TreeNode> stack = new ArrayDeque<>();
         stack.offer(root);
         int depth = 0;
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             int s = stack.size();
             depth++;
-            for(int i = 0; i < s; i++) {
+            for (int i = 0; i < s; i++) {
                 TreeNode top = stack.poll();
-                if(top.left != null) {
+                if (top.left != null) {
                     stack.offer(top.left);
                 }
 
-                if(top.right != null) {
+                if (top.right != null) {
                     stack.offer(top.right);
                 }
             }

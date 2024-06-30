@@ -20,7 +20,7 @@ import java.util.Random;
 public class KthLargestElementInArray {
     public int findKthLargest(int[] nums, int k) {
         List<Integer> list = new ArrayList<>();
-        for(int i : nums) {
+        for (int i : nums) {
             list.add(i);
         }
         return quickSelect(list, k);
@@ -34,12 +34,12 @@ public class KthLargestElementInArray {
         List<Integer> right = new ArrayList<>();
         List<Integer> mid = new ArrayList<>();
 
-        for(int i : list) {
+        for (int i : list) {
             /**
              * if Kth smallest is to be found, left should contain all elements lower than pivot
              * if Kth largest is to be found, left should contain all elements greater than pivot
              */
-            if( i > pivot) {
+            if (i > pivot) {
                 left.add(i);
             } else if (i < pivot) {
                 right.add(i);
@@ -48,10 +48,10 @@ public class KthLargestElementInArray {
             }
         }
 
-        if(left.size() >= k) {
+        if (left.size() >= k) {
             return quickSelect(left, k);
         }
-        if(left.size() + mid.size() < k) {
+        if (left.size() + mid.size() < k) {
             return quickSelect(right, k - (left.size() + mid.size()));
         }
         return pivot;

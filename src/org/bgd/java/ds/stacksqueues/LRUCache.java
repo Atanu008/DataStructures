@@ -1,6 +1,5 @@
 package org.bgd.java.ds.stacksqueues;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,7 +43,7 @@ public class LRUCache {
      */
 
     public int get(int key) {
-        if(!map.containsKey(key)) {
+        if (!map.containsKey(key)) {
             return -1;
         }
         ListNode<Integer> node = map.get(key);
@@ -70,15 +69,15 @@ public class LRUCache {
      * @param value
      */
     public void put(int key, int value) {
-        if(map.containsKey(key)) {
-           ListNode<Integer> oldNode = map.get(key);
-           remove(oldNode);
+        if (map.containsKey(key)) {
+            ListNode<Integer> oldNode = map.get(key);
+            remove(oldNode);
         }
         ListNode<Integer> newNode = new ListNode<>(key, value);
         map.put(key, newNode);
         addToTail(newNode);
 
-        if(map.size() > capacity) {
+        if (map.size() > capacity) {
             ListNode<Integer> lruNode = head.next;
             remove(lruNode);
             map.remove(lruNode.key);
@@ -99,12 +98,12 @@ public class LRUCache {
     }
 }
 
-
 class ListNode<T> {
     T key;
     T val;
     ListNode<T> next;
     ListNode<T> prev;
+
     ListNode(T key, T val) {
         this.key = key;
         this.val = val;

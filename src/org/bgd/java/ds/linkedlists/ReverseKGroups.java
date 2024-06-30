@@ -18,11 +18,11 @@ public class ReverseKGroups {
     public ListNode reverseKGroup(ListNode head, int k) {
         ListNode curr = head;
         int c = 0;
-        while(c != k && curr != null) {
+        while (c != k && curr != null) {
             c++;
             curr = curr.next;
         }
-        if(c == k) {
+        if (c == k) {
             ListNode rev = reverse(head, k);
             head.next = reverseKGroup(curr, k);
             return rev;
@@ -40,34 +40,33 @@ public class ReverseKGroups {
         ListNode curr = head;
         ListNode newHead = null;
         ListNode kTail = null;
-        while(curr != null) {
+        while (curr != null) {
             int c = 0;
-            while(c != k && curr != null) {
+            while (c != k && curr != null) {
                 c++;
                 curr = curr.next;
             }
-            if(c == k) {
+            if (c == k) {
                 ListNode revHead = reverse(head, k);
-                if(newHead == null) {
+                if (newHead == null) {
                     newHead = revHead;
                 }
-                if(kTail != null) {
+                if (kTail != null) {
                     kTail.next = revHead;
                 }
                 kTail = head;
                 head = curr;
             }
         }
-        if(kTail != null) {
+        if (kTail != null) {
             kTail.next = head;
         }
         return newHead;
     }
 
-
     private ListNode reverse(ListNode head, int k) {
         ListNode curr = head, prev = null;
-        while(k >0) {
+        while (k > 0) {
             ListNode t = curr.next;
             curr.next = prev;
             prev = curr;
