@@ -1,4 +1,4 @@
-package org.bgd.java.ds.binarysearch;
+package org.bgd.java.ds.binarysearch.twoDimension;
 
 /**
  * https://leetcode.com/problems/search-a-2d-matrix-ii/description/
