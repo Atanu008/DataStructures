@@ -3,7 +3,7 @@ package org.bgd.java.ds.dp.onedimension;
 import java.util.Arrays;
 
 /**
- * https://www.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1
+ * <a href="https://www.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1">...</a>
  *
  * Subset Sum Problem
  *

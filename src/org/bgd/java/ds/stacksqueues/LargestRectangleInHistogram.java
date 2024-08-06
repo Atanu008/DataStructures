@@ -5,7 +5,8 @@ import java.util.Deque;
 
 /**
  * <a href="https://leetcode.com/problems/largest-rectangle-in-histogram/description/">...</a>
- * Given an array of integers heights representing the histogram's bar height where the width of each bar is 1, return the area of the largest rectangle in the histogram.
+ * Given an array of integers heights representing the histogram's bar height where the width of each bar is 1,
+ * return the area of the largest rectangle in the histogram.
  * Example 1:
  *
  *
@@ -15,7 +16,55 @@ import java.util.Deque;
  * The largest rectangle is shown in the red area, which has an area = 10 units.
  */
 public class LargestRectangleInHistogram {
+
+    /**
+     * Two pass with additional space approach
+     * @param heights
+     * @return
+     */
     public int largestRectangleArea(int[] heights) {
+        int[] leftSmall = new int[heights.length];
+        int[] rightSmall = new int[heights.length];
+
+        Deque<Integer> stack = new ArrayDeque<>();
+
+        for (int i = 0; i < heights.length; i++) {
+            while (!stack.isEmpty() && heights[stack.peek()] > heights[i]) {
+                stack.pop();
+            }
+            if (stack.isEmpty()) {
+                leftSmall[i] = 0;
+            } else {
+                leftSmall[i] = stack.peek() + 1;
+            }
+            stack.push(i);
+        }
+
+        while(!stack.isEmpty()) {
+            stack.pop();
+        }
+
+        for (int i = heights.length-1; i >= 0; i--) {
+            while (!stack.isEmpty() && heights[stack.peek()] >= heights[i]) {
+                stack.pop();
+            }
+            if (stack.isEmpty()) {
+                rightSmall[i] = heights.length-1;
+            } else {
+                rightSmall[i] = stack.peek() - 1;
+            }
+            stack.push(i);
+        }
+
+        int max = Integer.MIN_VALUE;
+
+        for(int i = 0; i < heights.length; i++) {
+            max = Math.max(max, (rightSmall[i] - leftSmall[i] + 1) * heights[i]);
+        }
+        return max;
+    }
+
+    public int largestRectangleAreaOptimal(int[] heights) {
         Deque<Integer> stack = new ArrayDeque<>();
         stack.push(-1);
         int maxArea = -1;

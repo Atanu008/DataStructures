@@ -33,8 +33,7 @@ public class LRUCache {
 
     /**
      * If map does not contain, return pre-emptively
-     * Else:
-     * get Node from map
+     * Else: get Node from map
      * Move node to tail
      * return value
      *

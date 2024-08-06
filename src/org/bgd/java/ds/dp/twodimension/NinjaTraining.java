@@ -4,9 +4,12 @@ import java.util.Arrays;
 
 /**
  * <a href="https://www.geeksforgeeks.org/problems/geeks-training/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=geeks-training">...</a>
- *
- * Geek is going for n day training program. He can perform any one of these three activities Running, Fighting, and Learning Practice. Each activity has some point on each day. As Geek wants to improve all his skills, he can't do the same activity on two consecutive days. Help Geek to maximize his merit points as you are given a 2D array of points points, corresponding to each day and activity.
- *
+ * <p>
+ * Geek is going for n day training program. He can perform any one of these three activities Running, Fighting, and Learning Practice.
+ * Each activity has some point on each day. As Geek wants to improve all his skills, he can't do the same activity on two consecutive days.
+ * <p>
+ * Help Geek to maximize his merit points as you are given a 2D array of points points, corresponding to each day and activity.
+ * <p>
  * Example:
  * Input:
  * n = 3
@@ -18,16 +21,7 @@ import java.util.Arrays;
  * day he will do running and earn 3 point and on third day
  * he will do fighting and earn 3 points so, maximum point is 11.
  *
- * Example:
- * Input:
- * n = 3
- * points = [[1,2,5],[3,1,1],[3,2,3]]
- * Output:
- * 11
- * Explanation:
- * Geek will learn a new move and earn 5 point then on second
- * day he will do running and earn 3 point and on third day
- * he will do running and earn 3 points so, maximum point is 11.
+ *
  */
 public class NinjaTraining {
     public int maximumPoints(int[][] points, int N) {

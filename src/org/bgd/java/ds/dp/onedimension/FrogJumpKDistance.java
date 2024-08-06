@@ -7,7 +7,8 @@ import java.util.Arrays;
  *
  *
  * Minimal Cost
- * There are n stones and an array of heights and Geek is standing at stone 1 and can jump to one of the following: Stone i+1, i+2, ... i+k stone and cost will be [hi-hj] is incurred, where j is the stone to land on. Find the minimum possible total cost incurred before the Geek reaches Stone n.
+ * There are n stones and an array of heights and Geek is standing at stone 1 and can jump to one of the following: Stone i+1, i+2, ... i+k stone and cost will be [hi-hj] is incurred, where j is the stone to land on.
+ * Find the minimum possible total cost incurred before the Geek reaches Stone n.
  *
  * Examples :
  * Input: n = 5, k = 3 heights = {10, 30, 40, 50, 20}
@@ -41,7 +42,7 @@ public class FrogJumpKDistance {
         }
         int steps = Integer.MAX_VALUE;
         for (int j = 1; j <= k; j++) {
-            if (i - j > 0) {
+            if (i - j >= 0) {
                 int value = minCostRec(arr, i - j, k) + Math.abs(arr[i] - arr[i - j]);
                 steps = Math.min(steps, value);
             }

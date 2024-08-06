@@ -59,6 +59,13 @@ public class AncestorsOfANode {
         return ancestors;
     }
 
+    /**
+     *
+     * Runs through all the nodes(vertices) of the graph
+     * For each child of the current vertex :
+     *  - adds current node as an ancestor based on conditions
+     *
+     */
     private void ancestorUtil(int current, int ancestor) {
         for (int child : map.get(current)) {
             if (ancestors.get(child)
@@ -71,19 +78,27 @@ public class AncestorsOfANode {
         }
     }
 
-    /** Topological Ordering solution
-     *
+    /**
+     * Topological Ordering solution
      */
 
     private void topologicalUtil(int n, int[][] edges) {
-        map = new HashMap<>(); // adjancency list
+        map = new HashMap<>(); // the graph
         Map<Integer, Integer> indegree = new HashMap<>();
 
+        /*
+         * Initialisation phase
+         */
         for (int i = 0; i < n; i++) {
             map.put(i, new ArrayList<>());
             ancestors.add(new ArrayList<>());
             indegree.put(i, 0);
         }
+
+        /*
+         * Forming the graph
+         * Populate in degrees for child(because direction parent ---> child)
+         */
 
         for (int[] edge : edges) {
             int parent = edge[0];
@@ -92,6 +107,10 @@ public class AncestorsOfANode {
               .add(child);
             indegree.put(child, indegree.get(child) + 1);
         }
+
+        /*
+         * Initiate BFS with every node where in degree == 0
+         */
         Queue<Integer> q = new LinkedList<>();
         for (Map.Entry<Integer, Integer> entry : indegree.entrySet()) {
             if (entry.getValue() == 0) {

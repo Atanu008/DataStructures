@@ -43,7 +43,6 @@ public class PalindromePartition {
         int min = Integer.MAX_VALUE;
 
         for (int j = i; j < s.length(); j++) {
-
             if (isPalindrome(s, i, j)) {
                 int c = 1 + minCutRec(s, j);
                 min = Math.min(min, c);

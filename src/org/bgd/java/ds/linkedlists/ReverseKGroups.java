@@ -67,10 +67,10 @@ public class ReverseKGroups {
     private ListNode reverse(ListNode head, int k) {
         ListNode curr = head, prev = null;
         while (k > 0) {
-            ListNode t = curr.next;
+            ListNode next = curr.next;
             curr.next = prev;
             prev = curr;
-            curr = t;
+            curr = next;
             k--;
         }
         return prev;

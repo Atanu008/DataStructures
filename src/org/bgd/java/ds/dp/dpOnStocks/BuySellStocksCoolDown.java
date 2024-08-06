@@ -43,11 +43,11 @@ public class BuySellStocksCoolDown {
         int notTake = 0;
         if (buy == 1) {
             take = -prices[i] + maxProfitRec(prices, i + 1, 0);
-            notTake = 0 + maxProfitRec(prices, i + 1, buy);
+            notTake = maxProfitRec(prices, i + 1, buy);
         } else if (buy == 0) {
             // sell
             take = prices[i] + maxProfitRec(prices, i + 2, 1);
-            notTake = 0 + maxProfitRec(prices, i + 1, buy);
+            notTake = maxProfitRec(prices, i + 1, buy);
         }
         return Math.max(take, notTake);
     }
@@ -65,11 +65,11 @@ public class BuySellStocksCoolDown {
         int notTake = 0;
         if (buy == 1) {
             take = -prices[i] + maxProfitMemo(prices, i + 1, 0, dp);
-            notTake = 0 + maxProfitMemo(prices, i + 1, buy, dp);
+            notTake = maxProfitMemo(prices, i + 1, buy, dp);
         } else if (buy == 0) {
             // sell
             take = prices[i] + maxProfitMemo(prices, i + 2, 1, dp);
-            notTake = 0 + maxProfitMemo(prices, i + 1, buy, dp);
+            notTake = maxProfitMemo(prices, i + 1, buy, dp);
         }
         return dp[i][buy] = Math.max(take, notTake);
     }

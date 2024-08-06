@@ -24,7 +24,8 @@ import java.util.Arrays;
  * Input: prices = [1,2,3,4,5]
  * Output: 4
  * Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
- * Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are engaging multiple transactions at the same time. You must sell before buying again.
+ * Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are engaging multiple transactions at the same time.
+ * You must sell before buying again.
  * Example 3:
  *
  * Input: prices = [7,6,4,3,1]
@@ -57,11 +58,11 @@ public class BuySellStocksIII {
         int notTake = 0;
         if (buy == 1) {
             take = -prices[i] + maxProfitRec(prices, i + 1, 0, cap);
-            notTake = 0 + maxProfitRec(prices, i + 1, buy, cap);
+            notTake = maxProfitRec(prices, i + 1, buy, cap);
         } else if (buy == 0) {
             //sell
             take = prices[i] + maxProfitRec(prices, i + 1, 1, cap - 1);
-            notTake = 0 + maxProfitRec(prices, i + 1, buy, cap);
+            notTake = maxProfitRec(prices, i + 1, buy, cap);
         }
         return Math.max(take, notTake);
     }
@@ -85,11 +86,11 @@ public class BuySellStocksIII {
         int notTake = 0;
         if (buy == 1) {
             take = -prices[i] + maxProfitMemo(prices, i + 1, 0, cap, dp);
-            notTake = 0 + maxProfitMemo(prices, i + 1, buy, cap, dp);
+            notTake = maxProfitMemo(prices, i + 1, buy, cap, dp);
         } else if (buy == 0) {
             //sell
             take = prices[i] + maxProfitMemo(prices, i + 1, 1, cap - 1, dp);
-            notTake = 0 + maxProfitMemo(prices, i + 1, buy, cap, dp);
+            notTake = maxProfitMemo(prices, i + 1, buy, cap, dp);
         }
         return dp[i][buy][cap] = Math.max(take, notTake);
     }

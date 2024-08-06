@@ -1,7 +1,9 @@
 package org.bgd.java.ds.dp.twodimension;
 
+import java.util.Arrays;
+
 /**
- * https://leetcode.com/problems/longest-increasing-subsequence/
+ * <a href="https://leetcode.com/problems/longest-increasing-subsequence/">...</a>
  *
  * 300. Longest Increasing Subsequence
  * Given an integer array nums, return the length of the longest strictly increasing
@@ -26,6 +28,45 @@ package org.bgd.java.ds.dp.twodimension;
  */
 public class LIS {
     public int lengthOfLIS(int[] nums) {
-        return -1;
+        int[][] dp = new int[nums.length + 1][nums.length + 2];
+        for (int[] a : dp) {
+            Arrays.fill(a, -1);
+        }
+        return lisRec(nums, 0, -1);
+    }
+
+    private int lisRec(int[] a, int curr, int prev) {
+        if (curr == a.length) {
+            return 0;
+        }
+
+        int notTake = lisRec(a, curr + 1, prev);
+        int take = -1;
+
+        if (prev < 0 || a[curr] > a[prev]) {
+            take = 1 + lisRec(a, curr + 1, curr);
+        }
+
+        return Math.max(notTake, take);
+
+    }
+
+    private int lis(int[] nums, int curr, int prev, int[][] dp) {
+        if (curr == nums.length) {
+            return 0;
+        }
+
+        if (dp[curr][prev + 1] != -1) {
+            return dp[curr][prev + 1];
+        }
+
+        int l1 = lis(nums, curr + 1, prev, dp);
+
+        if (prev < 0 || nums[curr] > nums[prev]) {
+            l1 = Math.max(l1, 1 + lis(nums, curr + 1, curr, dp));
+        }
+
+        dp[curr][prev + 1] = l1;
+        return dp[curr][prev + 1];
     }
 }

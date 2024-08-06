@@ -1,5 +1,6 @@
 package org.bgd.java.ds.linkedlists;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -12,12 +13,11 @@ import java.util.Queue;
 
 public class MergeKSortedLists {
     public ListNode mergeKLists(ListNode[] lists) {
-        Queue<ListNode> heap = new PriorityQueue<>((a, b) -> a.val - b.val);
+        Queue<ListNode> heap = new PriorityQueue<>(Comparator.comparingInt(a -> a.val));
         for (ListNode list : lists) {
             if (list != null) {
                 heap.offer(list);
             }
-
         }
 
         ListNode result = new ListNode(0);

@@ -24,10 +24,10 @@ public class ReorderList {
         ListNode prev = null;
         ListNode curr = slow;
         while (curr != null) {
-            ListNode temp = curr.next;
+            ListNode next = curr.next;
             curr.next = prev;
             prev = curr;
-            curr = temp;
+            curr = next;
         }
 
         ListNode first = head;

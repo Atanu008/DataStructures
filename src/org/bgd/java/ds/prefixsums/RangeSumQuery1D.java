@@ -1,7 +1,7 @@
 package org.bgd.java.ds.prefixsums;
 
 /**
- * https://leetcode.com/problems/range-sum-query-immutable/description/
+ * <a href="https://leetcode.com/problems/range-sum-query-immutable/description/">...</a>
  *
  * 303. Range Sum Query - Immutable
  *

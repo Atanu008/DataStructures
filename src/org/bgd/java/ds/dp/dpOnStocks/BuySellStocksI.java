@@ -28,7 +28,7 @@ public class BuySellStocksI {
         int profit = 0;
         int min = prices[0];
 
-        for(int i = 1; i< prices.length; i++) {
+        for (int i = 1; i < prices.length; i++) {
             int cost = prices[i] - min;
             profit = Math.max(profit, cost);
 

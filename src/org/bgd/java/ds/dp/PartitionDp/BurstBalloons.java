@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * https://leetcode.com/problems/burst-balloons/
+ * <a href="https://leetcode.com/problems/burst-balloons/">...</a>
  *
  * You are given n balloons, indexed from 0 to n - 1. Each balloon is painted with a number on it represented by an array nums. You are asked to burst all the balloons.
  *
@@ -31,42 +31,42 @@ import java.util.List;
 public class BurstBalloons {
     public int maxCoins(int[] nums) {
         List<Integer> a = new ArrayList<>();
-        for(int i : nums) {
+        for (int i : nums) {
             a.add(i);
         }
         a.addFirst(1);
         a.addLast(1);
-        int[][] dp = new int[nums.length+1][nums.length+1];
-        for(int[] arr :dp) {
+        int[][] dp = new int[nums.length + 1][nums.length + 1];
+        for (int[] arr : dp) {
             Arrays.fill(arr, -1);
         }
         return maxCoinsMemo(1, nums.length, a, dp);
     }
 
     private int maxCoinsRec(int i, int j, List<Integer> nums) {
-        if(i > j) {
+        if (i > j) {
             return 0;
         }
 
         int max = Integer.MIN_VALUE;
-        for(int ind = i; ind <= j; ind++) {
-            int c = nums.get(i-1) * nums.get(ind) * nums.get(j+1)  + maxCoinsRec(i, ind-1, nums) + maxCoinsRec(ind+1, j, nums);
+        for (int ind = i; ind <= j; ind++) {
+            int c = nums.get(i - 1) * nums.get(ind) * nums.get(j + 1) + maxCoinsRec(i, ind - 1, nums) + maxCoinsRec(ind + 1, j, nums);
             max = Math.max(max, c);
         }
         return max;
     }
 
     private int maxCoinsMemo(int i, int j, List<Integer> nums, int[][] dp) {
-        if(i > j) {
+        if (i > j) {
             return 0;
         }
-        if(dp[i][j] != -1) {
+        if (dp[i][j] != -1) {
             return dp[i][j];
         }
 
         int max = Integer.MIN_VALUE;
-        for(int ind = i; ind <= j; ind++) {
-            int c = nums.get(i-1) * nums.get(ind) * nums.get(j+1)  + maxCoinsMemo(i, ind-1, nums, dp) + maxCoinsMemo(ind+1, j, nums, dp);
+        for (int ind = i; ind <= j; ind++) {
+            int c = nums.get(i - 1) * nums.get(ind) * nums.get(j + 1) + maxCoinsMemo(i, ind - 1, nums, dp) + maxCoinsMemo(ind + 1, j, nums, dp);
             max = Math.max(max, c);
         }
         return dp[i][j] = max;

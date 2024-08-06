@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * https://leetcode.com/problems/palindrome-partitioning/description/
+ * <a href="https://leetcode.com/problems/palindrome-partitioning/description/">...</a>
  *
  * Given a string s, partition s such that every
  * substring
@@ -25,23 +25,27 @@ import java.util.List;
  *
  */
 public class PalindromePartition {
+    private List<List<String>> answer;
+    private String input;
+
     public List<List<String>> partition(String s) {
-        List<List<String>> answer = new ArrayList<>();
-        partition(s, 0, new ArrayList<>(), answer);
+        this.answer = new ArrayList<>();
+        this.input = s;
+        partition(0, new ArrayList<>());
         return answer;
     }
 
-    private void partition(String s, int index, List<String> strings, List<List<String>> answer) {
-        if (index == s.length()) {
+    private void partition(int index, List<String> strings) {
+        if (index == input.length()) {
             answer.add(new ArrayList<>(strings));
             return;
         }
 
-        for (int i = index; i < s.length(); i++) {
-            String toConsider = s.substring(index, i + 1);
+        for (int i = index; i < input.length(); i++) {
+            String toConsider = input.substring(index, i + 1);
             if (isPalindrome(toConsider)) {
                 strings.add(toConsider);
-                partition(s, i + 1, strings, answer);
+                partition(i + 1, strings);
                 strings.removeLast();
             }
         }
@@ -53,6 +57,8 @@ public class PalindromePartition {
             if (s.charAt(l) != s.charAt(r)) {
                 return false;
             }
+            l++;
+            r--;
         }
         return true;
     }

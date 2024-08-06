@@ -35,7 +35,8 @@ public class LCSStringPrint {
                 j--;
             }
         }
-        return sb.reverse().toString();
+        return sb.reverse()
+          .toString();
     }
 
     public static void main(String[] args) {

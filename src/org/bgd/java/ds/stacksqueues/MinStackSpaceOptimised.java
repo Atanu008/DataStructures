@@ -3,7 +3,8 @@ package org.bgd.java.ds.stacksqueues;
 /**
  * <a href="https://leetcode.com/problems/min-stack/">...</a>
  *
- * This is a Space Optimised version of Min Stack with a Custom node class which tracks the node value and min
+ * This is a Space Optimised version of Min Stack with a Custom node class
+ * which tracks the node value and min
  */
 
 public class MinStackSpaceOptimised {

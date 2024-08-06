@@ -53,9 +53,4 @@ public class SubsetsII {
         }
     }
 
-    /**
-     * Recursive take not take solution
-     */
-
-
 }

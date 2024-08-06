@@ -4,12 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/
+ * <a href="https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/">...</a>
  *
  * 325. Maximum Size Subarray Sum Equals k
  * Given an integer array nums and an integer k, return the maximum length of a
- * subarray
- *  that sums to k. If there is not one, return 0 instead.
+ * subarray that sums to k. If there is not one, return 0 instead.
  *
  *
  *

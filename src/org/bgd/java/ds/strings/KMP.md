@@ -1,26 +1,30 @@
-
 # KMP Algorithm for String Pattern Matching
 
 ---------
 
 #### Sliding Window pattern solves this case efficiently
+
 ```
 haystack = "badgoodbabbad"
 needle = "good"
 
 output = 4
 ```
+
 - Runtime : `O(m*n)`
 
 #### KMP Algorithm is optimal here
+
 ```
 haystack = "aaaxaaax"
 needle = "aaaa"
 ```
-- Checks all `a`'s to find that final letter does not match. 
+
+- Checks all `a`'s to find that final letter does not match.
 - Runtime  : `O(n+m)`
 
-### Longest Prefix Suffix 
+### Longest Prefix Suffix
+
 - Find the longest prefix that is also a suffix in the string
 - Creates a **LPS** array
 - Keep on checking characters from needle and haystack
@@ -29,17 +33,18 @@ needle = "aaaa"
 - Else when there is no match, start from 0th index of needle
 
 #### Algorithm
- - Preprocess the `needle`  and build the LPS array 
- - Initialise pointers on `needle` and `haystack`
- - Examine the haystack characters :
+
+- Preprocess the `needle`  and build the LPS array
+- Initialise pointers on `needle` and `haystack`
+- Examine the haystack characters :
     - On match, increment both pointers
     - if the very first character of `needle` does not match, increment `haystack` pointer by 1
     - for partial matching
-      - no change in `haystack` pointer
-      - set `needle` pointer to `lps[needle_pointer-1]`
-      - continue check for match
+        - no change in `haystack` pointer
+        - set `needle` pointer to `lps[needle_pointer-1]`
+        - continue check for match
 
-### Code 
+### Code
 
 ```java
 class Solution {
@@ -47,7 +52,8 @@ class Solution {
         int m = needle.length();
         int n = haystack.length();
 
-        if (n < m) return -1;
+        if (n < m)
+            return -1;
 
         // PREPROCESSING
         // longest prefix suffix array
@@ -84,9 +90,7 @@ class Solution {
         int needlePointer = 0;
 
         while (haystackPointer < n) {
-            if (
-                haystack.charAt(haystackPointer) == needle.charAt(needlePointer)
-            ) {
+            if (haystack.charAt(haystackPointer) == needle.charAt(needlePointer)) {
                 // Matched Increment Both
                 needlePointer += 1;
                 haystackPointer += 1;

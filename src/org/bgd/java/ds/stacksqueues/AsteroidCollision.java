@@ -15,7 +15,6 @@ public class AsteroidCollision {
                     continue;
                 } else if (stack.peek() == Math.abs(i)) {
                     stack.pop();
-
                 }
                 toAdd = false;
                 break;

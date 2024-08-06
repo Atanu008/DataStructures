@@ -1,7 +1,9 @@
 package org.bgd.java.ds.dp.dpOnSubsequences;
 
+import java.util.Arrays;
+
 /**
- * https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/
+ * <a href="https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/">...</a>
  *
  * 2035. Partition Array Into Two Arrays to Minimize Sum Difference
  * Hard
@@ -11,7 +13,9 @@ package org.bgd.java.ds.dp.dpOnSubsequences;
  * Companies
  *
  * Hint
- * You are given an integer array nums of 2 * n integers. You need to partition nums into two arrays of length n to minimize the absolute difference of the sums of the arrays. To partition nums, put each element of nums into one of the two arrays.
+ * You are given an integer array nums of 2 * n integers.
+ * You need to partition nums into two arrays of length n to minimize the absolute difference of the sums of the arrays.
+ * To partition nums, put each element of nums into one of the two arrays.
  *
  * Return the minimum possible absolute difference.
  *
@@ -33,6 +37,40 @@ package org.bgd.java.ds.dp.dpOnSubsequences;
  */
 public class TargetSumWays {
 
+    public int findTargetSumWays(int[] nums, int target) {
+        int total = 0;
+        for (int i : nums) {
+            total += i;
+        }
+
+        int[][] dp = new int[nums.length][2 * total + 1];
+        for (int[] d : dp) {
+            Arrays.fill(d, -1);
+        }
+
+        return targetSumMemo(nums, 0, total, 0, target, dp);
+    }
+
+    private int targetSumMemo(int[] nums, int i, int total, int sum, int target, int[][] dp) {
+        if (i == nums.length) {
+            if (sum == target) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+
+        if (dp[i][sum + total] != -1) {
+            return dp[i][sum + total];
+        }
+
+        if (i < nums.length) {
+            dp[i][sum + total] = targetSumMemo(nums, i + 1, total, sum - nums[i], target, dp) + targetSumMemo(nums, i + 1, total, sum + nums[i], target, dp);
+        }
+        return dp[i][sum + total];
+
+    }
+
     public int minimumDifference(int[] nums) {
         int total = 0;
         for (int i : nums) {
@@ -41,42 +79,6 @@ public class TargetSumWays {
 
         return subSetSumTab(nums, total);
 
-    }
-
-    private boolean subsetSumKRec(int[] nums, int i, int total) {
-        if (total == 0) {
-            return true;
-        }
-        if (i == 0) {
-            return nums[i] == total;
-        }
-
-        boolean notTake = subsetSumKRec(nums, i - 1, total);
-        boolean take = false;
-        if (nums[i] <= total) {
-            take = subsetSumKRec(nums, i - 1, total - nums[i]);
-        }
-        return take || notTake;
-    }
-
-    private boolean subsetSumMemo(int[] nums, int i, int total, int[][] dp) {
-        if (total == 0) {
-            return true;
-        }
-        if (i == 0) {
-            return nums[i] == total;
-        }
-        if (dp[i][total] != -1) {
-            return dp[i][total] == 1;
-        }
-
-        boolean notTake = subsetSumMemo(nums, i - 1, total, dp);
-        boolean take = false;
-        if (nums[i] <= total) {
-            take = subsetSumMemo(nums, i - 1, total - nums[i], dp);
-        }
-        dp[i][total] = take || notTake ? 1 : 0;
-        return dp[i][total] == 1;
     }
 
     private int subSetSumTab(int[] nums, int total) {
