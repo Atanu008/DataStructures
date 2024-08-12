@@ -16,11 +16,13 @@ public class ReorderList {
         ListNode fast = head;
         ListNode slow = head;
 
+        // visit the middle
         while (fast != null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;
         }
 
+        // reverse second half
         ListNode prev = null;
         ListNode curr = slow;
         while (curr != null) {

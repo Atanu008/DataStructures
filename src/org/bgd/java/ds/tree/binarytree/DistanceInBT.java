@@ -30,36 +30,36 @@ public class DistanceInBT {
      * 2. Count depth from LCA to p and q separately
      * 3. Sum of distance
      */
-    public int findDistance(TreeNode root, int p, int qq) {
-        TreeNode lca = lca(root, p, qq);
+    public int findDistance(TreeNode root, int p, int q) {
+        TreeNode lca = lca(root, p, q);
 
-        Queue<TreeNode> q = new LinkedList<>();
-        q.offer(lca);
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(lca);
         int distance = 0;
 
         boolean foundp = false, foundq = false;
 
         int depth = 0;
 
-        while (!q.isEmpty() && (!foundq || !foundp)) {
-            int size = q.size();
+        while (!queue.isEmpty() && (!foundq || !foundp)) {
+            int size = queue.size();
             for (int i = 0; i < size; i++) {
-                TreeNode top = q.poll();
+                TreeNode top = queue.poll();
                 if (top.val == p) {
                     distance += depth;
                     foundp = true;
                 }
-                if (top.val == qq) {
+                if (top.val == q) {
                     distance += depth;
                     foundq = true;
                 }
 
                 if (top.left != null) {
-                    q.offer(top.left);
+                    queue.offer(top.left);
                 }
 
                 if (top.right != null) {
-                    q.offer(top.right);
+                    queue.offer(top.right);
                 }
             }
             depth += 1;

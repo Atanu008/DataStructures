@@ -21,8 +21,6 @@ public class MaxPathSum {
 
     /**
      * This uses an algorithm similar to max depth to evaluate the max Path sums of left, right and itself.
-     * @param root
-     * @return
      */
     public int maxPathSum(TreeNode root) {
         int[] max = new int[1];
@@ -37,7 +35,7 @@ public class MaxPathSum {
             return 0;
         }
 
-        /**
+        /*
          * Negative sums are reset to 0.
          */
         int leftSum = Math.max(0, maxPathSumRec(root.left, max));

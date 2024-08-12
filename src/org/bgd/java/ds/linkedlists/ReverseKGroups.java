@@ -11,9 +11,6 @@ package org.bgd.java.ds.linkedlists;
 public class ReverseKGroups {
     /**
      * Recursive solution
-     * @param head
-     * @param k
-     * @return
      */
     public ListNode reverseKGroup(ListNode head, int k) {
         ListNode curr = head;
